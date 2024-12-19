@@ -8,46 +8,28 @@
 
     <!-- Username Field -->
     <EditText
-        android:id="@+id/etSignupUsername"
+        android:id="@+id/etLoginUsername"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Username"
         android:inputType="textPersonName"
         android:layout_marginBottom="8dp" />
 
-    <!-- Email Field -->
-    <EditText
-        android:id="@+id/etSignupEmail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Email"
-        android:inputType="textEmailAddress"
-        android:layout_marginBottom="8dp" />
-
     <!-- Password Field -->
     <EditText
-        android:id="@+id/etSignupPassword"
+        android:id="@+id/etLoginPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Password"
         android:inputType="textPassword"
-        android:layout_marginBottom="8dp" />
-
-    <!-- Re-enter Password Field -->
-    <EditText
-        android:id="@+id/etSignupReenterPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Re-enter Password"
-        android:inputType="textPassword"
         android:layout_marginBottom="16dp" />
 
-    <!-- Signup Button -->
+    <!-- Login Button -->
     <Button
-        android:id="@+id/btnSignup"
+        android:id="@+id/btnLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Signup"
+        android:text="Login"
         android:layout_marginBottom="16dp" />
 
     <!-- Back to Welcome Button -->

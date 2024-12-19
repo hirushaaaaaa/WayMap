@@ -14,29 +14,17 @@ public class WelcomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
 
-        // Find the buttons by their IDs
         Button btnSignup = findViewById(R.id.btnSignup);
         Button btnLogin = findViewById(R.id.btnLogin);
 
-        // Set onClickListener for Signup button
-        btnSignup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Navigate to SignupActivity
-                Intent intent = new Intent(WelcomeActivity.this, SignupActivity.class);
-                startActivity(intent);
-            }
+        btnSignup.setOnClickListener(v -> {
+            Intent intent = new Intent(WelcomeActivity.this, SignupActivity.class);
+            startActivity(intent);
         });
 
-        // Set onClickListener for Login button (optional functionality)
-        btnLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Navigate to LoginActivity (you can create a Login page later)
-                // Example:
-                // Intent intent = new Intent(WelcomeActivity.this, LoginActivity.class);
-                // startActivity(intent);
-            }
+        btnLogin.setOnClickListener(v -> {
+            Intent intent = new Intent(WelcomeActivity.this, LoginActivity.class);
+            startActivity(intent);
         });
     }
 }
