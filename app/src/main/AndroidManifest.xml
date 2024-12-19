@@ -13,8 +13,9 @@
         android:theme="@style/Theme.WayMap"
         tools:targetApi="31">
 
-        <!-- Set SignupActivity as the launcher activity -->
-        <activity android:name=".SignupActivity"
+        <!-- WelcomeActivity is the launcher activity -->
+        <activity
+            android:name=".WelcomeActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,13 +23,15 @@
             </intent-filter>
         </activity>
 
-        <!-- MainActivity, but it should not be a launcher activity -->
+        <!-- SignupActivity -->
+        <activity
+            android:name=".SignupActivity"
+            android:exported="true" />
+
+        <!-- MainActivity -->
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-            <!-- No intent-filter here -->
-        </activity>
-
+            android:exported="true" />
     </application>
 
 </manifest>
