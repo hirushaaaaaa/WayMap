@@ -68,7 +68,7 @@
         android:layout_marginTop="643dp"
         android:layout_marginEnd="142dp"
         android:layout_marginBottom="69dp"
-        android:text="powered_by DOSH"
+        android:text="@string/powered_by_dosh"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

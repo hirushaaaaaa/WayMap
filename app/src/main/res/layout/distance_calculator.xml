@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000">
+
+    <!-- Back Button -->
+
+    <!-- Header Text -->
+
+    <!-- Input Fields -->
+
+
+    <TextView
+        android:id="@+id/backButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="38dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="338dp"
+        android:layout_marginBottom="693dp"
+        android:text="@string/back"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="VisualLintOverlap" />
+
+    <TextView
+        android:id="@+id/headerText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="118dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="118dp"
+        android:layout_marginBottom="688dp"
+        android:autofillHints=""
+        android:gravity="center"
+        android:importantForAutofill="no"
+        android:text="@string/distance_calculator"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="VisualLintOverlap" />
+
+    <EditText
+        android:id="@+id/inputKilometers"
+        android:layout_width="182dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="276dp"
+        android:layout_marginEnd="213dp"
+        android:layout_marginBottom="411dp"
+        android:background="#333333"
+        android:hint="@string/kilometers_km"
+        android:inputType="numberDecimal"
+        android:minHeight="48dp"
+        android:padding="10dp"
+        android:textColor="#FFFFFF"
+        android:textColorHint="@color/material_dynamic_neutral90"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="Autofill" />
+
+
+    <!-- Calculate Button -->
+
+    <EditText
+        android:id="@+id/inputMiles"
+        android:layout_width="182dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="213dp"
+        android:layout_marginTop="277dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="410dp"
+        android:background="#333333"
+        android:contentDescription="@string/todou"
+        android:hint="@string/miles_mi"
+        android:importantForAccessibility="no"
+        android:inputType="numberDecimal"
+        android:minHeight="48dp"
+        android:padding="10dp"
+        android:textColor="#FFFFFF"
+        android:textColorHint="@color/material_dynamic_neutral90"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="Autofill,ContentDescription" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="422dp"
+        android:layout_height="169dp"
+        android:layout_marginTop="76dp"
+        android:layout_marginBottom="486dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.545"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/sdag"
+        tools:ignore="ContentDescription,VisualLintBounds" />
+
+    <Button
+        android:id="@+id/calculateButton"
+        android:layout_width="147dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="132dp"
+        android:layout_marginTop="354dp"
+        android:layout_marginEnd="132dp"
+        android:layout_marginBottom="327dp"
+        android:backgroundTint="@color/design_default_color_error"
+        android:text="@string/calculate"
+        android:textColor="@color/white"
+        android:textColorHighlight="@color/design_default_color_error"
+        android:textColorHint="@color/design_default_color_error"
+        android:textColorLink="@color/design_default_color_error"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="27dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="373dp"
+        android:layout_marginBottom="688dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/download__7_"
+        tools:ignore="ContentDescription" />
+</androidx.constraintlayout.widget.ConstraintLayout>

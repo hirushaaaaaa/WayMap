@@ -41,17 +41,18 @@ public class LoginActivity extends AppCompatActivity {
                 return;
             }
 
-            // Basic validation for correct credentials (replace with actual logic later)
-            // Show error message for incorrect credentials
-            if (username.equals("admin") && password.equals("1234")) {
+            // Check credentials: username = "admin" and password = "1111"
+            if (username.equals("admin") && password.equals("1111")) {
                 // Show success message
                 Toast.makeText(LoginActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
 
                 // Navigate to Home Page
                 Intent intent = new Intent(LoginActivity.this, homeActivity.class);
                 startActivity(intent);
-            } else
+            } else {
+                // Show error message for incorrect credentials
                 Toast.makeText(LoginActivity.this, "Invalid username or password", Toast.LENGTH_SHORT).show();
+            }
         });
     }
 }

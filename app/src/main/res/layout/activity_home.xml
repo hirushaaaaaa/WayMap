@@ -7,6 +7,18 @@
     android:layout_height="match_parent"
     android:background="#000000">
 
+    <!-- Navigation Bar with Back Button -->
+    <LinearLayout
+        android:id="@+id/navigationBar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="#1E3A5F"
+        android:padding="8dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
     <!-- Header -->
     <LinearLayout
         android:id="@+id/header"
@@ -14,7 +26,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:background="#1E3A5F"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/navigationBar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:padding="8dp">
@@ -22,7 +34,7 @@
         <ImageView
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:src="@drawable/q"
+            android:src="@drawable/menu"
             android:contentDescription="@string/menu" />
 
         <TextView
@@ -78,46 +90,71 @@
     </LinearLayout>
 
     <!-- Cards -->
-    <GridLayout
+
+    <!-- Bottom Navigation -->
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cardsGrid"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:columnCount="3"
         android:rowCount="3"
-        android:padding="16dp"
-        app:layout_constraintTop_toBottomOf="@id/tabs"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bottomNav"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/bottomNav">
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tabs"
+        app:layout_constraintVertical_bias="0.0">
 
-        <!-- Each feature -->
-        <LinearLayout
+        <!-- Distance Calculator -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/distanceCalculator"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="8dp"
+            android:clickable="true"
+            android:focusable="true"
             android:gravity="center"
-            android:layout_margin="8dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/text"
+            app:layout_constraintStart_toStartOf="@+id/text"
             tools:ignore="UseCompoundDrawables,UselessParent">
 
-            <ImageView
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:contentDescription="@string/todoo"
-                android:src="@drawable/ic_navigation" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/live_navigation"
-                android:textColor="#FFFFFF"
-                android:gravity="center"
-                android:layout_marginTop="8dp" />
-        </LinearLayout>
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="124dp"
+            android:gravity="center"
+            android:text="@string/distance_calculator"
+            android:textColor="#FFFFFF"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="InvalidId,VisualLintOverlap" />
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="85dp"
+            android:layout_height="82dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="42dp"
+            android:layout_marginEnd="276dp"
+            android:layout_marginBottom="472dp"
+            android:contentDescription="@string/distance_calculator"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/download__4_"
+            tools:ignore="DuplicateSpeakableTextCheck" />
+
 
         <!-- Add other icons similarly -->
-    </GridLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <!-- Bottom Navigation -->
     <LinearLayout
         android:id="@+id/bottomNav"
         android:layout_width="0dp"
@@ -162,5 +199,7 @@
             android:layout_weight="1"
             android:src="@drawable/ic_updates"
             android:contentDescription="@string/updates" />
+
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -54,4 +54,11 @@
     <string name="home">HOME</string>
     <string name="More">MORE</string>
     <string name="todooo">TODO</string>
+    <string name="back">Back</string>
+    <string name="calculate">Calculate</string>
+    <string name="distance_calculator">Distance Calculator</string>
+    <string name="kilometers_km">Kilometers (km)</string>
+    <string name="todou">TODO</string>
+    <string name="miles_mi">Miles (mi)</string>
+    <string name="powered_by_dosh">powered_by DOSH</string>
 </resources>
