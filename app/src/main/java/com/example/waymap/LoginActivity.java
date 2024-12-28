@@ -23,6 +23,12 @@ public class LoginActivity extends AppCompatActivity {
         Button btnLogin = findViewById(R.id.loginbutton);
         Button btnBackToWelcome = findViewById(R.id.welcomebutton);
 
+        // Check if user is already logged in
+        if (isUserLoggedIn()) {
+            navigateToHomePage();
+            return;
+        }
+
         // Back to Welcome Button Action
         btnBackToWelcome.setOnClickListener(v -> {
             Intent intent = new Intent(LoginActivity.this, WelcomeActivity.class);
@@ -47,12 +53,25 @@ public class LoginActivity extends AppCompatActivity {
                 Toast.makeText(LoginActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
 
                 // Navigate to Home Page
-                Intent intent = new Intent(LoginActivity.this, homeActivity.class);
-                startActivity(intent);
+                navigateToHomePage();
             } else {
                 // Show error message for incorrect credentials
                 Toast.makeText(LoginActivity.this, "Invalid username or password", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    // Method to check if the user is already logged in
+    private boolean isUserLoggedIn() {
+        // Implement logic to check if the user is already logged in
+        // This could be a shared preference or a check in a database or session
+        return false; // Placeholder for actual implementation
+    }
+
+    // Method to navigate to Home Page
+    private void navigateToHomePage() {
+        Intent intent = new Intent(LoginActivity.this, homeActivity.class);
+        startActivity(intent);
+        finish(); // Finish the LoginActivity so that it won't return to the login screen
     }
 }
