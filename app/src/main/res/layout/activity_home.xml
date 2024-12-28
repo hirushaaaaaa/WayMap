@@ -73,9 +73,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="@drawable/tab_selector"
             android:text="@string/home"
             android:textColor="#FFFFFF"
-            android:background="@drawable/tab_selector"
             tools:ignore="VisualLintButtonSize" />
 
         <Button
