@@ -14,9 +14,9 @@
     <string name="login1">Login</string>
     <string name="todo">TODO</string>
     <string name="todo1">TODO</string>
-    <string name="name1">name1</string>
+    <string name="name1">name!</string>
     <string name="password2">password</string>
-    <string name="password1">password1</string>
+    <string name="password1">password!</string>
     <string name="emai">emai</string>
     <string name="menu_icon" />
     <string name="app_logo">1</string>
@@ -61,4 +61,7 @@
     <string name="todou">TODO</string>
     <string name="miles_mi">Miles (mi)</string>
     <string name="powered_by_dosh">powered_by DOSH</string>
+    <string name="Home">Home</string>
+    <string name="Settings">Settings</string>
+    <string name="Logout">Logout</string>
 </resources>
