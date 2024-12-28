@@ -27,8 +27,14 @@
             </intent-filter>
         </activity>
 
+        <!-- Login Activity -->
         <activity android:name=".LoginActivity" />
+
+        <!-- Home Activity -->
         <activity android:name=".homeActivity" />
+
+        <!-- Distance Activity -->
+        <activity android:name=".DistanceActivity" />
 
     </application>
 
