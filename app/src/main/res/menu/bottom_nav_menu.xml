@@ -1,0 +1,25 @@
+
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_search"
+        android:icon="@drawable/ic_search"
+        android:title="Search" />
+    <item
+        android:id="@+id/menu_gmap"
+        android:icon="@drawable/ic_gmap"
+        android:title="GMap" />
+    <item
+        android:id="@+id/menu_camera"
+        android:icon="@drawable/ic_camera"
+        android:title="Camera" />
+    <item
+        android:id="@+id/menu_saved"
+        android:icon="@drawable/ic_saved"
+        android:title="Saved" />
+    <item
+        android:id="@+id/menu_updates"
+        android:icon="@drawable/ic_updates"
+        android:title="Updates" />
+    <item android:title="Item" />
+</menu>

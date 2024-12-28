@@ -2,9 +2,10 @@ package com.example.waymap;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast; // Importing Toast class
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,12 +15,13 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        Log.d("LoginActivity", "Activity created");
 
         // Initialize the views
-        EditText etUsername = findViewById(R.id.etLoginUsername);
-        EditText etPassword = findViewById(R.id.etLoginPassword);
-        Button btnLogin = findViewById(R.id.btnLogin);
-        Button btnBackToWelcome = findViewById(R.id.btnBackToWelcome);
+        EditText etUsername = findViewById(R.id.editTextText);
+        EditText etPassword = findViewById(R.id.editTextTextPassword);
+        Button btnLogin = findViewById(R.id.loginbutton);
+        Button btnBackToWelcome = findViewById(R.id.welcomebutton);
 
         // Back to Welcome Button Action
         btnBackToWelcome.setOnClickListener(v -> {
@@ -39,9 +41,17 @@ public class LoginActivity extends AppCompatActivity {
                 return;
             }
 
-            // Proceed with login logic (e.g., Firebase authentication or API call)
-            // For now, we will just show a success message
-            Toast.makeText(LoginActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
+            // Basic validation for correct credentials (replace with actual logic later)
+            // Show error message for incorrect credentials
+            if (username.equals("admin") && password.equals("1234")) {
+                // Show success message
+                Toast.makeText(LoginActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
+
+                // Navigate to Home Page
+                Intent intent = new Intent(LoginActivity.this, homeActivity.class);
+                startActivity(intent);
+            } else
+                Toast.makeText(LoginActivity.this, "Invalid username or password", Toast.LENGTH_SHORT).show();
         });
     }
 }
