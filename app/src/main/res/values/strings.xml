@@ -64,4 +64,6 @@
     <string name="Home">Home</string>
     <string name="Settings">Settings</string>
     <string name="Logout">Logout</string>
+    <string name="ttodo">TODO</string>
+    <string name="social_routes">Social Routes</string>
 </resources>

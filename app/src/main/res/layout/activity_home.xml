@@ -92,6 +92,7 @@
     <!-- Cards -->
 
     <!-- Bottom Navigation -->
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cardsGrid"
         android:layout_width="0dp"
@@ -103,57 +104,155 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tabs"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintVertical_bias="1.0">
 
         <!-- Distance Calculator -->
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/distanceCalculator"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginBottom="8dp"
-            android:clickable="true"
-            android:focusable="true"
+
+        <LinearLayout
+            android:id="@+id/linearLayout5"
+            android:layout_width="165dp"
+            android:layout_height="92dp"
+
+
+            android:background="@color/material_dynamic_primary20"
+            android:contentDescription="TODO"
+            android:gravity="center"
+            android:importantForAccessibility="no"
+            android:orientation="vertical"
+            android:padding="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.121"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.609"
+            tools:ignore="DuplicateIds,HardcodedText">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+
+                android:scaleType="centerInside"
+                android:src="@drawable/wwwdownload__1_"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Scenic stops"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                tools:ignore="HardcodedText" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout8"
+            android:layout_width="165dp"
+
+
+            android:layout_height="92dp"
+            android:background="@color/material_dynamic_primary20"
             android:gravity="center"
             android:orientation="vertical"
-            app:layout_constraintBottom_toTopOf="@+id/text"
-            app:layout_constraintStart_toStartOf="@+id/text"
-            tools:ignore="UseCompoundDrawables,UselessParent">
+            android:padding="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.873"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.402">
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            <ImageView
+                android:id="@+id/Imagebutton"
+                android:layout_width="50dp"
 
-        <TextView
-            android:id="@+id/text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="37dp"
-            android:layout_marginTop="124dp"
-            android:layout_marginEnd="253dp"
-            android:layout_marginBottom="453dp"
+                android:layout_height="50dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/_1images__1_"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/textbutton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Distance Calculator"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                tools:ignore="HardcodedText" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout6"
+            android:layout_width="165dp"
+            android:layout_height="92dp"
+
+
+            android:background="@color/material_dynamic_primary20"
             android:gravity="center"
-            android:text="@string/distance_calculator"
-            android:textColor="#FFFFFF"
+            android:orientation="vertical"
+            android:padding="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.121"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="InvalidId,VisualLintOverlap" />
+            app:layout_constraintVertical_bias="0.404"
+            tools:ignore="VisualLintBounds">
 
-        <ImageButton
-            android:id="@+id/imageButton"
-            android:layout_width="85dp"
-            android:layout_height="82dp"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="42dp"
-            android:layout_marginEnd="276dp"
-            android:layout_marginBottom="472dp"
-            android:contentDescription="@string/distance_calculator"
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+
+                android:scaleType="centerInside"
+                android:src="@drawable/ttimages__1_"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Routep planner"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                tools:ignore="HardcodedText" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout7"
+            android:layout_width="165dp"
+            android:layout_height="92dp"
+
+
+            android:background="@color/material_dynamic_primary20"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.873"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/download__4_"
-            tools:ignore="DuplicateSpeakableTextCheck" />
+            app:layout_constraintVertical_bias="0.609">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+
+                android:scaleType="centerInside"
+                android:src="@drawable/_2147da28ae48c0a5e140f95_icon"
+                tools:ignore="ContentDescription,ImageContrastCheck" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Live Navigation"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                tools:ignore="HardcodedText" />
+        </LinearLayout>
 
 
         <!-- Add other icons similarly -->
