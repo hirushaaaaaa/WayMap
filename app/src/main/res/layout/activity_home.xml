@@ -73,15 +73,16 @@
 
             android:layout_width="149dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="44dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="1dp"
-            android:layout_marginEnd="22dp"
+            android:layout_marginEnd="9dp"
+            android:layout_marginBottom="2dp"
             android:background="@drawable/button_background"
             android:text="@string/home"
             android:textColor="#FFFFFF"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/moreButton"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/profilebutton"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="VisualLintButtonSize" />
 
@@ -89,9 +90,10 @@
             android:id="@+id/moreButton"
             android:layout_width="149dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="22dp"
+            android:layout_marginStart="9dp"
             android:layout_marginTop="1dp"
-            android:layout_marginEnd="47dp"
+            android:layout_marginEnd="35dp"
+            android:layout_marginBottom="2dp"
             android:background="@drawable/button_background"
             android:backgroundTint="#FF8F00"
             android:foregroundTint="@color/black"
@@ -102,6 +104,20 @@
             app:layout_constraintStart_toEndOf="@+id/homeButton"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="ButtonStyle,VisualLintButtonSize" />
+
+        <ImageView
+            android:id="@+id/profilebutton"
+            android:layout_width="53dp"
+            android:layout_height="51dp"
+            android:layout_marginStart="6dp"
+            android:layout_marginEnd="6dp"
+            android:importantForAccessibility="no"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/homeButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/icons8_person_94" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <!-- Cards -->
@@ -117,7 +133,7 @@
         android:rowCount="3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tabs"
         tools:ignore="MissingConstraints">
@@ -266,14 +282,9 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="415dp"
             android:layout_height="55dp"
-            android:layout_marginTop="101dp"
-            android:layout_marginBottom="5dp"
             android:background="#1E3A5F"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout5"
-            tools:ignore="VisualLintBounds">
+            tools:ignore="VisualLintBounds"
+            tools:layout_editor_absoluteY="537dp">
 
             <ImageView
                 android:id="@+id/search_button"

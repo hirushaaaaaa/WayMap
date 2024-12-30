@@ -18,6 +18,8 @@ public class homeActivity extends AppCompatActivity {
         ImageView distanceCalculatorImage = findViewById(R.id.Imagebutton);
         TextView distanceCalculatorText = findViewById(R.id.textbutton);
 
+        ImageView profileImage = findViewById(R.id.profilebutton);
+
         // Find the More Button
         Button moreButton = findViewById(R.id.moreButton);
 
@@ -36,6 +38,11 @@ public class homeActivity extends AppCompatActivity {
         // Set OnClickListener for More Button
         moreButton.setOnClickListener(v -> {
             Intent intent = new Intent(homeActivity.this, moreActivity.class);
+            startActivity(intent);
+        });
+        // Set OnClickListener forImageView
+        profileImage.setOnClickListener(v -> {
+            Intent intent = new Intent(homeActivity.this, profileActivity.class);
             startActivity(intent);
         });
 

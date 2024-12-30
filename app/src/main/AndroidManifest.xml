@@ -37,6 +37,8 @@
         <activity android:name="com.example.waymap.SignupActivity" />
        <!-- More Activity -->
         <activity android:name=".moreActivity" />
+        <activity android:name=".profileActivity" />
+
     </application>
 
 </manifest>

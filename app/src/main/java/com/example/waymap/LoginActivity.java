@@ -18,8 +18,8 @@ public class LoginActivity extends AppCompatActivity {
         Log.d("LoginActivity", "Activity created");
 
         // Initialize the views
-        EditText etUsername = findViewById(R.id.editTextText);
-        EditText etPassword = findViewById(R.id.editTextTextPassword);
+        EditText etUsername = findViewById(R.id.editTextText);  // Ensure this ID matches your XML
+        EditText etPassword = findViewById(R.id.editTextTextPassword);  // Ensure this ID matches your XML
         Button btnLogin = findViewById(R.id.loginbutton);
         Button btnBackToWelcome = findViewById(R.id.welcomebutton);
 
@@ -70,7 +70,7 @@ public class LoginActivity extends AppCompatActivity {
 
     // Method to navigate to Home Page
     private void navigateToHomePage() {
-        Intent intent = new Intent(LoginActivity.this, homeActivity.class);
+        Intent intent = new Intent(LoginActivity.this, homeActivity.class); // Corrected to HomeActivity
         startActivity(intent);
         finish(); // Finish the LoginActivity so that it won't return to the login screen
     }
