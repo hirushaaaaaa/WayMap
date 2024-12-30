@@ -24,70 +24,85 @@
         android:id="@+id/header"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:background="#1E3A5F"
-        app:layout_constraintTop_toBottomOf="@id/navigationBar"
-        app:layout_constraintStart_toStartOf="parent"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/tabs"
         app:layout_constraintEnd_toEndOf="parent"
-        android:padding="8dp">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/navigationBar">
 
         <ImageView
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:src="@drawable/menu"
-            android:contentDescription="@string/menu" />
+            android:contentDescription="@string/menu"
+            android:src="@drawable/menu" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
             android:layout_weight="1"
-            android:text="@string/waymapp"
-            android:textSize="32sp"
-            android:textColor="#FFFFFF"
             android:gravity="center"
-            android:layout_marginStart="8dp" />
+            android:text="@string/waymapp"
+            android:textColor="#FFFFFF"
+            android:textSize="32sp" />
 
         <ImageView
             style="?android:attr/buttonBarStyle"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:src="@drawable/q"
-            android:contentDescription="@string/logo" />
+            android:contentDescription="@string/logo"
+            android:src="@drawable/q" />
     </LinearLayout>
 
     <!-- Tabs -->
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/tabs"
-        style="?android:attr/buttonBarButtonStyle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@id/header"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginBottom="10dp"
+        android:background="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/cardsGrid"
         app:layout_constraintEnd_toEndOf="parent"
-        android:background="#00254D">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/header">
 
         <Button
             android:id="@+id/homeButton"
-            style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="0dp"
+
+            android:layout_width="149dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@drawable/tab_selector"
+            android:layout_marginStart="44dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginEnd="22dp"
+            android:background="@drawable/button_background"
             android:text="@string/home"
             android:textColor="#FFFFFF"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/moreButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             tools:ignore="VisualLintButtonSize" />
 
         <Button
             android:id="@+id/moreButton"
-            android:layout_width="0dp"
+            android:layout_width="149dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_marginStart="22dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginEnd="47dp"
+            android:background="@drawable/button_background"
+            android:backgroundTint="#FF8F00"
+            android:foregroundTint="@color/black"
             android:text="@string/More"
             android:textColor="#FFFFFF"
-            android:background="@drawable/tab_selector"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/homeButton"
+            app:layout_constraintTop_toTopOf="parent"
             tools:ignore="ButtonStyle,VisualLintButtonSize" />
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <!-- Cards -->
 
@@ -95,26 +110,24 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cardsGrid"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="411dp"
+        android:layout_height="596dp"
+        android:layout_marginTop="11dp"
         android:columnCount="3"
         android:rowCount="3"
-        app:layout_constraintBottom_toTopOf="@id/bottomNav"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tabs"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintTop_toBottomOf="@+id/tabs"
+        tools:ignore="MissingConstraints">
 
         <!-- Distance Calculator -->
 
         <LinearLayout
             android:id="@+id/linearLayout5"
-            android:layout_width="165dp"
+            android:layout_width="140dp"
             android:layout_height="92dp"
-
-
-            android:background="@color/material_dynamic_primary20"
+            android:background="@drawable/homecorner"
             android:contentDescription="TODO"
             android:gravity="center"
             android:importantForAccessibility="no"
@@ -122,10 +135,10 @@
             android:padding="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.121"
+            app:layout_constraintHorizontal_bias="0.158"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.609"
+            app:layout_constraintVertical_bias="0.68"
             tools:ignore="DuplicateIds,HardcodedText">
 
             <ImageView
@@ -148,20 +161,19 @@
 
         <LinearLayout
             android:id="@+id/linearLayout8"
-            android:layout_width="165dp"
-
-
+            android:layout_width="140dp"
             android:layout_height="92dp"
-            android:background="@color/material_dynamic_primary20"
+            android:background="@drawable/homecorner"
             android:gravity="center"
             android:orientation="vertical"
             android:padding="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.873"
+            app:layout_constraintHorizontal_bias="0.822"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.402">
+            app:layout_constraintVertical_bias="0.472"
+            tools:ignore="TextSizeCheck">
 
             <ImageView
                 android:id="@+id/Imagebutton"
@@ -185,20 +197,18 @@
 
         <LinearLayout
             android:id="@+id/linearLayout6"
-            android:layout_width="165dp"
+            android:layout_width="140dp"
             android:layout_height="92dp"
-
-
-            android:background="@color/material_dynamic_primary20"
+            android:background="@drawable/homecorner"
             android:gravity="center"
             android:orientation="vertical"
             android:padding="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.121"
+            app:layout_constraintHorizontal_bias="0.158"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.404"
+            app:layout_constraintVertical_bias="0.472"
             tools:ignore="VisualLintBounds">
 
             <ImageView
@@ -221,20 +231,18 @@
 
         <LinearLayout
             android:id="@+id/linearLayout7"
-            android:layout_width="165dp"
+            android:layout_width="140dp"
             android:layout_height="92dp"
-
-
-            android:background="@color/material_dynamic_primary20"
+            android:background="@drawable/homecorner"
             android:gravity="center"
             android:orientation="vertical"
             android:padding="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.873"
+            app:layout_constraintHorizontal_bias="0.822"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.609">
+            app:layout_constraintVertical_bias="0.68">
 
             <ImageView
                 android:layout_width="50dp"

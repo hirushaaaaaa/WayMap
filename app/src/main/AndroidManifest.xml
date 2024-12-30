@@ -1,5 +1,4 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!-- Required Permissions -->
     <uses-permission android:name="android.permission.INTERNET" />
@@ -35,7 +34,9 @@
 
         <!-- Distance Activity -->
         <activity android:name=".DistanceActivity" />
-
+        <activity android:name="com.example.waymap.SignupActivity" />
+       <!-- More Activity -->
+        <activity android:name=".moreActivity" />
     </application>
 
 </manifest>

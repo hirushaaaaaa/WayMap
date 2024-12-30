@@ -66,4 +66,6 @@
     <string name="Logout">Logout</string>
     <string name="ttodo">TODO</string>
     <string name="social_routes">Social Routes</string>
+    <string name="MORE">More</string>
+    <string name="Back"><![CDATA[< back]]></string>
 </resources>
