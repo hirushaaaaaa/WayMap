@@ -76,11 +76,17 @@
         android:id="@+id/morei"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="174dp"
+        android:layout_marginTop="163dp"
+        android:layout_marginEnd="176dp"
+        android:layout_marginBottom="15dp"
         android:text="More Info"
         android:textColor="@color/white"
-        tools:ignore="HardcodedText,MissingConstraints"
-        tools:layout_editor_absoluteX="174dp"
-        tools:layout_editor_absoluteY="539dp" />
+        app:layout_constraintBottom_toTopOf="@+id/googlei"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/autoCompleteTextView2"
+        tools:ignore="HardcodedText,MissingConstraints" />
 
     <ImageView
         android:id="@+id/fbi"
@@ -113,15 +119,14 @@
         android:id="@+id/googlei"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="17dp"
-        android:layout_marginTop="14dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginBottom="111dp"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="11dp"
+        android:layout_marginBottom="110dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/instai"
         app:layout_constraintStart_toEndOf="@+id/gi"
         app:layout_constraintTop_toBottomOf="@+id/morei"
-        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/icons8_google_48"
         tools:ignore="ContentDescription,MissingConstraints" />
 
@@ -132,9 +137,12 @@
         android:layout_marginStart="1dp"
         android:layout_marginTop="196dp"
         android:layout_marginEnd="10dp"
+        android:layout_marginBottom="111dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/twii"
         app:layout_constraintStart_toEndOf="@+id/googlei"
         app:layout_constraintTop_toBottomOf="@+id/autoCompleteTextView2"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/icons8_instagram_48"
         tools:ignore="ContentDescription,MissingConstraints" />
 
@@ -145,6 +153,8 @@
         android:layout_marginStart="2dp"
         android:layout_marginTop="572dp"
         android:layout_marginEnd="28dp"
+        android:layout_marginBottom="111dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/instai"
         app:layout_constraintTop_toTopOf="parent"

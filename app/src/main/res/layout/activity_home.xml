@@ -55,6 +55,7 @@
             android:contentDescription="@string/logo"
             android:src="@drawable/q" />
     </LinearLayout>
+    <!-- Add other LinearLayouts similarly -->
 
     <!-- Tabs -->
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -73,10 +74,9 @@
 
             android:layout_width="149dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="1dp"
-            android:layout_marginEnd="9dp"
-            android:layout_marginBottom="2dp"
+            android:layout_marginStart="3dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="3dp"
             android:background="@drawable/button_background"
             android:text="@string/home"
             android:textColor="#FFFFFF"
@@ -90,17 +90,14 @@
             android:id="@+id/moreButton"
             android:layout_width="149dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="9dp"
+            android:layout_marginStart="3dp"
             android:layout_marginTop="1dp"
-            android:layout_marginEnd="35dp"
             android:layout_marginBottom="2dp"
             android:background="@drawable/button_background"
-            android:backgroundTint="#FF8F00"
             android:foregroundTint="@color/black"
             android:text="@string/More"
             android:textColor="#FFFFFF"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/homeButton"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="ButtonStyle,VisualLintButtonSize" />
@@ -282,12 +279,17 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="415dp"
             android:layout_height="55dp"
-            android:background="#1E3A5F"
-            tools:ignore="VisualLintBounds"
-            tools:layout_editor_absoluteY="537dp">
+            android:layout_marginTop="102dp"
+            android:layout_marginBottom="4dp"
+            android:background="@color/ic_launcher_background"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout5"
+            tools:ignore="VisualLintBounds">
 
             <ImageView
-                android:id="@+id/search_button"
+                android:id="@+id/searchbutton"
                 android:layout_width="45dp"
                 android:layout_height="45dp"
                 android:layout_marginStart="16dp"
@@ -301,23 +303,27 @@
                 app:srcCompat="@drawable/icons8_search_128"
                 tools:ignore="ContentDescription" />
 
+
             <ImageView
                 android:id="@+id/gmapbutton"
                 android:layout_width="43dp"
                 android:layout_height="42dp"
                 android:layout_marginStart="40dp"
                 android:layout_marginTop="9dp"
-                android:layout_marginEnd="282dp"
+                android:layout_marginEnd="276dp"
                 android:layout_marginBottom="4dp"
+                android:clickable="true"
+                android:focusable="true"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/search_button"
                 app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0"
                 app:srcCompat="@drawable/icons8_location_50__1_"
-                tools:ignore="ContentDescription" />
+                tools:ignore="ContentDescription,UnknownId,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
             <ImageView
-                android:id="@+id/camarabutton"
+                android:id="@+id/camerabutton"
                 android:layout_width="43dp"
                 android:layout_height="42dp"
                 android:layout_marginStart="186dp"

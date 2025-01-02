@@ -1,8 +1,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!-- Required Permissions -->
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -38,6 +44,7 @@
        <!-- More Activity -->
         <activity android:name=".moreActivity" />
         <activity android:name=".profileActivity" />
+        <activity android:name=".SearchActivity" />
 
     </application>
 
