@@ -87,20 +87,19 @@
             tools:ignore="VisualLintButtonSize" />
 
         <Button
-            android:id="@+id/moreButton"
+            android:id="@+id/mButton"
             android:layout_width="149dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="3dp"
             android:layout_marginTop="1dp"
             android:layout_marginBottom="2dp"
             android:background="@drawable/button_background"
-            android:foregroundTint="@color/black"
             android:text="@string/More"
             android:textColor="#FFFFFF"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/homeButton"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="ButtonStyle,VisualLintButtonSize" />
+            app:layout_constraintTop_toTopOf="parent"/>
+
 
         <ImageView
             android:id="@+id/profilebutton"
@@ -154,14 +153,16 @@
             tools:ignore="VisualLintBounds">
 
             <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
 
+                android:layout_width="50dp"
+
+                android:layout_height="50dp"
                 android:scaleType="centerInside"
                 android:src="@drawable/ttimages__1_"
                 tools:ignore="ContentDescription" />
 
             <TextView
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -192,12 +193,13 @@
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-
+                android:id="@+id/scenicimage"
                 android:scaleType="centerInside"
                 android:src="@drawable/wwwdownload__1_"
                 tools:ignore="ContentDescription" />
 
             <TextView
+                android:id="@+id/scenictext"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"

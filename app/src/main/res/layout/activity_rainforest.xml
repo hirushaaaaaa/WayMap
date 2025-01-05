@@ -1,0 +1,122 @@
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000">
+
+    <!-- Navigation Bar with Back Button -->
+    <LinearLayout
+        android:id="@+id/navigationBar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="#1E3A5F"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/header"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="VisualLintBounds" />
+
+    <!-- Header -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:layout_marginBottom="677dp"
+        android:background="#1E3A5F"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints,TextSizeCheck">
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="106dp"
+            android:layout_marginBottom="8dp"
+            android:gravity="center"
+            android:text="Scenic Stops"
+            android:textColor="#FFFFFF"
+            android:textSize="32sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0"
+            tools:ignore="HardcodedText" />
+
+        <Button
+            android:id="@+id/backButton6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="15dp"
+            android:backgroundTint="#1E3A5F"
+            android:text="Back"
+            android:textColor="@color/white"
+            app:icon="@drawable/icons8_back_64"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/textView8"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="HardcodedText,VisualLintBounds" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Vertical Scroll View -->
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/imageContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints">
+
+        <ImageView
+            android:id="@+id/imagesinharaja"
+            android:layout_width="411dp"
+            android:layout_height="174dp"
+            android:layout_marginTop="71dp"
+            android:contentDescription="TODO"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/f6561_grassmere_f1"
+            tools:ignore="ContentDescription,HardcodedText" />
+
+        <!-- Add other images here -->
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/sinharajatext"
+        android:layout_width="382dp"
+        android:layout_height="460dp"
+        android:layout_marginTop="31dp"
+        android:layout_marginEnd="3dp"
+        android:layout_marginBottom="11dp"
+        android:text="2. Sinharaja Forest Reserve
+	•	Location: Southwest Sri Lanka.
+	•	Highlights:
+	•	A UNESCO World Heritage Site and the country’s largest remaining rainforest.
+	•	Home to diverse wildlife, including endemic species like the Sri Lanka Blue Magpie and Purple-faced Langur.
+	•	Offers trekking trails through dense forest, waterfalls, and streams.
+	•	Significance: Essential for biodiversity conservation and recognized as a biodiversity hotspot.
+	•	Activities: Guided treks, birdwatching, and photography.&quot;Boupulvan, Kasubgiri Radmaha Vehera&quot; giving the names of his 2 daughters and his name.[3] There is a viharaya connected to a cave and above is a cliff. A small stupa is built on it. It can be seen that the constructional work of this stupa belongs to the present period. Lower down on both sides of a cleft, in a rock that appears to rise out of a pool, have been carved the figures of elephants. On the rock is carved the figure of a horse. The carving of Isurumuniya lovers on the slab has been brought from another place and placed it there. A few yards away from this vihara is the Ranmasu Uyana.  Archaeological ruins"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageContainer"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="HardcodedText,TextSizeCheck" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

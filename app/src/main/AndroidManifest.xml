@@ -7,8 +7,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:allowBackup="true"
@@ -40,11 +39,23 @@
 
         <!-- Distance Activity -->
         <activity android:name=".DistanceActivity" />
-        <activity android:name="com.example.waymap.SignupActivity" />
-       <!-- More Activity -->
+
+        <!-- More Activity -->
         <activity android:name=".moreActivity" />
+
+
+        <!-- Additional Activities -->
         <activity android:name=".profileActivity" />
-        <activity android:name=".SearchActivity" />
+        <activity android:name=".ScenicstopsActivity" />
+        <activity android:name=".AnuradhapuraActivity" />
+        <activity android:name=".MirissaActivity" />
+        <activity android:name=".GalleportActivity" />
+        <activity android:name=".RuwanmeliseyaActivity" />
+        <activity android:name=".DambullaActivity" />
+        <activity android:name=".EllaActivity" />
+        <activity android:name=".sinharajaActivity" />
+        <activity android:name=".SripadasthanayaActivity" />
+        <activity android:name=".FuelManagementActivity" />
 
     </application>
 

@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000">
+
+    <!-- Navigation Bar with Back Button -->
+    <LinearLayout
+        android:id="@+id/navigationBar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="#1E3A5F"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/header"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="VisualLintBounds" />
+
+    <!-- Header -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:layout_marginBottom="677dp"
+        android:background="#1E3A5F"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints,TextSizeCheck">
+
+        <TextView
+            android:id="@+id/sinharajatext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="106dp"
+            android:layout_marginBottom="8dp"
+            android:gravity="center"
+            android:text="Scenic Stops"
+            android:textColor="#FFFFFF"
+            android:textSize="32sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0"
+            tools:ignore="HardcodedText" />
+
+        <Button
+            android:id="@+id/backButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="15dp"
+            android:backgroundTint="#1E3A5F"
+            android:text="Back"
+            android:textColor="@color/white"
+            app:icon="@drawable/icons8_back_64"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/sinharajatext"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="HardcodedText,VisualLintBounds" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Vertical Scroll View -->
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollnested"
+        android:layout_width="413dp"
+        android:layout_height="675dp"
+        android:layout_marginTop="2dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/header"
+        tools:ignore="MissingConstraints,SpeakableTextPresentCheck">
+
+        <LinearLayout
+            android:id="@+id/imageContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageanuradhapura"
+                android:layout_width="402dp"
+                android:layout_height="174dp"
+                android:layout_marginBottom="8dp"
+                app:srcCompat="@drawable/anuradhapura_sri_lanka"
+                tools:ignore="ContentDescription,HardcodedText" />
+
+            <ImageView
+                android:id="@+id/imagesinharaja"
+                android:layout_width="402dp"
+                android:layout_height="174dp"
+                android:layout_marginBottom="8dp"
+                app:srcCompat="@drawable/f6561_grassmere_f1"
+                tools:ignore="ContentDescription" />
+
+            <ImageView
+                android:id="@+id/imageruwanmeliseya"
+                android:layout_width="402dp"
+                android:layout_height="174dp"
+                android:layout_marginBottom="8dp"
+                app:srcCompat="@drawable/tourist_places_in_anuradhapura"
+                tools:ignore="ContentDescription" />
+
+            <ImageView
+                android:id="@+id/imagegalleport"
+                android:layout_width="402dp"
+                android:layout_height="174dp"
+                android:layout_marginBottom="8dp"
+                app:srcCompat="@drawable/beach_inns_website_tours_900x500px_galle_3"
+                tools:ignore="ContentDescription" />
+
+            <ImageView
+                android:id="@+id/imageella"
+                android:layout_width="402dp"
+                android:layout_height="174dp"
+                android:layout_marginBottom="8dp"
+                android:importantForAccessibility="no"
+                app:srcCompat="@drawable/ella" />
+
+            <ImageView
+                android:id="@+id/imagedambulla"
+                android:layout_width="402dp"
+                android:layout_height="174dp"
+                android:layout_marginBottom="8dp"
+                android:importantForAccessibility="no"
+                app:srcCompat="@drawable/sri_lanka_top_attractions_golden_temple_dambulla"
+                tools:ignore="ContentDescription" />
+
+            <ImageView
+                android:id="@+id/imagedamirissa"
+                android:layout_width="402dp"
+                android:layout_height="174dp"
+                android:layout_marginBottom="8dp"
+                app:srcCompat="@drawable/palm_tree_grove_mirissa"
+                tools:ignore="ContentDescription" />
+
+            <ImageView
+                android:id="@+id/imagesripadasthanaya"
+                android:layout_width="402dp"
+                android:layout_height="174dp"
+                android:layout_marginBottom="8dp"
+                app:srcCompat="@drawable/_60_f_290803358_ipmxqlk1lzru6nesqohvlhqglfn6vqkt"
+                tools:ignore="ContentDescription" />
+
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

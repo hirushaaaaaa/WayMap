@@ -30,19 +30,21 @@
         tools:ignore="MissingConstraints,TextSizeCheck">
 
         <TextView
-            android:id="@+id/textView8"
+            android:id="@+id/sinharajatext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="2dp"
             android:layout_marginEnd="106dp"
-            android:layout_marginBottom="1dp"
+            android:layout_marginBottom="8dp"
             android:gravity="center"
             android:text="Search"
             android:textColor="#FFFFFF"
             android:textSize="32sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.757"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             tools:ignore="HardcodedText" />
 
         <Button
@@ -50,15 +52,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
-            android:layout_marginTop="7dp"
+            android:layout_marginTop="6dp"
             android:layout_marginEnd="15dp"
             android:backgroundTint="#1E3A5F"
             android:text="Back"
             android:textColor="@color/white"
             app:icon="@drawable/icons8_back_64"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/textView8"
+            app:layout_constraintEnd_toStartOf="@+id/sinharajatext"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             tools:ignore="HardcodedText,VisualLintBounds" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 

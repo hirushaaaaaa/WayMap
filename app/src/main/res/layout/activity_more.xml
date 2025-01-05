@@ -6,12 +6,11 @@
     android:layout_height="match_parent"
     android:background="@color/black">
 
+    <!-- LinearLayout for Offline Maps -->
     <LinearLayout
         android:id="@+id/linearLayout11"
         android:layout_width="165dp"
         android:layout_height="92dp"
-
-
         android:background="@drawable/homecorner"
         android:gravity="center"
         android:orientation="vertical"
@@ -21,13 +20,11 @@
         app:layout_constraintHorizontal_bias="0.154"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.536"
-        tools:ignore="VisualLintBounds">
+        app:layout_constraintVertical_bias="0.536">
 
         <ImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
-
             android:scaleType="centerInside"
             android:src="@drawable/hhhdownload__1_"
             tools:ignore="ContentDescription" />
@@ -42,12 +39,11 @@
             tools:ignore="HardcodedText" />
     </LinearLayout>
 
+    <!-- LinearLayout for Fuel Management -->
     <LinearLayout
         android:id="@+id/linearLayout22"
         android:layout_width="165dp"
         android:layout_height="92dp"
-
-
         android:background="@drawable/homecorner"
         android:gravity="center"
         android:orientation="vertical"
@@ -57,33 +53,32 @@
         app:layout_constraintHorizontal_bias="0.154"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.364"
-        tools:ignore="VisualLintBounds">
+        app:layout_constraintVertical_bias="0.364">
 
         <ImageView
+            android:id="@+id/fimagebutton"
             android:layout_width="50dp"
             android:layout_height="50dp"
-
             android:scaleType="centerInside"
             android:src="@drawable/download__3_"
             tools:ignore="ContentDescription" />
 
         <TextView
+            android:id="@+id/ftext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Fuel Managemennt"
+            android:text="Fuel Management"
             android:textColor="@color/white"
             android:textSize="12sp"
             tools:ignore="HardcodedText" />
     </LinearLayout>
 
+    <!-- LinearLayout for Custom Routes -->
     <LinearLayout
         android:id="@+id/linearLayout33"
         android:layout_width="165dp"
         android:layout_height="92dp"
-
-
         android:background="@drawable/homecorner"
         android:gravity="center"
         android:orientation="vertical"
@@ -93,13 +88,11 @@
         app:layout_constraintHorizontal_bias="0.154"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.195"
-        tools:ignore="VisualLintBounds">
+        app:layout_constraintVertical_bias="0.195">
 
         <ImageView
             android:id="@+id/scenicbutton"
             android:layout_width="50dp"
-
             android:layout_height="50dp"
             android:scaleType="centerInside"
             android:src="@drawable/download__2_"
@@ -115,12 +108,11 @@
             tools:ignore="HardcodedText" />
     </LinearLayout>
 
+    <!-- LinearLayout for Social Routes -->
     <LinearLayout
         android:id="@+id/linearLayout44"
         android:layout_width="165dp"
         android:layout_height="92dp"
-
-
         android:background="@drawable/homecorner"
         android:gravity="center"
         android:orientation="vertical"
@@ -130,13 +122,11 @@
         app:layout_constraintHorizontal_bias="0.154"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.702"
-        tools:ignore="VisualLintBounds">
+        app:layout_constraintVertical_bias="0.702">
 
         <ImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
-
             android:scaleType="centerInside"
             android:src="@drawable/kkdownload__1_"
             tools:ignore="ContentDescription" />
@@ -151,6 +141,7 @@
             tools:ignore="HardcodedText" />
     </LinearLayout>
 
+    <!-- Layout for More Button -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/linearLayout4"
         android:layout_width="409dp"
@@ -180,8 +171,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.5"
-            tools:ignore="MissingConstraints,TextSizeCheck" />
+            app:layout_constraintVertical_bias="0.5" />
 
         <TextView
             android:id="@+id/backk"
@@ -195,8 +185,10 @@
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/textmore"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

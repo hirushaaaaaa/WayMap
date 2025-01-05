@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class SearchActivity extends AppCompatActivity {
 
     private AutoCompleteTextView searchBar;
-    private String[] suggestions = {
+    private final String[] suggestions = {
             "Colombo",
             "Kandy",
             "Galle",

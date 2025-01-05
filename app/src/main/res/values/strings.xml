@@ -68,4 +68,7 @@
     <string name="social_routes">Social Routes</string>
     <string name="MORE">More</string>
     <string name="Back"><![CDATA[< back]]></string>
+    <string name="distance_km">Distance (km)</string>
+    <string name="fuel_rate_per_liter">Fuel Rate (per Liter)</string>
+    <string name="result_will_be_shown_here">Result will be shown here</string>
 </resources>
