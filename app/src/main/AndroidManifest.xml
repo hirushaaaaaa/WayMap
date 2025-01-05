@@ -56,6 +56,7 @@
         <activity android:name=".sinharajaActivity" />
         <activity android:name=".SripadasthanayaActivity" />
         <activity android:name=".FuelManagementActivity" />
+        <activity android:name=".RouteplannerActivity" />
 
     </application>
 

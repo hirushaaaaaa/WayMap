@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000000">
+    android:background="@color/black">
 
     <!-- Navigation Bar with Back Button -->
     <LinearLayout
@@ -84,7 +84,7 @@
             app:layout_constraintEnd_toStartOf="@+id/moreButton"
             app:layout_constraintStart_toEndOf="@+id/profilebutton"
             app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="VisualLintButtonSize" />
+            tools:ignore="UnknownId,VisualLintButtonSize" />
 
         <Button
             android:id="@+id/mButton"
@@ -154,8 +154,9 @@
 
             <ImageView
 
-                android:layout_width="50dp"
+                android:id="@+id/routeimage"
 
+                android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:scaleType="centerInside"
                 android:src="@drawable/ttimages__1_"
@@ -163,6 +164,7 @@
 
             <TextView
 
+                android:id="@+id/routetext"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"

@@ -42,7 +42,8 @@ public class homeActivity extends AppCompatActivity {
         ImageView cameraImage = findViewById(R.id.camerabutton);
         ImageView searchImage = findViewById(R.id.searchbutton);
         ImageView gmapButton = findViewById(R.id.gmapbutton);
-
+        ImageView routeImage = findViewById(R.id.routeimage);
+        TextView routeText = findViewById(R.id.routetext);
 
         @SuppressLint({"MissingInflatedId", "LocalSuppress"}) Button mButton = findViewById(R.id.mButton);
         mButton.setOnClickListener(view -> {
@@ -62,6 +63,10 @@ public class homeActivity extends AppCompatActivity {
 
         cameraImage.setOnClickListener(this::openCamera);
         gmapButton.setOnClickListener(this::openGoogleMaps);
+
+        // Add listeners for Route Planner
+        routeImage.setOnClickListener(v -> navigateToActivity(RouteplannerActivity.class));
+        routeText.setOnClickListener(v -> navigateToActivity(RouteplannerActivity.class));
     }
 
     private void openGoogleMaps(View view) {
