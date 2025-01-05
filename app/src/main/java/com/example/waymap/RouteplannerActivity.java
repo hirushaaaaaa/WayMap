@@ -83,17 +83,7 @@ public class RouteplannerActivity extends AppCompatActivity {
         destinationDetails.setTextSize(14);
         destinationLayout.addView(destinationDetails);
 
-        // Create a new "Add Destination" button
-        Button addDestinationButton = new Button(this);
-        addDestinationButton.setText("Add Destination");
-        addDestinationButton.setOnClickListener(v -> showAddDestinationDialog());
-        destinationLayout.addView(addDestinationButton);
-
-        // Remove the old "Add Destination" button
-        destinationContainer.removeViewAt(destinationContainer.getChildCount() - 1);
-
-        // Add the new destination layout and new button
+        // Add the new destination layout to the container
         destinationContainer.addView(destinationLayout);
-        destinationContainer.addView(addDestinationButton);
     }
 }
