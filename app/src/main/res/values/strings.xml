@@ -71,4 +71,8 @@
     <string name="distance_km">Distance (km)</string>
     <string name="fuel_rate_per_liter">Fuel Rate (per Liter)</string>
     <string name="result_will_be_shown_here">Result will be shown here</string>
+    <string name="extra">EXTRA</string>
+    <string name="local_dishes">Local Dishes</string>
+    <string name="hot">HOT</string>
+    <string name="spicy">SPICY</string>
 </resources>

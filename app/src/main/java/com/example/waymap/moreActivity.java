@@ -14,14 +14,18 @@ public class moreActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_more);
 
-        // Initialize the fuel management image and text views
+        // Initialize views
         ImageView fuelImageButton = findViewById(R.id.fimagebutton);
         TextView fuelText = findViewById(R.id.ftext);
         TextView backbutton = findViewById(R.id.backk);
+        ImageView foodimageButton = findViewById(R.id.foodimage);
+        TextView foodText = findViewById(R.id.foodtext);
+
+        // Set OnClickListener for the back button
         backbutton.setOnClickListener(v -> {
-                    Intent intent = new Intent(moreActivity.this, homeActivity.class);
-                    startActivity(intent);
-                });
+            Intent intent = new Intent(moreActivity.this, homeActivity.class);
+            startActivity(intent);
+        });
 
         // Set OnClickListener for the fuel image
         fuelImageButton.setOnClickListener(v -> {
@@ -35,5 +39,16 @@ public class moreActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        // Set OnClickListener for the local food image
+        foodimageButton.setOnClickListener(v -> {
+            Intent intent = new Intent(moreActivity.this, LocaldishesActivity.class);
+            startActivity(intent);
+        });
+
+        // Set OnClickListener for the local food text
+        foodText.setOnClickListener(v -> {
+            Intent intent = new Intent(moreActivity.this, LocaldishesActivity.class);
+            startActivity(intent);
+        });
     }
 }

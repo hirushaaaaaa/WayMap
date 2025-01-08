@@ -72,9 +72,9 @@ public class homeActivity extends AppCompatActivity {
     private void openGoogleMaps(View view) {
         String geoUri = "geo:0,0?q=Colombo"; // Replace "Colombo" with your desired location
         Intent mapIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(geoUri));
-        mapIntent.setPackage("com.google.android.apps.maps");
 
         if (mapIntent.resolveActivity(getPackageManager()) != null) {
+            mapIntent.setPackage("com.google.android.apps.maps"); // Restrict to Google Maps
             startActivity(mapIntent);
         } else {
             Toast.makeText(this, "Google Maps app is not installed", Toast.LENGTH_SHORT).show();

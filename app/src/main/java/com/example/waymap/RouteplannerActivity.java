@@ -24,6 +24,7 @@ public class RouteplannerActivity extends AppCompatActivity {
         // Add initial "Add Destination" button
         Button addDestinationButton = findViewById(R.id.addDestinationButton);
         addDestinationButton.setOnClickListener(v -> showAddDestinationDialog());
+
     }
 
     private void showAddDestinationDialog() {

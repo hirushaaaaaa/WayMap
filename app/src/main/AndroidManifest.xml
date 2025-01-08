@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- Required Permissions -->
+    <!-- Required Features and Permissions -->
     <uses-feature
         android:name="android.hardware.camera"
         android:required="false" />
@@ -8,6 +8,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.CAMERA" />
+
 
     <application
         android:allowBackup="true"
@@ -23,7 +24,8 @@
             android:value="ca-app-pub-3940256099942544~3347511713" />
 
         <!-- Welcome Activity as the launcher -->
-        <activity android:name=".WelcomeActivity"
+        <activity
+            android:name=".WelcomeActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,31 +34,49 @@
         </activity>
 
         <!-- Login Activity -->
-        <activity android:name=".LoginActivity" />
+        <activity
+            android:name=".LoginActivity"
+            android:exported="true" />
 
         <!-- Home Activity -->
-        <activity android:name=".homeActivity" />
+        <activity
+            android:name=".homeActivity"
+            android:exported="true">
+            <!-- Optional: Intent filter for map handling -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="geo" />
+            </intent-filter>
+        </activity>
 
         <!-- Distance Activity -->
-        <activity android:name=".DistanceActivity" />
+        <activity
+            android:name=".DistanceActivity"
+            android:exported="true" />
 
         <!-- More Activity -->
-        <activity android:name=".moreActivity" />
-
+        <activity
+            android:name=".moreActivity"
+            android:exported="true" />
 
         <!-- Additional Activities -->
-        <activity android:name=".profileActivity" />
-        <activity android:name=".ScenicstopsActivity" />
-        <activity android:name=".AnuradhapuraActivity" />
-        <activity android:name=".MirissaActivity" />
-        <activity android:name=".GalleportActivity" />
-        <activity android:name=".RuwanmeliseyaActivity" />
-        <activity android:name=".DambullaActivity" />
-        <activity android:name=".EllaActivity" />
-        <activity android:name=".sinharajaActivity" />
-        <activity android:name=".SripadasthanayaActivity" />
-        <activity android:name=".FuelManagementActivity" />
-        <activity android:name=".RouteplannerActivity" />
+        <activity android:name=".profileActivity" android:exported="true" />
+        <activity android:name=".ScenicstopsActivity" android:exported="true" />
+        <activity android:name=".AnuradhapuraActivity" android:exported="true" />
+        <activity android:name=".MirissaActivity" android:exported="true" />
+        <activity android:name=".GalleportActivity" android:exported="true" />
+        <activity android:name=".RuwanmeliseyaActivity" android:exported="true" />
+        <activity android:name=".DambullaActivity" android:exported="true" />
+        <activity android:name=".EllaActivity" android:exported="true" />
+        <activity android:name=".sinharajaActivity" android:exported="true" />
+        <activity android:name=".SripadasthanayaActivity" android:exported="true" />
+        <activity android:name=".FuelManagementActivity" android:exported="true" />
+        <activity android:name=".RouteplannerActivity" android:exported="true" />
+        <activity android:name=".SignupActivity" android:exported="true" />
+        <activity android:name=".LocaldishesActivity" android:exported="true" />
+        <activity android:name=".MildActivity" android:exported="true" />
+
 
     </application>
 
