@@ -76,6 +76,9 @@
         <activity android:name=".SignupActivity" android:exported="true" />
         <activity android:name=".LocaldishesActivity" android:exported="true" />
         <activity android:name=".MildActivity" android:exported="true" />
+        <activity android:name=".SpicyActivity" android:exported="true" />
+        <activity android:name=".HotActivity" android:exported="true" />
+        <activity android:name=".ExtraActivity" android:exported="true" />
 
 
     </application>
