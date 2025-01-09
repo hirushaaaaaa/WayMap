@@ -13,8 +13,7 @@ public class DambullaActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dambulla); // Ensure this layout file exists
-
+        setContentView(R.layout.activity_dambulla);
         // Enable the back button in the action bar
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);

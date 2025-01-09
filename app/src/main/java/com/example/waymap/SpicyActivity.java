@@ -17,11 +17,10 @@ public class SpicyActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_spicy); // Link to your layout XML file
-
+        setContentView(R.layout.activity_spicy);
         // Initialize views
-        backButton = findViewById(R.id.mildback); // Replace R.id.mildback with your Back Button's ID
-        headerText = findViewById(R.id.textView10); // Replace R.id.textView10 with your TextView's ID
+        backButton = findViewById(R.id.mildback);
+        headerText = findViewById(R.id.textView10);
 
         // Set up the Back button click listener
         backButton.setOnClickListener(new View.OnClickListener() {
@@ -30,12 +29,12 @@ public class SpicyActivity extends AppCompatActivity {
                 // Display a Toast message
                 Toast.makeText(SpicyActivity.this, "Back button clicked", Toast.LENGTH_SHORT).show();
 
-                // Close the current activity
+
                 finish();
             }
         });
 
-        // Example: Update the header text programmatically
+
         headerText.setText("Welcome to Mild Spicy!");
     }
 }

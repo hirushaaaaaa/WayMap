@@ -1,4 +1,4 @@
-package com.example.waymap; // Replace with your package name
+package com.example.waymap;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -15,7 +15,7 @@ public class ExtraActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_extra); // Replace with your actual layout file
+        setContentView(R.layout.activity_extra);
 
         // Initialize the Back button
         mildBackButton = findViewById(R.id.mildback);

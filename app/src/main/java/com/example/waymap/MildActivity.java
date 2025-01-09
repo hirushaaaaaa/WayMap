@@ -16,7 +16,7 @@ public class MildActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mild); // Use your XML layout file name here
+        setContentView(R.layout.activity_mild);
 
         // Initialize views
         backButton = findViewById(R.id.mildback);
@@ -32,7 +32,7 @@ public class MildActivity extends AppCompatActivity {
             }
         });
 
-        // Example: Updating the header text programmatically
+
         headerText.setText("Welcome to Mild Spicy!");
 
 

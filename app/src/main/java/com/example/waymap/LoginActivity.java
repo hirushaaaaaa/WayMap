@@ -18,8 +18,8 @@ public class LoginActivity extends AppCompatActivity {
         Log.d("LoginActivity", "Activity created");
 
         // Initialize the views
-        EditText etUsername = findViewById(R.id.editTextText);  // Ensure this ID matches your XML
-        EditText etPassword = findViewById(R.id.editTextTextPassword);  // Ensure this ID matches your XML
+        EditText etUsername = findViewById(R.id.editTextText);
+        EditText etPassword = findViewById(R.id.editTextTextPassword);
         Button btnLogin = findViewById(R.id.loginbutton);
         Button btnBackToWelcome = findViewById(R.id.welcomebutton);
 
@@ -61,17 +61,16 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    // Method to check if the user is already logged in
+
     private boolean isUserLoggedIn() {
-        // Implement logic to check if the user is already logged in
-        // This could be a shared preference or a check in a database or session
-        return false; // Placeholder for actual implementation
+
+        return false;
     }
 
     // Method to navigate to Home Page
     private void navigateToHomePage() {
-        Intent intent = new Intent(LoginActivity.this, homeActivity.class); // Corrected to HomeActivity
+        Intent intent = new Intent(LoginActivity.this, homeActivity.class);
         startActivity(intent);
-        finish(); // Finish the LoginActivity so that it won't return to the login screen
+        finish();
     }
 }

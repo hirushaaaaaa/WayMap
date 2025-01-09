@@ -11,13 +11,13 @@ public class profileActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile); // Ensure the XML layout filename matches
+        setContentView(R.layout.activity_profile);
 
         // Back Button
         Button backButton = findViewById(R.id.backbutton);
         backButton.setOnClickListener(v -> {
             // Navigate back to the previous screen
-            finish(); // This finishes the current activity and returns to the previous one
+            finish();
         });
 
         // AutoCompleteTextViews

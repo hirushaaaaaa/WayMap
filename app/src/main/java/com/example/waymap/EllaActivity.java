@@ -12,7 +12,7 @@ public class EllaActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ella); // Ensure this layout file exists
+        setContentView(R.layout.activity_ella);
 
         // Enable the back button in the action bar
         if (getSupportActionBar() != null) {

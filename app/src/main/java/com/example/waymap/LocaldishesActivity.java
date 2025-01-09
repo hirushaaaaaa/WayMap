@@ -11,7 +11,7 @@ public class LocaldishesActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_localdishes); // Ensure this matches your XML layout file name
+        setContentView(R.layout.activity_localdishes);
 
         // Initialize buttons
         // Declare buttons
@@ -23,7 +23,7 @@ public class LocaldishesActivity extends AppCompatActivity {
 
         // Back Button Listener
         backFoodButton.setOnClickListener(v -> {
-            finish(); // Close this activity and return to the previous one
+            finish();
         });
 
         // Mild Button Listener

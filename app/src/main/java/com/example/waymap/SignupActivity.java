@@ -12,7 +12,7 @@ public class SignupActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(signup_activity); // Replace with your actual layout name
+        setContentView(signup_activity);
 
         // Find the "Back to Welcome" button
         Button backToWelcomeButton = findViewById(R.id.button2);

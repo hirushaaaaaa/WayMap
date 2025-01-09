@@ -12,7 +12,7 @@ public class GalleportActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_galleport); // Ensure this layout exists
+        setContentView(R.layout.activity_galleport);
 
         // Enable the back button in the action bar
         if (getSupportActionBar() != null) {

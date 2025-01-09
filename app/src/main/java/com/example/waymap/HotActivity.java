@@ -15,7 +15,7 @@ public class HotActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_hot); // Replace with your XML file name
+        setContentView(R.layout.activity_hot);
 
         // Initialize views
         backButton = findViewById(R.id.mildback);
@@ -30,6 +30,6 @@ public class HotActivity extends AppCompatActivity {
             finish(); // Closes the current activity and returns to the previous screen
         });
 
-        // Additional functionality can be added here, such as dynamically updating product details
+
     }
 }
