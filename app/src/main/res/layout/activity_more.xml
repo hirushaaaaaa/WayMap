@@ -91,18 +91,19 @@
         app:layout_constraintVertical_bias="0.195">
 
         <ImageView
-            android:id="@+id/scenicbutton"
+            android:id="@+id/transportimage"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:scaleType="centerInside"
-            android:src="@drawable/download__2_"
+            android:src="@drawable/taxi_sign_night_city_generative_ai_photo"
             tools:ignore="ContentDescription" />
 
         <TextView
+            android:id="@+id/transporttext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Custom Routes"
+            android:text="Transporrt "
             android:textColor="@color/white"
             android:textSize="12sp"
             tools:ignore="HardcodedText" />

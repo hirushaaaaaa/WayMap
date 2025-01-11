@@ -1,5 +1,6 @@
 package com.example.waymap;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
@@ -20,7 +21,8 @@ public class moreActivity extends AppCompatActivity {
         TextView backbutton = findViewById(R.id.backk);
         ImageView foodimageButton = findViewById(R.id.foodimage);
         TextView foodText = findViewById(R.id.foodtext);
-
+        @SuppressLint({"MissingInflatedId", "LocalSuppress"}) ImageView transportImage =findViewById(R.id.transportimage);
+        @SuppressLint({"MissingInflatedId", "LocalSuppress"}) TextView transportText=findViewById(R.id.transporttext);
         // Set OnClickListener for the back button
         backbutton.setOnClickListener(v -> {
             Intent intent = new Intent(moreActivity.this, homeActivity.class);
@@ -50,5 +52,16 @@ public class moreActivity extends AppCompatActivity {
             Intent intent = new Intent(moreActivity.this, LocaldishesActivity.class);
             startActivity(intent);
         });
+        transportImage.setOnClickListener(v -> {
+            Intent intent = new Intent(moreActivity.this, TransportActivity.class);
+            startActivity(intent);
+        });
+
+        // Set OnClickListener for the fuel text
+        transportText.setOnClickListener(v -> {
+            Intent intent = new Intent(moreActivity.this, TransportActivity.class);
+            startActivity(intent);
+        });
+
     }
 }

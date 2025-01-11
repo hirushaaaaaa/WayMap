@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/_522">
+
+    <ImageView
+        android:id="@+id/imageView11"
+        android:layout_width="231dp"
+        android:layout_height="235dp"
+        android:layout_marginStart="90dp"
+        android:layout_marginTop="90dp"
+        android:layout_marginEnd="90dp"
+        android:layout_marginBottom="406dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/pickme"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/pickback"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="53dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="270dp"
+        android:layout_marginBottom="658dp"
+        android:backgroundTint="@color/black"
+        android:text="back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="309dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="51dp"
+        android:layout_marginTop="348dp"
+        android:layout_marginEnd="51dp"
+        android:layout_marginBottom="137dp"
+        android:autoLink="web"
+        android:text="PickMe\n\n• Locations: Available across major cities  including Colombo, Kandy, Galle, and more.\n• Telephone: +94 77 077 7777 (Customer Service)\n• Website: www.pickme.lk\n• Details: PickMe is a popular Sri Lankan ride-hailing app that provides taxi, tuk-tuk, and delivery services. It offers services in multiple languages, including Sinhala, Tamil, and English, and is widely used by both locals and tourists."
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/locpickme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="134dp"
+        android:layout_marginTop="19dp"
+        android:layout_marginEnd="117dp"
+        android:layout_marginBottom="99dp"
+        android:text="📌Main Branch- Colombo"
+        android:textColor="@android:color/holo_green_light"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView15"
+        app:layout_constraintVertical_bias="0.0" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
