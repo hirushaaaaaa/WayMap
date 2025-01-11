@@ -1,5 +1,4 @@
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -76,6 +75,7 @@
         android:id="@+id/imageContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints">
 
         <ImageView
@@ -98,12 +98,24 @@
 
     <TextView
         android:id="@+id/isurumunitext"
-        android:layout_width="382dp"
-        android:layout_height="460dp"
+        android:layout_width="393dp"
+        android:layout_height="459dp"
         android:layout_marginTop="31dp"
         android:layout_marginEnd="3dp"
         android:layout_marginBottom="11dp"
-        android:text=". Isurumuniya 	•	Location: Anuradhapura, Sri Lanka. 	•	Highlights: 	•	A historic Buddhist temple known for its stunning rock carvings. 	•	Features the famous Isurumuniya Lovers sculpture, believed to depict royal lovers from Sri Lankan history. 	•	Other notable carvings include the Elephant Pond and Royal Family. 	•	Situated near the Tissa Wewa (a reservoir), providing a serene environment. 	•	Significance: Built during King Devanampiya Tissa’s reign (3rd century BCE) as a meditation site for monks. Isurumuniya is a Buddhist temple situated near to the Tissa Wewa (Tisa tank) in Anuradhapura, Sri Lanka. There are four carvings of special interest in this Vihara. They are the Isurumuniya Lovers, Elephant Pond and The Royal Family.  History The ancient Meghagiri Vihara or Meygiri Vihara is presently identified as the Isurumuni Vihara.[1] It was built by King Devanampiya Tissa (307 BC to 267 BC) who ruled in the ancient Sri Lankan capital of Anuradhapura.[2] After 500 children of high-caste were ordained, Isurumuniya was built for them to reside.[2] King Kasyapa I (473-491 AD) again renovated this viharaya and named it as &quot;Boupulvan, Kasubgiri Radmaha Vehera&quot; giving the names of his 2 daughters and his name.[3] There is a viharaya connected to a cave and above is a cliff. A small stupa is built on it. It can be seen that the constructional work of this stupa belongs to the present period. Lower down on both sides of a cleft, in a rock that appears to rise out of a pool, have been carved the figures of elephants. On the rock is carved the figure of a horse. The carving of Isurumuniya lovers on the slab has been brought from another place and placed it there. A few yards away from this vihara is the Ranmasu Uyana.  Archaeological ruins"
+        android:text="• Isurumuniya\n
+• Location: Anuradhapura, Sri Lanka.\n\n
+• Highlights:\n
+  - A historic Buddhist temple known for its stunning rock carvings.\n
+  - Features the famous Isurumuniya Lovers sculpture, believed to depict royal lovers from Sri Lankan history.\n
+  - Other notable carvings include the Elephant Pond and Royal Family.\n
+  - Situated near the Tissa Wewa (a reservoir), providing a serene environment.\n\n
+• Significance:\n
+  - Built during King Devanampiya Tissa’s reign (3rd century BCE) as a meditation site for monks.\n
+  - Known as the ancient Meghagiri Vihara or Meygiri Vihara.\n
+  - King Kasyapa I (473–491 AD) renovated and renamed it as 'Boupulvan, Kasubgiri Radmaha Vehera.'\n
+  - Connected to a cave with a small stupa above a cliff.\n\n
+"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -112,6 +124,22 @@
         app:layout_constraintTop_toBottomOf="@+id/imageContainer"
         app:layout_constraintVertical_bias="1.0"
         tools:ignore="HardcodedText,TextSizeCheck" />
+
+    <TextView
+        android:id="@+id/locisurumunuiya"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="158dp"
+        android:layout_marginTop="668dp"
+        android:layout_marginEnd="159dp"
+        android:layout_marginBottom="44dp"
+        android:text="📌isurumuniya"
+        android:textColor="@android:color/holo_green_light"
+        android:textColorHighlight="@android:color/holo_green_light"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
