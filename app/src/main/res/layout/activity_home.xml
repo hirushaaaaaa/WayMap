@@ -69,20 +69,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/header">
 
-
         <Button
             android:id="@+id/homeButton"
 
             android:layout_width="149dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="2dp"
-            android:layout_marginTop="3dp"
-            android:layout_marginEnd="11dp"
+            android:layout_marginStart="3dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="3dp"
             android:background="@drawable/button_background"
             android:text="@string/home"
             android:textColor="#FFFFFF"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/mButton"
+            app:layout_constraintEnd_toStartOf="@+id/moreButton"
             app:layout_constraintStart_toEndOf="@+id/profilebutton"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="UnknownId,VisualLintButtonSize" />
@@ -91,16 +90,16 @@
             android:id="@+id/mButton"
             android:layout_width="149dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="3dp"
-            android:layout_marginEnd="43dp"
+            android:layout_marginStart="3dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginBottom="2dp"
             android:background="@drawable/button_background"
             android:text="@string/More"
             android:textColor="#FFFFFF"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/homeButton"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"/>
+
 
         <ImageView
             android:id="@+id/profilebutton"
@@ -130,7 +129,7 @@
         android:rowCount="3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tabs"
         tools:ignore="MissingConstraints">
@@ -150,7 +149,7 @@
             app:layout_constraintHorizontal_bias="0.158"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.577"
+            app:layout_constraintVertical_bias="0.472"
             tools:ignore="VisualLintBounds">
 
             <ImageView
@@ -190,7 +189,7 @@
             app:layout_constraintHorizontal_bias="0.158"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.799"
+            app:layout_constraintVertical_bias="0.68"
             tools:ignore="DuplicateIds,HardcodedText">
 
             <ImageView
@@ -225,7 +224,7 @@
             app:layout_constraintHorizontal_bias="0.822"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.577"
+            app:layout_constraintVertical_bias="0.472"
             tools:ignore="TextSizeCheck">
 
             <ImageView
@@ -252,17 +251,16 @@
             android:id="@+id/linearLayout7"
             android:layout_width="140dp"
             android:layout_height="92dp"
-            android:layout_marginStart="172dp"
             android:background="@drawable/homecorner"
             android:gravity="center"
             android:orientation="vertical"
             android:padding="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.505"
+            app:layout_constraintHorizontal_bias="0.822"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.799">
+            app:layout_constraintVertical_bias="0.68">
 
             <ImageView
                 android:layout_width="50dp"
@@ -283,15 +281,15 @@
         </LinearLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout2"
             android:layout_width="415dp"
             android:layout_height="55dp"
+            android:layout_marginTop="102dp"
+            android:layout_marginBottom="4dp"
             android:background="@color/ic_launcher_background"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.996"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout5"
             tools:ignore="VisualLintBounds">
 
             <ImageView
@@ -329,6 +327,21 @@
                 tools:ignore="ContentDescription,UnknownId,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
             <ImageView
+                android:id="@+id/camerabutton"
+                android:layout_width="43dp"
+                android:layout_height="42dp"
+                android:layout_marginStart="186dp"
+                android:layout_marginTop="9dp"
+                android:layout_marginEnd="186dp"
+                android:layout_marginBottom="4dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/icons8_photography_50__1_"
+                tools:ignore="ContentDescription" />
+
+            <ImageView
                 android:id="@+id/updatebutton"
                 android:layout_width="43dp"
                 android:layout_height="42dp"
@@ -358,29 +371,16 @@
                 app:srcCompat="@drawable/icons8_saved_50"
                 tools:ignore="ContentDescription" />
 
-            <ImageView
-                android:id="@+id/camerabutton"
-                android:layout_width="43dp"
-                android:layout_height="42dp"
-                android:layout_marginTop="7dp"
-                android:layout_marginBottom="6dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/updatebutton"
-                app:layout_constraintHorizontal_bias="0.505"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0"
-                app:srcCompat="@drawable/icons8_photography_50__1_"
-                tools:ignore="ContentDescription" />
-
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <ImageView
             android:id="@+id/imageView9"
-            android:layout_width="535dp"
-            android:layout_height="268dp"
-            app:layout_constraintBottom_toBottomOf="@+id/constraintLayout2"
+            android:layout_width="405dp"
+            android:layout_height="227dp"
+            android:layout_marginBottom="369dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.145"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0"
@@ -434,6 +434,7 @@
             android:layout_weight="1"
             android:src="@drawable/ic_updates"
             android:contentDescription="@string/updates" />
+
 
     </LinearLayout>
 
