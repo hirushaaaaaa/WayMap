@@ -9,7 +9,6 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.CAMERA" />
 
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -23,15 +22,20 @@
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-3940256099942544~3347511713" />
 
-        <!-- Welcome Activity as the launcher -->
+        <!-- Launcher Activity -->
         <activity
-            android:name=".WelcomeActivity"
+            android:name=".getstartActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Welcome Activity -->
+        <activity
+            android:name=".WelcomeActivity"
+            android:exported="true" />
 
         <!-- Login Activity -->
         <activity
@@ -54,13 +58,13 @@
         <activity
             android:name=".DistanceActivity"
             android:exported="true" />
-
-        <!-- More Activity -->
         <activity
             android:name=".moreActivity"
             android:exported="true" />
 
-        <!-- Additional Activities -->
+
+
+        <!-- More Activities -->
         <activity android:name=".profileActivity" android:exported="true" />
         <activity android:name=".ScenicstopsActivity" android:exported="true" />
         <activity android:name=".AnuradhapuraActivity" android:exported="true" />
@@ -84,7 +88,6 @@
         <activity android:name=".ceylonTaxiActivity" android:exported="true" />
         <activity android:name=".TaxiActivity" android:exported="true" />
         <activity android:name=".UberActivity" android:exported="true" />
-
 
     </application>
 

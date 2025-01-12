@@ -105,4 +105,5 @@ public class homeActivity extends AppCompatActivity {
             Toast.makeText(this, "Last searched: " + query, Toast.LENGTH_SHORT).show();
         }
     }
+
 }

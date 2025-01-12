@@ -43,6 +43,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_weight="1"
+            android:backgroundTint="@color/material_dynamic_neutral_variant10"
             android:gravity="center"
             android:text="@string/waymapp"
             android:textColor="#FFFFFF"
@@ -50,10 +51,12 @@
 
         <ImageView
             style="?android:attr/buttonBarStyle"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="44dp"
+            android:layout_height="46dp"
             android:contentDescription="@string/logo"
-            android:src="@drawable/q" />
+            android:src="@drawable/q"
+            tools:ignore="MissingConstraints" />
+
     </LinearLayout>
     <!-- Add other LinearLayouts similarly -->
 
@@ -98,7 +101,7 @@
             android:textColor="#FFFFFF"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/homeButton"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
 
         <ImageView
@@ -124,14 +127,14 @@
         android:id="@+id/cardsGrid"
         android:layout_width="411dp"
         android:layout_height="596dp"
-        android:layout_marginTop="11dp"
+        android:layout_marginTop="143dp"
         android:columnCount="3"
         android:rowCount="3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tabs"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints">
 
         <!-- Distance Calculator -->
@@ -149,7 +152,7 @@
             app:layout_constraintHorizontal_bias="0.158"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.472"
+            app:layout_constraintVertical_bias="0.565"
             tools:ignore="VisualLintBounds">
 
             <ImageView
@@ -189,7 +192,7 @@
             app:layout_constraintHorizontal_bias="0.158"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.68"
+            app:layout_constraintVertical_bias="0.773"
             tools:ignore="DuplicateIds,HardcodedText">
 
             <ImageView
@@ -221,10 +224,10 @@
             android:padding="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.822"
+            app:layout_constraintHorizontal_bias="0.819"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.472"
+            app:layout_constraintVertical_bias="0.565"
             tools:ignore="TextSizeCheck">
 
             <ImageView
@@ -257,10 +260,10 @@
             android:padding="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.822"
+            app:layout_constraintHorizontal_bias="0.819"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.68">
+            app:layout_constraintVertical_bias="0.773">
 
             <ImageView
                 android:layout_width="50dp"
@@ -283,13 +286,14 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="415dp"
             android:layout_height="55dp"
-            android:layout_marginTop="102dp"
+            android:layout_marginTop="537dp"
             android:layout_marginBottom="4dp"
             android:background="@color/ic_launcher_background"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout5"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0"
             tools:ignore="VisualLintBounds">
 
             <ImageView
@@ -373,18 +377,40 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <ImageView
-            android:id="@+id/imageView9"
-            android:layout_width="405dp"
-            android:layout_height="227dp"
-            android:layout_marginBottom="369dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.145"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"
-            app:srcCompat="@drawable/h1" />
+        <ViewFlipper
+
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:autoStart="true"
+            android:flipInterval="2000"
+            android:inAnimation="@android:anim/slide_in_left"
+            android:outAnimation="@android:anim/slide_out_right">
+
+            <ImageView
+                android:id="@+id/imageView15"
+                android:layout_width="match_parent"
+                android:layout_height="226dp"
+                app:srcCompat="@drawable/h3" />
+
+            <ImageView
+                android:id="@+id/imageView14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/h4" />
+
+            <ImageView
+                android:id="@+id/imageView13"
+                android:layout_width="match_parent"
+                android:layout_height="227dp"
+                app:srcCompat="@drawable/d3" />
+
+            <ImageView
+                android:id="@+id/imageView9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/h1" />
+
+        </ViewFlipper>
 
 
         <!-- Add other icons similarly -->
@@ -437,6 +463,7 @@
 
 
     </LinearLayout>
+
 
 
 
