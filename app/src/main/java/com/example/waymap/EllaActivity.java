@@ -1,9 +1,10 @@
 package com.example.waymap;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -20,11 +21,23 @@ public class EllaActivity extends AppCompatActivity {
         }
 
         // Back Button Listener
-        Button backButton2 = findViewById(R.id.backButton2);
+        TextView backButton2 = findViewById(R.id.backButton2);
         backButton2.setOnClickListener(v -> {
             Intent intent = new Intent(EllaActivity.this, ScenicstopsActivity.class);
             startActivity(intent);
             finish(); // Close the current activity
+        });
+
+        // Open Ella location in Google Maps when locella TextView is clicked
+        TextView locEllaTextView = findViewById(R.id.locella);
+        locEllaTextView.setOnClickListener(v -> {
+            // Replace with the actual coordinates of Ella
+            String geoUri = "geo:0,0?q=Ella";
+            Intent mapIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(geoUri));
+            mapIntent.setPackage("com.google.android.apps.maps"); // Ensure Google Maps is used
+            if (mapIntent.resolveActivity(getPackageManager()) != null) {
+                startActivity(mapIntent);
+            }
         });
     }
 

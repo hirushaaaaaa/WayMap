@@ -91,14 +91,14 @@
         android:layout_marginTop="12dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        android:text="5. Nine Arches Bridge
-	•	Location: Ella, Sri Lanka.
+        android:text=". Nine Arches Bridge\n
+	•	Location: Ella, Sri Lanka.\n
 	•	Highlights:
 	•	A stunning colonial-era railway bridge built entirely of stone and cement, without steel.
-	•	Surrounded by lush greenery and tea plantations.
+	•	Surrounded by lush greenery and tea plantations.\n
 	•	Popular for its scenic views and as a photo spot, especially when trains pass.
 	•	Activities: Hiking to the bridge and enjoying nearby cafes.
-        android:textColor="
+       "
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -129,6 +129,22 @@
     app:layout_constraintTop_toBottomOf="@+id/imageContainer"
     app:layout_constraintVertical_bias="0.0"
     tools:ignore="HardcodedText,TextSizeCheck" />
+    <TextView
+        android:id="@+id/locella"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="158dp"
+        android:layout_marginTop="668dp"
+        android:layout_marginEnd="159dp"
+        android:layout_marginBottom="44dp"
+        android:text="📌Ella"
+        android:textColor="@android:color/holo_green_light"
+        android:textColorHighlight="@android:color/holo_green_light"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

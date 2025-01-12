@@ -102,14 +102,14 @@
         android:layout_marginTop="31dp"
         android:layout_marginEnd="3dp"
         android:layout_marginBottom="11dp"
-        android:text="2. Sinharaja Forest Reserve
-	•	Location: Southwest Sri Lanka.
-	•	Highlights:
-	•	A UNESCO World Heritage Site and the country’s largest remaining rainforest.
-	•	Home to diverse wildlife, including endemic species like the Sri Lanka Blue Magpie and Purple-faced Langur.
-	•	Offers trekking trails through dense forest, waterfalls, and streams.
-	•	Significance: Essential for biodiversity conservation and recognized as a biodiversity hotspot.
-	•	Activities: Guided treks, birdwatching, and photography.&quot;Boupulvan, Kasubgiri Radmaha Vehera&quot; giving the names of his 2 daughters and his name.[3] There is a viharaya connected to a cave and above is a cliff. A small stupa is built on it. It can be seen that the constructional work of this stupa belongs to the present period. Lower down on both sides of a cleft, in a rock that appears to rise out of a pool, have been carved the figures of elephants. On the rock is carved the figure of a horse. The carving of Isurumuniya lovers on the slab has been brought from another place and placed it there. A few yards away from this vihara is the Ranmasu Uyana.  Archaeological ruins"
+        android:text=" Sinharaja Forest Reserve\n
+	•	Location: Southwest Sri Lanka.\n
+	•	Highlights:\n
+		A UNESCO World Heritage Site and the country’s largest remaining rainforest.
+		Home to diverse wildlife, including endemic species like the Sri Lanka Blue Magpie and Purple-faced Langur.
+		Offers trekking trails through dense forest, waterfalls, and streams.
+		Significance: Essential for biodiversity conservation and recognized as a biodiversity hotspot.
+	    Activities: Guided treks, birdwatching, and photography.&quot;Boupulvan, Kasubgiri Radmaha Vehera&quot; giving the names of his 2 daughters and his name.[3] There is a viharaya connected to a cave and above is a cliff. A small stupa is built on it. It can be seen that the constructional work of this stupa belongs to the present period. Lower down on both sides of a cleft, in a rock that appears to rise out of a pool, have been carved the figures of elephants. On the rock is carved the figure of a horse. The carving of Isurumuniya lovers on the slab has been brought from another place and placed it there. A few yards away from this vihara is the Ranmasu Uyana.  Archaeological ruins"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -117,6 +117,22 @@
         app:layout_constraintTop_toBottomOf="@+id/imageContainer"
         app:layout_constraintVertical_bias="0.0"
         tools:ignore="HardcodedText,TextSizeCheck" />
+    <TextView
+        android:id="@+id/locsinharajaya"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="158dp"
+        android:layout_marginTop="668dp"
+        android:layout_marginEnd="159dp"
+        android:layout_marginBottom="44dp"
+        android:text="📌Sinharaja Rain Forest"
+        android:textColor="@android:color/holo_green_light"
+        android:textColorHighlight="@android:color/holo_green_light"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

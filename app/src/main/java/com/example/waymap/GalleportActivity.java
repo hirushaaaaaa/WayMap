@@ -1,9 +1,11 @@
 package com.example.waymap;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -25,6 +27,22 @@ public class GalleportActivity extends AppCompatActivity {
             Intent intent = new Intent(GalleportActivity.this, ScenicstopsActivity.class);
             startActivity(intent);
             finish(); // Close the current activity
+        });
+
+        // Locate Galle Port when clicking locgalle TextView
+        TextView locgalle = findViewById(R.id.locgalle);
+        locgalle.setOnClickListener(v -> {
+            // Replace with Galle Port's actual coordinates or query string
+            String geoUri = "geo:0,0?q=Galle Port";
+            Intent mapIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(geoUri));
+            mapIntent.setPackage("com.google.android.apps.maps"); // Ensure Google Maps is used
+            if (mapIntent.resolveActivity(getPackageManager()) != null) {
+                startActivity(mapIntent);
+            } else {
+                // Fallback message if Google Maps is not installed
+                Intent fallbackIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(geoUri));
+                startActivity(fallbackIntent);
+            }
         });
     }
 

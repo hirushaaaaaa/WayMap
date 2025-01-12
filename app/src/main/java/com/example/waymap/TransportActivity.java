@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 public class TransportActivity extends AppCompatActivity {
@@ -17,6 +18,7 @@ public class TransportActivity extends AppCompatActivity {
         TextView pickMeText = findViewById(R.id.PickmeText);
         TextView ceylonText = findViewById(R.id.CeylonText);
         TextView taxiText = findViewById(R.id.TaxiText);
+        TextView uberText = findViewById(R.id.ubertext);
 
         // PickMe click listener - Navigate to PickMeActivity
         pickMeText.setOnClickListener(new View.OnClickListener() {
@@ -38,12 +40,22 @@ public class TransportActivity extends AppCompatActivity {
             }
         });
 
-        // Taxi.lk click listener - Navigate to TaxiLKActivity
+        // Taxi.lk click listener - Navigate to TaxiActivity
         taxiText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Start TaxiLKActivity
+                // Start TaxiActivity
                 Intent intent = new Intent(TransportActivity.this, TaxiActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        // Uber click listener - Navigate to UberActivity
+        uberText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Start UberActivity
+                Intent intent = new Intent(TransportActivity.this, UberActivity.class);
                 startActivity(intent);
             }
         });
