@@ -60,7 +60,7 @@
         android:layout_marginEnd="55dp"
         android:layout_marginBottom="56dp"
         android:background="@drawable/get_button"
-        android:text="Tap here to kick start your journy"
+        android:text="Tap here to kick start your journey"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="18sp"
