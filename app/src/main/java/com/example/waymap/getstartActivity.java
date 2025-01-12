@@ -24,7 +24,7 @@ public class getstartActivity extends AppCompatActivity {
         backgroundVideoView = findViewById(R.id.videobg);
 
         // Set video URI (video file should be in the "res/raw" folder)
-        Uri videoUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.nnnnnnn);
+        Uri videoUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.ooooo);
         backgroundVideoView.setVideoURI(videoUri);
 
         // Start the video and loop it

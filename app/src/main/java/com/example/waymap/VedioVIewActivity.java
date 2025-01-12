@@ -18,7 +18,7 @@ public class VedioVIewActivity extends AppCompatActivity {
         @SuppressLint({"MissingInflatedId", "LocalSuppress"}) VideoView videoView = findViewById(R.id.videobg);
 
         // Set video URI (stored in res/raw folder)
-        Uri videoUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.nnnnnnn);
+        Uri videoUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.ooooo);
         videoView.setVideoURI(videoUri);
 
         // Start video and loop it
