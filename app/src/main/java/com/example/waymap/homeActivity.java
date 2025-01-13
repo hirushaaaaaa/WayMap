@@ -40,7 +40,7 @@ public class homeActivity extends AppCompatActivity {
         ImageView scenicStopsImage = findViewById(R.id.scenicimage);
         TextView scenicStopsText = findViewById(R.id.scenictext);
         ImageView cameraImage = findViewById(R.id.camerabutton);
-        ImageView searchImage = findViewById(R.id.searchbutton);
+
         ImageView gmapButton = findViewById(R.id.gmapbutton);
         ImageView routeImage = findViewById(R.id.routeimage);
         TextView routeText = findViewById(R.id.routetext);
@@ -59,7 +59,7 @@ public class homeActivity extends AppCompatActivity {
         scenicStopsText.setOnClickListener(v -> navigateToActivity(ScenicstopsActivity.class));
 
         profileImage.setOnClickListener(v -> navigateToActivity(profileActivity.class));
-        searchImage.setOnClickListener(v -> navigateToActivity(SearchActivity.class));
+
 
         cameraImage.setOnClickListener(this::openCamera);
         gmapButton.setOnClickListener(this::openGoogleMaps);

@@ -16,14 +16,14 @@ public class moreActivity extends AppCompatActivity {
         setContentView(R.layout.activity_more);
 
         // Initialize views
-        ImageView fuelImageButton = findViewById(R.id.fimagebutton);
+        //ImageView fuelImageButton = findViewById(R.id.fimagebutton);
         TextView fuelText = findViewById(R.id.ftext);
         TextView backbutton = findViewById(R.id.backk);
-        ImageView foodimageButton = findViewById(R.id.foodimage);
+        //ImageView foodimageButton = findViewById(R.id.foodimage);
         TextView foodText = findViewById(R.id.foodtext);
-        ImageView adventureimageButton = findViewById(R.id.adventureimage);
+        //ImageView adventureimageButton = findViewById(R.id.adventureimage);
         TextView adventureText = findViewById(R.id.adventuretext);
-        @SuppressLint({"MissingInflatedId", "LocalSuppress"}) ImageView transportImage =findViewById(R.id.transportimage);
+        // @SuppressLint({"MissingInflatedId", "LocalSuppress"}) ImageView transportImage =findViewById(R.id.transportimage);
         @SuppressLint({"MissingInflatedId", "LocalSuppress"}) TextView transportText=findViewById(R.id.transporttext);
         // Set OnClickListener for the back button
         backbutton.setOnClickListener(v -> {
@@ -32,10 +32,10 @@ public class moreActivity extends AppCompatActivity {
         });
 
         // Set OnClickListener for the fuel image
-        fuelImageButton.setOnClickListener(v -> {
-            Intent intent = new Intent(moreActivity.this, FuelManagementActivity.class);
-            startActivity(intent);
-        });
+        //fuelImageButton.setOnClickListener(v -> {
+        //   Intent intent = new Intent(moreActivity.this, FuelManagementActivity.class);
+        //   startActivity(intent);
+        //});
 
         // Set OnClickListener for the fuel text
         fuelText.setOnClickListener(v -> {
@@ -44,30 +44,30 @@ public class moreActivity extends AppCompatActivity {
         });
 
         // Set OnClickListener for the local food image
-        foodimageButton.setOnClickListener(v -> {
-            Intent intent = new Intent(moreActivity.this, LocaldishesActivity.class);
-            startActivity(intent);
-        });
+        //foodimageButton.setOnClickListener(v -> {
+        //   Intent intent = new Intent(moreActivity.this, LocaldishesActivity.class);
+        //   startActivity(intent);
+        //});
 
         // Set OnClickListener for the local food text
         foodText.setOnClickListener(v -> {
             Intent intent = new Intent(moreActivity.this, LocaldishesActivity.class);
             startActivity(intent);
         });
-        transportImage.setOnClickListener(v -> {
-            Intent intent = new Intent(moreActivity.this, TransportActivity.class);
-            startActivity(intent);
-        });
+        //  transportImage.setOnClickListener(v -> {
+        //    Intent intent = new Intent(moreActivity.this, TransportActivity.class);
+        //    startActivity(intent);
+        //  });
 
         // Set OnClickListener for the fuel text
         transportText.setOnClickListener(v -> {
             Intent intent = new Intent(moreActivity.this, TransportActivity.class);
             startActivity(intent);
         });
-        adventureimageButton.setOnClickListener(v -> {
-            Intent intent = new Intent(moreActivity.this, AdventureActivity.class);
-            startActivity(intent);
-        });
+        // adventureimageButton.setOnClickListener(v -> {
+        //    Intent intent = new Intent(moreActivity.this, AdventureActivity.class);
+        //   startActivity(intent);
+        //});
 
         // Set OnClickListener for the local food text
         adventureText.setOnClickListener(v -> {
