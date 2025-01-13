@@ -88,6 +88,8 @@
         <activity android:name=".ceylonTaxiActivity" android:exported="true" />
         <activity android:name=".TaxiActivity" android:exported="true" />
         <activity android:name=".UberActivity" android:exported="true" />
+        <activity android:name=".AdventureActivity" android:exported="true" />
+        <activity android:name=".ExploreActivity" android:exported="true" />
 
     </application>
 

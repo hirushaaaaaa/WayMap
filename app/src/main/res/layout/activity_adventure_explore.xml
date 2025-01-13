@@ -1,0 +1,150 @@
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <!-- Surfing Card -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/linearLayout9"
+            android:layout_width="400dp"
+            android:layout_height="315dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/surfing"
+            android:elevation="4dp">
+
+
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="231dp"
+                android:layout_marginBottom="8dp"
+                android:background="#50FFFFFF"
+                android:fontFamily="sans-serif-medium"
+                android:text="Surfing"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/surfingbutton"
+                app:layout_constraintEnd_toEndOf="@+id/surfingbutton"
+                app:layout_constraintStart_toStartOf="@+id/surfingbutton"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/surfingbutton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="133dp"
+                android:layout_marginTop="263dp"
+                android:layout_marginEnd="132dp"
+                android:layout_marginBottom="4dp"
+                android:backgroundTint="#1A1A1A"
+                android:text="Read more →"
+                android:textColor="#FFFFFF"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- Diving Card -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/linearLayout12"
+            android:layout_width="400dp"
+            android:layout_height="315dp"
+            android:background="@drawable/underwater_diving_adventure"
+            android:elevation="4dp">
+
+
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="174dp"
+                android:layout_height="26dp"
+                android:layout_marginStart="122dp"
+                android:layout_marginTop="236dp"
+                android:layout_marginEnd="122dp"
+                android:layout_marginBottom="55dp"
+                android:background="#50FFFFFF"
+                android:fontFamily="sans-serif-medium"
+                android:text="Diving &amp; Snorkeling"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/divingbutton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="133dp"
+                android:layout_marginTop="260dp"
+                android:layout_marginEnd="132dp"
+                android:layout_marginBottom="7dp"
+                android:backgroundTint="#1A1A1A"
+                android:text="Read more →"
+                android:textColor="#FFFFFF"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/linearLayout13"
+            android:layout_width="400dp"
+            android:layout_height="315dp"
+            android:background="@drawable/navatek___whale_watch_afternoon_cruise___hawaii_discount"
+            android:elevation="4dp">
+
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="122dp"
+                android:layout_marginTop="236dp"
+                android:layout_marginEnd="122dp"
+                android:layout_marginBottom="55dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="dolphin &amp; Whale watching"
+                android:background="#50FFFFFF"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/whalebutton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="133dp"
+                android:layout_marginTop="260dp"
+                android:layout_marginEnd="132dp"
+                android:layout_marginBottom="7dp"
+                android:backgroundTint="#1A1A1A"
+                android:text="Read more →"
+                android:textColor="#FFFFFF"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+</ScrollView>

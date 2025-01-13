@@ -21,6 +21,8 @@ public class moreActivity extends AppCompatActivity {
         TextView backbutton = findViewById(R.id.backk);
         ImageView foodimageButton = findViewById(R.id.foodimage);
         TextView foodText = findViewById(R.id.foodtext);
+        ImageView adventureimageButton = findViewById(R.id.adventureimage);
+        TextView adventureText = findViewById(R.id.adventuretext);
         @SuppressLint({"MissingInflatedId", "LocalSuppress"}) ImageView transportImage =findViewById(R.id.transportimage);
         @SuppressLint({"MissingInflatedId", "LocalSuppress"}) TextView transportText=findViewById(R.id.transporttext);
         // Set OnClickListener for the back button
@@ -60,6 +62,16 @@ public class moreActivity extends AppCompatActivity {
         // Set OnClickListener for the fuel text
         transportText.setOnClickListener(v -> {
             Intent intent = new Intent(moreActivity.this, TransportActivity.class);
+            startActivity(intent);
+        });
+        adventureimageButton.setOnClickListener(v -> {
+            Intent intent = new Intent(moreActivity.this, AdventureActivity.class);
+            startActivity(intent);
+        });
+
+        // Set OnClickListener for the local food text
+        adventureText.setOnClickListener(v -> {
+            Intent intent = new Intent(moreActivity.this, AdventureActivity.class);
             startActivity(intent);
         });
 

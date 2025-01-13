@@ -144,6 +144,7 @@
             tools:ignore="HardcodedText" />
     </LinearLayout>
 
+
     <!-- Layout for More Button -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/linearLayout4"
@@ -151,9 +152,9 @@
         android:layout_height="64dp"
         android:layout_marginStart="1dp"
         android:layout_marginEnd="1dp"
-        android:layout_marginBottom="60dp"
+        android:layout_marginBottom="667dp"
         android:background="@color/_00254d"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout33"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -193,5 +194,42 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout45"
+        android:layout_width="165dp"
+        android:layout_height="92dp"
+        android:layout_marginStart="38dp"
+        android:layout_marginTop="557dp"
+        android:layout_marginEnd="208dp"
+        android:layout_marginBottom="82dp"
+        android:background="@drawable/homecorner"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints">
+
+        <ImageView
+            android:id="@+id/adventureimage"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/_090images__1_"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/adventuretext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Adventure &amp; Activity"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            tools:ignore="HardcodedText" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
