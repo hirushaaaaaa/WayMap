@@ -1,5 +1,6 @@
 package com.example.waymap;
 
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -16,12 +17,21 @@ public class SafariActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_safari);
 
-        // Yala National Park Button
+        // Wilpattu National Park Button
         TextView safariLocButton = findViewById(R.id.wilpattutext);
         safariLocButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openLocation("geo:0,0?q=Yala+National+Park+Sri+Lanka");
+                try {
+                    // Open Google Maps with Wilpattu National Park location
+                    Uri locationUri = Uri.parse("geo:0,0?q=Wilpattu+National+Park+Sri+Lanka");
+                    Intent mapIntent = new Intent(Intent.ACTION_VIEW, locationUri);
+                    mapIntent.setPackage("com.google.android.apps.maps"); // Ensure it opens in Google Maps
+                    startActivity(mapIntent);
+                } catch (ActivityNotFoundException e) {
+                    // Google Maps is not installed
+                    Toast.makeText(SafariActivity.this, "Error: Google Maps is not installed on your device.", Toast.LENGTH_LONG).show();
+                }
             }
         });
 
@@ -30,24 +40,17 @@ public class SafariActivity extends AppCompatActivity {
         sinhaLocButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openLocation("geo:0,0?q=Sinharaja+Rainforest+Sri+Lanka");
+                try {
+                    // Open Google Maps with Sinharaja Rainforest location
+                    Uri locationUri = Uri.parse("geo:0,0?q=Sinharaja+Rainforest+Sri+Lanka");
+                    Intent mapIntent = new Intent(Intent.ACTION_VIEW, locationUri);
+                    mapIntent.setPackage("com.google.android.apps.maps"); // Ensure it opens in Google Maps
+                    startActivity(mapIntent);
+                } catch (ActivityNotFoundException e) {
+                    // Google Maps is not installed
+                    Toast.makeText(SafariActivity.this, "Error: Google Maps is not installed on your device.", Toast.LENGTH_LONG).show();
+                }
             }
         });
-    }
-
-    // Method to open location in Google Maps
-    private void openLocation(String geoUri) {
-        try {
-            Uri locationUri = Uri.parse(geoUri);
-            Intent mapIntent = new Intent(Intent.ACTION_VIEW, locationUri);
-            mapIntent.setPackage("com.google.android.apps.maps");
-            if (mapIntent.resolveActivity(getPackageManager()) != null) {
-                startActivity(mapIntent);
-            } else {
-                Toast.makeText(this, "Google Maps is not installed.", Toast.LENGTH_SHORT).show();
-            }
-        } catch (Exception e) {
-            Toast.makeText(this, "Failed to open location.", Toast.LENGTH_SHORT).show();
-        }
     }
 }
