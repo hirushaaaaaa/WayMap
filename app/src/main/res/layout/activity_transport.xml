@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/_34">
+    android:background="@drawable/z2">
 
     <ImageView
         android:id="@+id/imageView12"
@@ -12,12 +12,11 @@
         android:layout_height="210dp"
         android:layout_marginStart="154dp"
         android:layout_marginTop="29dp"
-        android:layout_marginBottom="201dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView11"
-        app:srcCompat="@drawable/bangkok_tuktuk_auto_vector_image__tuktuk__street__bangkok_png_transparent_image_and_clipart_for_free_download_removebg_preview" />
+        app:srcCompat="@drawable/_25112c8_6fa8_4a07_8055_48385e08ae1e_removebg_preview" />
 
     <TextView
         android:id="@+id/textView11"
