@@ -160,6 +160,8 @@ public class RouteplannerActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 saveTripDetails();
+                // Hide the ScrollView after confirming the trip
+                findViewById(R.id.scroll_view).setVisibility(View.GONE);
             }
         });
     }
@@ -250,41 +252,39 @@ public class RouteplannerActivity extends AppCompatActivity {
         }
     }
 
-
     private boolean validateInputs() {
         if (destinationInput.getText().toString().trim().isEmpty()) {
-            Toast.makeText(this, "Please enter a destination", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Destination is required", Toast.LENGTH_SHORT).show();
             return false;
         }
         if (dateText.getText().toString().trim().isEmpty()) {
-            Toast.makeText(this, "Please select a date", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Date is required", Toast.LENGTH_SHORT).show();
             return false;
         }
-        if (adultsInput.getText().toString().trim().isEmpty() ||
-                childrenInput.getText().toString().trim().isEmpty()) {
-            Toast.makeText(this, "Please enter number of travelers", Toast.LENGTH_SHORT).show();
+        if (adultsInput.getText().toString().trim().isEmpty() || Integer.parseInt(adultsInput.getText().toString()) <= 0) {
+            Toast.makeText(this, "Number of adults is required and must be greater than 0", Toast.LENGTH_SHORT).show();
             return false;
         }
         return true;
     }
 
     private void locateDestination(String destination) {
-        Geocoder geocoder = new Geocoder(this);
-        try {
-            List<Address> addresses = geocoder.getFromLocationName(destination, 1);
-            if (addresses != null && !addresses.isEmpty()) {
-                Address address = addresses.get(0);
-                LatLng location = new LatLng(address.getLatitude(), address.getLongitude());
-
-                mMap.clear();
-                mMap.addMarker(new MarkerOptions().position(location).title("Destination"));
-                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(location, 12));
-            } else {
-                Toast.makeText(this, "Destination not found", Toast.LENGTH_SHORT).show();
+        if (!destination.isEmpty()) {
+            Geocoder geocoder = new Geocoder(this, Locale.getDefault());
+            try {
+                List<Address> addressList = geocoder.getFromLocationName(destination, 1);
+                if (addressList != null && !addressList.isEmpty()) {
+                    Address address = addressList.get(0);
+                    LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
+                    mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+                    mMap.addMarker(new MarkerOptions().position(latLng).title(destination));
+                } else {
+                    Toast.makeText(this, "No location found for: " + destination, Toast.LENGTH_SHORT).show();
+                }
+            } catch (Exception e) {
+                Log.e(TAG, "Error locating destination: " + e.getMessage());
+                Toast.makeText(this, "Error locating destination", Toast.LENGTH_SHORT).show();
             }
-        } catch (Exception e) {
-            Log.e(TAG, "Error locating destination: " + e.getMessage());
-            Toast.makeText(this, "Error locating destination", Toast.LENGTH_SHORT).show();
         }
     }
 }
