@@ -1,90 +1,290 @@
 package com.example.waymap;
 
-import android.app.AlertDialog;
+import android.app.DatePickerDialog;
+import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
-import android.text.InputType;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-
+import android.util.Log;
+import android.view.View;
+import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentContainerView;
+
+import com.google.android.gms.maps.*;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+
+import java.util.*;
+import java.util.ArrayList;
 
 public class RouteplannerActivity extends AppCompatActivity {
-
-    private LinearLayout destinationContainer;
+    private static final String TAG = "RouteplannerActivity";
+    private GoogleMap mMap;
+    private EditText destinationInput;
+    private TextView dateText;
+    private Spinner vehicleTypeSpinner;
+    private EditText adultsInput;
+    private EditText childrenInput;
+    private CheckBox breakfastCheck, lunchCheck, dinnerCheck;
+    private EditText specialNotesInput;
+    private TextView distanceText, estimatedTimeText, estimatedCostText;
+    private Button confirmTripButton;
+    private LinearLayout savedTripsContainer;
+    private TextView savedTripsTitle;
+    private List<String> tripDetailsList = new ArrayList<>();
+    private boolean isFormVisible = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_routeplanner);
+        try {
+            setContentView(R.layout.activity_routeplanner);
 
-        destinationContainer = findViewById(R.id.destinationContainer);
+            // Initialize views
+            initializeViews();
 
-        // Add initial "Add Destination" button
-        Button addDestinationButton = findViewById(R.id.addDestinationButton);
-        addDestinationButton.setOnClickListener(v -> showAddDestinationDialog());
+            // Setup map
+            SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                    .findFragmentById(R.id.map);
+            if (mapFragment != null) {
+                mapFragment.getMapAsync(new OnMapReadyCallback() {
+                    @Override
+                    public void onMapReady(GoogleMap googleMap) {
+                        mMap = googleMap;
+                        try {
+                            if (checkSelfPermission(android.Manifest.permission.ACCESS_FINE_LOCATION)
+                                    == PackageManager.PERMISSION_GRANTED) {
+                                mMap.setMyLocationEnabled(true);
+                            }
+                            mMap.getUiSettings().setZoomControlsEnabled(true);
+                        } catch (SecurityException e) {
+                            Log.e(TAG, "Error setting up map: " + e.getMessage());
+                        }
+                    }
+                });
+            }
 
+            setupAddTripButton();
+            setupConfirmTripButton();
+
+            // Initialize saved trips container
+            savedTripsContainer.setVisibility(View.VISIBLE);
+            savedTripsTitle.setVisibility(View.VISIBLE);
+
+        } catch (Exception e) {
+            Log.e(TAG, "Error in onCreate: " + e.getMessage());
+            e.printStackTrace();
+            Toast.makeText(this, "Error initializing route planner", Toast.LENGTH_LONG).show();
+        }
     }
 
-    private void showAddDestinationDialog() {
-        // Create a dialog to input destination details
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Add Destination");
+    private void initializeViews() {
+        try {
+            destinationInput = findViewById(R.id.destination_input);
+            dateText = findViewById(R.id.date_text);
+            vehicleTypeSpinner = findViewById(R.id.vehicle_type_spinner);
+            adultsInput = findViewById(R.id.adults_input);
+            childrenInput = findViewById(R.id.children_input);
+            breakfastCheck = findViewById(R.id.breakfast_check);
+            lunchCheck = findViewById(R.id.lunch_check);
+            dinnerCheck = findViewById(R.id.dinner_check);
+            specialNotesInput = findViewById(R.id.special_notes_input);
+            distanceText = findViewById(R.id.distance_text);
+            estimatedTimeText = findViewById(R.id.estimated_time_text);
+            estimatedCostText = findViewById(R.id.estimated_cost_text);
+            confirmTripButton = findViewById(R.id.confirm_trip_button);
+            savedTripsContainer = findViewById(R.id.saved_trips_container);
+            savedTripsTitle = findViewById(R.id.saved_trips_title);
 
-        // Create a layout for input fields
-        LinearLayout layout = new LinearLayout(this);
-        layout.setOrientation(LinearLayout.VERTICAL);
+            // Setup spinner
+            ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                    R.array.vehicle_types, android.R.layout.simple_spinner_item);
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            vehicleTypeSpinner.setAdapter(adapter);
 
-        // Destination name input
-        EditText destinationNameInput = new EditText(this);
-        destinationNameInput.setHint("Destination Name");
-        destinationNameInput.setInputType(InputType.TYPE_CLASS_TEXT);
-        layout.addView(destinationNameInput);
+            // Setup destination input listener
+            destinationInput.setOnFocusChangeListener((v, hasFocus) -> {
+                if (!hasFocus) {
+                    locateDestination(destinationInput.getText().toString());
+                }
+            });
 
-        // Destination details input
-        EditText destinationDetailsInput = new EditText(this);
-        destinationDetailsInput.setHint("Destination Details");
-        destinationDetailsInput.setInputType(InputType.TYPE_CLASS_TEXT);
-        layout.addView(destinationDetailsInput);
+            // Date Picker implementation
+            dateText.setOnClickListener(v -> {
+                Calendar calendar = Calendar.getInstance();
+                DatePickerDialog datePickerDialog = new DatePickerDialog(
+                        RouteplannerActivity.this,
+                        (view, year, month, dayOfMonth) -> {
+                            String selectedDate = dayOfMonth + "/" + (month + 1) + "/" + year;
+                            dateText.setText(selectedDate);
+                        },
+                        calendar.get(Calendar.YEAR),
+                        calendar.get(Calendar.MONTH),
+                        calendar.get(Calendar.DAY_OF_MONTH)
+                );
+                datePickerDialog.show();
+            });
 
-        builder.setView(layout);
+        } catch (Exception e) {
+            Log.e(TAG, "Error initializing views: " + e.getMessage());
+            throw e;
+        }
+    }
 
-        // Add "OK" and "Cancel" buttons
-        builder.setPositiveButton("Add", (dialog, which) -> {
-            String name = destinationNameInput.getText().toString();
-            String details = destinationDetailsInput.getText().toString();
-            if (!name.isEmpty() && !details.isEmpty()) {
-                addDestinationToList(name, details);
+    private void setupAddTripButton() {
+        Button addTripButton = findViewById(R.id.add_trip_button);
+        final View tripFormLayout = findViewById(R.id.trip_form_layout);
+        final FragmentContainerView mapView = findViewById(R.id.map);
+
+        if (addTripButton != null) {
+            addTripButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (!isFormVisible) {
+                        tripFormLayout.setVisibility(View.VISIBLE);
+                        mapView.setVisibility(View.VISIBLE);
+                        isFormVisible = true;
+                        resetForm();
+                    } else {
+                        tripFormLayout.setVisibility(View.GONE);
+                        isFormVisible = false;
+                    }
+                }
+            });
+        }
+    }
+
+    private void setupConfirmTripButton() {
+        confirmTripButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                saveTripDetails();
             }
         });
-
-        builder.setNegativeButton("Cancel", (dialog, which) -> dialog.cancel());
-
-        // Show the dialog
-        builder.show();
     }
 
-    private void addDestinationToList(String name, String details) {
-        // Create a new layout to display the destination
-        LinearLayout destinationLayout = new LinearLayout(this);
-        destinationLayout.setOrientation(LinearLayout.VERTICAL);
-        destinationLayout.setPadding(16, 16, 16, 16);
+    private void resetForm() {
+        destinationInput.setText("");
+        dateText.setText("");
+        adultsInput.setText("");
+        childrenInput.setText("");
+        breakfastCheck.setChecked(false);
+        lunchCheck.setChecked(false);
+        dinnerCheck.setChecked(false);
+        specialNotesInput.setText("");
+        vehicleTypeSpinner.setSelection(0);
+        distanceText.setText("Distance: Not calculated");
+        estimatedTimeText.setText("Estimated Time: Not calculated");
+        estimatedCostText.setText("Estimated Cost: Not calculated");
+    }
 
-        // Create TextView for the destination name
-        TextView destinationName = new TextView(this);
-        destinationName.setText("Name: " + name);
-        destinationName.setTextSize(16);
-        destinationName.setPadding(0, 0, 0, 8);
-        destinationLayout.addView(destinationName);
+    private void saveTripDetails() {
+        try {
+            // Validate input fields
+            if (!validateInputs()) {
+                return;
+            }
 
-        // Create TextView for the destination details
-        TextView destinationDetails = new TextView(this);
-        destinationDetails.setText("Details: " + details);
-        destinationDetails.setTextSize(14);
-        destinationLayout.addView(destinationDetails);
+            String destination = destinationInput.getText().toString();
+            String date = dateText.getText().toString();
+            String vehicleType = vehicleTypeSpinner.getSelectedItem().toString();
+            int adults = Integer.parseInt(adultsInput.getText().toString());
+            int children = Integer.parseInt(childrenInput.getText().toString());
+            boolean breakfast = breakfastCheck.isChecked();
+            boolean lunch = lunchCheck.isChecked();
+            boolean dinner = dinnerCheck.isChecked();
+            String notes = specialNotesInput.getText().toString();
 
-        // Add the new destination layout to the container
-        destinationContainer.addView(destinationLayout);
+            String tripDetails = String.format("Trip #%d\n", tripDetailsList.size() + 1) +
+                    "Date: " + date + "\nDestination: " + destination +
+                    "\nVehicle: " + vehicleType + "\nAdults: " + adults +
+                    ", Children: " + children + "\nMeals: " +
+                    (breakfast ? "Breakfast " : "") +
+                    (lunch ? "Lunch " : "") +
+                    (dinner ? "Dinner " : "") +
+                    "\nNotes: " + notes;
+
+            tripDetailsList.add(tripDetails);
+
+            // Create a card-like view for the trip
+            LinearLayout tripCard = new LinearLayout(this);
+            tripCard.setOrientation(LinearLayout.VERTICAL);
+            tripCard.setPadding(16, 16, 16, 16);
+            tripCard.setBackgroundResource(android.R.drawable.dialog_holo_light_frame);
+            LinearLayout.LayoutParams cardParams = new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.MATCH_PARENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT
+            );
+            cardParams.setMargins(0, 0, 0, 16);
+            tripCard.setLayoutParams(cardParams);
+
+            // Add trip details to card
+            TextView tripView = new TextView(this);
+            tripView.setText(tripDetails);
+            tripView.setPadding(8, 8, 8, 8);
+            tripCard.addView(tripView);
+
+            // Add delete button
+            Button deleteButton = new Button(this);
+            deleteButton.setText("Delete Trip");
+            deleteButton.setOnClickListener(v -> {
+                savedTripsContainer.removeView(tripCard);
+                tripDetailsList.remove(tripDetails);
+            });
+            tripCard.addView(deleteButton);
+
+            // Add the card to the container
+            savedTripsContainer.addView(tripCard, 0); // Add at the top
+
+            // Reset and hide the form
+            resetForm();
+            findViewById(R.id.trip_form_layout).setVisibility(View.GONE);
+            findViewById(R.id.scroll_view).setVisibility(View.GONE); // Hide the ScrollView inside form
+            isFormVisible = false;
+
+            Toast.makeText(this, "Trip saved!", Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+            Log.e(TAG, "Error saving trip details: " + e.getMessage());
+            Toast.makeText(this, "Error saving trip details", Toast.LENGTH_LONG).show();
+        }
+    }
+
+
+    private boolean validateInputs() {
+        if (destinationInput.getText().toString().trim().isEmpty()) {
+            Toast.makeText(this, "Please enter a destination", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (dateText.getText().toString().trim().isEmpty()) {
+            Toast.makeText(this, "Please select a date", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (adultsInput.getText().toString().trim().isEmpty() ||
+                childrenInput.getText().toString().trim().isEmpty()) {
+            Toast.makeText(this, "Please enter number of travelers", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
+    }
+
+    private void locateDestination(String destination) {
+        Geocoder geocoder = new Geocoder(this);
+        try {
+            List<Address> addresses = geocoder.getFromLocationName(destination, 1);
+            if (addresses != null && !addresses.isEmpty()) {
+                Address address = addresses.get(0);
+                LatLng location = new LatLng(address.getLatitude(), address.getLongitude());
+
+                mMap.clear();
+                mMap.addMarker(new MarkerOptions().position(location).title("Destination"));
+                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(location, 12));
+            } else {
+                Toast.makeText(this, "Destination not found", Toast.LENGTH_SHORT).show();
+            }
+        } catch (Exception e) {
+            Log.e(TAG, "Error locating destination: " + e.getMessage());
+            Toast.makeText(this, "Error locating destination", Toast.LENGTH_SHORT).show();
+        }
     }
 }

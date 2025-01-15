@@ -1,3 +1,8 @@
+val gms: Any
+    get() {
+        TODO()
+    }
+
 plugins {
     alias(libs.plugins.android.application)
 }
@@ -55,7 +60,11 @@ dependencies {
     implementation(libs.constraintlayout)
     implementation(libs.gridlayout)
     implementation(libs.play.services.ads)
-
+    implementation("com.google.android.gms:play-services-maps:18.2.0")
+    implementation("com.google.android.gms:play-services-location:21.0.1")
+    implementation("androidx.fragment:fragment-ktx:1.6.2")
+    implementation ("com.android.volley:volley:1.2.1")
+    implementation ("androidx.recyclerview:recyclerview:1.3.2")
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
