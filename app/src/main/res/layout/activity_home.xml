@@ -56,6 +56,7 @@
             android:src="@drawable/q"
             tools:ignore="MissingConstraints" />
 
+
     </LinearLayout>
     <!-- Add other LinearLayouts similarly -->
 
@@ -267,12 +268,13 @@
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-
+                android:id="@+id/liveImage"
                 android:scaleType="centerInside"
                 android:src="@drawable/_2147da28ae48c0a5e140f95_icon"
                 tools:ignore="ContentDescription,ImageContrastCheck" />
 
             <TextView
+                android:id="@+id/liveText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"

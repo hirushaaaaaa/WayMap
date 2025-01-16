@@ -45,6 +45,7 @@ public class homeActivity extends AppCompatActivity {
         ImageView routeImage = findViewById(R.id.routeimage);
         TextView routeText = findViewById(R.id.routetext);
 
+
         @SuppressLint({"MissingInflatedId", "LocalSuppress"}) Button mButton = findViewById(R.id.mButton);
         mButton.setOnClickListener(view -> {
             Intent intent = new Intent(homeActivity.this, moreActivity.class);

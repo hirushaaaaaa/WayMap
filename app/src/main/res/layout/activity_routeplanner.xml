@@ -1,25 +1,205 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
+    android:orientation="vertical"
     android:padding="16dp">
 
-    <LinearLayout
-        android:id="@+id/destinationContainer"
+    <!-- Button to Add a Trip -->
+    <Button
+        android:id="@+id/add_trip_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:text="Add Trip"
+        tools:ignore="HardcodedText" />
 
-        <!-- Initial Add Button -->
-        <Button
-            android:id="@+id/addDestinationButton"
-            android:layout_width="wrap_content"
+    <!-- ScrollView for the Trip Form -->
+    <ScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="SpeakableTextPresentCheck">
+
+        <LinearLayout
+            android:id="@+id/trip_form_layout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:backgroundTint="@color/_00254d"
-            android:text="Add Destination"
-            android:textColor="@color/white" />
+            android:orientation="vertical"
+            android:visibility="gone">
 
+            <!-- Google Map inside the form -->
+            <androidx.fragment.app.FragmentContainerView
+                android:id="@+id/map"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
+                android:layout_width="match_parent"
+                android:layout_height="200dp" />
+
+            <!-- Date Picker -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/date" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/date_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@android:drawable/editbox_background"
+                android:clickable="true"
+                android:focusable="false"
+                android:hint="Select Date"
+                android:inputType="none"
+                tools:ignore="HardcodedText,KeyboardInaccessibleWidget" />
+
+            <!-- Destination Input -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/destination" />
+
+            <EditText
+                android:id="@+id/destination_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter destination" />
+
+            <!-- Vehicle Type -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/vehicle_type" />
+
+            <Spinner
+                android:id="@+id/vehicle_type_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <!-- Number of Adults and Children -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:importantForAutofill="no"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/adults_input"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="@string/number_of_adults"
+                    android:inputType="number"
+                    tools:ignore="Autofill" />
+
+                <EditText
+                    android:id="@+id/children_input"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="Number of Children"
+                    android:inputType="number"
+                    tools:ignore="Autofill,HardcodedText" />
+            </LinearLayout>
+
+            <!-- Meal Preferences -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/meals" />
+
+            <CheckBox
+                android:id="@+id/breakfast_check"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Breakfast"
+                tools:ignore="HardcodedText" />
+
+            <CheckBox
+                android:id="@+id/lunch_check"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lunch" />
+
+            <CheckBox
+                android:id="@+id/dinner_check"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dinner" />
+
+            <!-- Special Notes -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/special_notes" />
+
+            <EditText
+                android:id="@+id/special_notes_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter any special notes"
+                android:inputType="textMultiLine"
+                android:lines="3" />
+
+            <!-- Display Calculations -->
+            <TextView
+                android:id="@+id/distance_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Distance: Not calculated" />
+
+            <TextView
+                android:id="@+id/estimated_time_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Estimated Time: Not calculated" />
+
+            <TextView
+                android:id="@+id/estimated_cost_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Estimated Cost: Not calculated" />
+
+            <!-- Confirm Button -->
+            <Button
+                android:id="@+id/confirm_trip_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Confirm Trip"
+                tools:ignore="HardcodedText" />
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Container to display saved trips -->
+    <LinearLayout
+        android:id="@+id/saved_trips_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="8dp"
+        android:visibility="gone"
+        android:layout_marginTop="16dp">
     </LinearLayout>
-</ScrollView>
+
+    <!-- Title for saved trips -->
+    <TextView
+        android:id="@+id/saved_trips_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Saved Trips"
+        android:textSize="18sp"
+        android:padding="8dp"
+        android:layout_marginTop="16dp" />
+
+</LinearLayout>

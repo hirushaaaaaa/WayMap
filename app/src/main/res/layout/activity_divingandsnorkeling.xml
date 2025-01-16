@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".DivingActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/x5"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Header Section -->
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/_00254d"
+            android:gravity="center"
+            android:text="Diving &amp; Snorkeling"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <!-- Information Section -->
+
+        <TextView
+            android:id="@+id/info_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Sri Lanka is a paradise for diving and snorkeling enthusiasts, offering crystal-clear waters, vibrant coral reefs, and diverse marine life. With top spots like Unawatuna, Hikkaduwa, Trincomalee, and Mirissa, you can explore colorful coral gardens, encounter sea turtles, dolphins, and even whale sharks. Whether you're a beginner or an experienced diver, Sri Lanka's coastal regions provide unforgettable underwater adventures. The best time to visit is from December to April on the west and south coasts, and from May to October on the east coast."
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <ViewFlipper
+                android:id="@+id/viewFlipper"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginTop="16dp"
+                android:autoStart="true"
+                android:flipInterval="2000"
+                android:inAnimation="@android:anim/slide_in_left"
+                android:outAnimation="@android:anim/slide_out_right">
+
+                <!-- First Image -->
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/div1" />
+
+                <!-- Second Image -->
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/div2" />
+
+                <!-- Third Image -->
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/div4" />
+
+            </ViewFlipper>
+            <!-- Description Section -->
+            <TextView
+                android:id="@+id/unawatunatext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@color/white"
+                android:gravity="center"
+                android:text="Unawatuna"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/unawatuna_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="#50FFFFFF"
+                android:text="Unawatuna, located on Sri Lanka's southern coast, is a popular destination for both diving and snorkeling. Known for its clear waters, vibrant coral reefs, and abundant marine life, it’s ideal for beginners and intermediate divers. Dive sites like Mawarala Reef and Jungle Beach offer stunning underwater landscapes, including colorful fish and shipwrecks. Unawatuna’s calm, shallow waters also make it a great spot for snorkeling, with easy access to the diverse marine ecosystem just off the shore."
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <ViewFlipper
+                android:id="@+id/viewFlipper1"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginTop="16dp"
+                android:autoStart="true"
+                android:flipInterval="2000"
+                android:inAnimation="@android:anim/slide_in_left"
+                android:outAnimation="@android:anim/slide_out_right">
+
+                <!-- First Image -->
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/div5" />
+
+                <!-- Second Image -->
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/div6" />
+
+                <!-- Third Image -->
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/div7" />
+
+            </ViewFlipper>
+            <!-- Description Section -->
+            <TextView
+                android:id="@+id/kalpitiyatext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@color/white"
+                android:gravity="center"
+                android:text="Kalpitiya"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/kalpitiya_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="#50FFFFFF"
+                android:text="Kalpitiya, situated on Sri Lanka's northwest coast, is a hidden gem for diving enthusiasts. Known for its rich marine biodiversity, it offers a unique underwater experience with opportunities to spot manta rays, dolphins, and vibrant coral reefs. The area's calm waters make it suitable for both snorkeling and diving, though it's better suited for more experienced divers due to its deeper and less explored dive sites. Popular spots like Kudiramalai Point are famous for their crystal-clear waters and diverse marine life. Kalpitiya is also known for its kite surfing, making it a great spot for water sports enthusiasts.tion."
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

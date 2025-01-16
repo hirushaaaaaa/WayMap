@@ -21,5 +21,6 @@ public class AdventureActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
         });
+
     }
 }
