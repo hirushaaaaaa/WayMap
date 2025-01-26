@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
-
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <!-- Required Features and Permissions -->
     <uses-feature
         android:name="android.hardware.camera"
@@ -24,71 +22,145 @@
         <!-- AdMob App ID -->
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-3940256099942544~3347511713" />
-
-        <!-- Resolve android.adservices.AD_SERVICES_CONFIG conflict -->
-        <property
-            android:name="android.adservices.AD_SERVICES_CONFIG"
-            android:resource="@xml/gma_ad_services_config"
-            tools:replace="android:resource" />
-
-        <!-- Launcher Activity -->
+            android:value="ca-app-pub-3940256099942544~3347511713" /> <!-- Launcher Activity -->
         <activity
             android:name=".getstartActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
+        </activity> <!-- Welcome Activity -->
+        <activity
+            android:name=".WelcomeActivity"
+            android:exported="true" /> <!-- Login Activity -->
+        <activity
+            android:name=".LoginActivity"
+            android:exported="true" /> <!-- Home Activity -->
+        <activity
+            android:name=".homeActivity"
+            android:exported="true">
 
-        <!-- Other Activities -->
-        <activity android:name=".WelcomeActivity" android:exported="true" />
-        <activity android:name=".LoginActivity" android:exported="true" />
-        <activity android:name=".homeActivity" android:exported="true">
+            <!-- Optional: Intent filter for map handling -->
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
+
                 <data android:scheme="geo" />
             </intent-filter>
         </activity>
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="YOUR_MAPS_API_KEY" />
-        <activity android:name=".DistanceActivity" android:exported="true" />
-        <activity android:name=".moreActivity" android:exported="true" />
-        <activity android:name=".profileActivity" android:exported="true" />
-        <activity android:name=".ScenicstopsActivity" android:exported="true" />
-        <activity android:name=".AnuradhapuraActivity" android:exported="true" />
-        <activity android:name=".MirissaActivity" android:exported="true" />
-        <activity android:name=".GalleportActivity" android:exported="true" />
-        <activity android:name=".RuwanmeliseyaActivity" android:exported="true" />
-        <activity android:name=".DambullaActivity" android:exported="true" />
-        <activity android:name=".EllaActivity" android:exported="true" />
-        <activity android:name=".sinharajaActivity" android:exported="true" />
-        <activity android:name=".SripadasthanayaActivity" android:exported="true" />
-        <activity android:name=".FuelManagementActivity" android:exported="true" />
-        <activity android:name=".RouteplannerActivity" android:exported="true" />
-        <activity android:name=".SignupActivity" android:exported="true" />
-        <activity android:name=".LocaldishesActivity" android:exported="true" />
-        <activity android:name=".MildActivity" android:exported="true" />
-        <activity android:name=".SpicyActivity" android:exported="true" />
-        <activity android:name=".HotActivity" android:exported="true" />
-        <activity android:name=".ExtraActivity" android:exported="true" />
-        <activity android:name=".TransportActivity" android:exported="true" />
-        <activity android:name=".PickmeActivity" android:exported="true" />
-        <activity android:name=".ceylonTaxiActivity" android:exported="true" />
-        <activity android:name=".TaxiActivity" android:exported="true" />
-        <activity android:name=".UberActivity" android:exported="true" />
-        <activity android:name=".AdventureActivity" android:exported="true" />
-        <activity android:name=".ExploreActivity" android:exported="true" />
-        <activity android:name=".SafariActivity" android:exported="true" />
-        <activity android:name=".CampingActivity" android:exported="true" />
-        <activity android:name=".DivingActivity" android:exported="true" />
-        <activity android:name=".SurfingActivity" android:exported="true" />
-        <activity android:name=".WaterraftingActivity" android:exported="true" />
-        <activity android:name=".CultureActivity" android:exported="true" />
-        <activity android:name=".DolphinwatchingActivity" android:exported="true" />
-    </application>
-</manifest>
+            android:value="YOUR_MAPS_API_KEY" /> <!-- Distance Activity -->
+        <activity
+            android:name=".DistanceActivity"
+            android:exported="true" />
+        <activity
+            android:name=".moreActivity"
+            android:exported="true" /> <!-- More Activities -->
+        <activity
+            android:name=".profileActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ScenicstopsActivity"
+            android:exported="true" />
+        <activity
+            android:name=".AnuradhapuraActivity"
+            android:exported="true" />
+        <activity
+            android:name=".MirissaActivity"
+            android:exported="true" />
+        <activity
+            android:name=".GalleportActivity"
+            android:exported="true" />
+        <activity
+            android:name=".RuwanmeliseyaActivity"
+            android:exported="true" />
+        <activity
+            android:name=".DambullaActivity"
+            android:exported="true" />
+        <activity
+            android:name=".EllaActivity"
+            android:exported="true" />
+        <activity
+            android:name=".sinharajaActivity"
+            android:exported="true" />
+        <activity
+            android:name=".SripadasthanayaActivity"
+            android:exported="true" />
+        <activity
+            android:name=".FuelManagementActivity"
+            android:exported="true" />
+        <activity
+            android:name=".RouteplannerActivity"
+            android:exported="true" />
+        <activity
+            android:name=".SignupActivity"
+            android:exported="true" />
+        <activity
+            android:name=".LocaldishesActivity"
+            android:exported="true" />
+        <activity
+            android:name=".MildActivity"
+            android:exported="true" />
+        <activity
+            android:name=".SpicyActivity"
+            android:exported="true" />
+        <activity
+            android:name=".HotActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ExtraActivity"
+            android:exported="true" />
+        <activity
+            android:name=".TransportActivity"
+            android:exported="true" />
+        <activity
+            android:name=".PickmeActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ceylonTaxiActivity"
+            android:exported="true" />
+        <activity
+            android:name=".TaxiActivity"
+            android:exported="true" />
+        <activity
+            android:name=".UberActivity"
+            android:exported="true" />
+        <activity
+            android:name=".AdventureActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ExploreActivity"
+            android:exported="true" />
+        <activity
+            android:name=".SafariActivity"
+            android:exported="true" />
+        <activity
+            android:name=".CampingActivity"
+            android:exported="true" />
+        <activity
+            android:name=".DivingActivity"
+            android:exported="true" />
+        <activity
+            android:name=".SurfingActivity"
+            android:exported="true" />
+        <activity
+            android:name=".WaterraftingActivity"
+            android:exported="true" />
+        <activity
+            android:name=".CultureActivity"
+            android:exported="true" />
+        <activity
+            android:name=".DolphinwatchingActivity"
+            android:exported="true" />
 
+
+
+
+    </application>
+
+</manifest>

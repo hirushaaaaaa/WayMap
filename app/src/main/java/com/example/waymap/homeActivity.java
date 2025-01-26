@@ -11,6 +11,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.PopupMenu;
+import android.view.MenuItem;
+
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
@@ -105,6 +108,43 @@ public class homeActivity extends AppCompatActivity {
         if (!TextUtils.isEmpty(query)) {
             Toast.makeText(this, "Last searched: " + query, Toast.LENGTH_SHORT).show();
         }
+        ImageView menuButton = findViewById(R.id.menu);
+        menuButton.setOnClickListener(view -> {
+            showPopupMenu(view);
+        });
+
+
+    }
+
+    private void showPopupMenu(View view) {
+        PopupMenu popupMenu = new PopupMenu(this, view);
+        popupMenu.getMenuInflater().inflate(R.menu.menu_main, popupMenu.getMenu());
+
+        // Handle menu item clicks
+        popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @SuppressLint("NonConstantResourceId")
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                if (item.getItemId() == R.id.nav_home) {
+                    navigateToActivity(homeActivity.class);
+                    return true;
+                } else if (item.getItemId() == R.id.nav_settings) {
+                    navigateToActivity(SettingsActivity.class);
+                    return true;
+                } else if (item.getItemId() == R.id.nav_logout) {
+                    Toast.makeText(view.getContext(), "Logged out", Toast.LENGTH_SHORT).show();
+                    // Add logout logic
+                    return true;
+                } else {
+                    return false;
+                }
+
+            }
+
+        });
+
+
+        popupMenu.show();
     }
 
 }
