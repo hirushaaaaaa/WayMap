@@ -1,6 +1,7 @@
 package com.example.waymap;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
@@ -53,6 +54,7 @@ public class LoginActivity extends AppCompatActivity {
 
             // Check for admin credentials first
             if (username.equals("admin") && password.equals("1111")) {
+                saveLoginState(username, true);
                 Toast.makeText(LoginActivity.this, "Admin login successful", Toast.LENGTH_SHORT).show();
                 navigateToHomePage();
                 return;
@@ -61,6 +63,14 @@ public class LoginActivity extends AppCompatActivity {
             // Validate user credentials from Firebase
             validateUser(username, password);
         });
+    }
+
+    private void saveLoginState(String username, boolean isAdmin) {
+        SharedPreferences sharedPreferences = getSharedPreferences("LoginPrefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("username", username);
+        editor.putBoolean("isAdmin", isAdmin); // Save admin status
+        editor.apply();
     }
 
     private void validateUser(String username, String password) {
@@ -72,6 +82,7 @@ public class LoginActivity extends AppCompatActivity {
                         // Get user data
                         String dbPassword = snapshot.child("password").getValue(String.class);
                         if (dbPassword != null && dbPassword.equals(password)) {
+                            saveLoginState(username, false); // Not an admin
                             Toast.makeText(LoginActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
                             navigateToHomePage();
                             return;

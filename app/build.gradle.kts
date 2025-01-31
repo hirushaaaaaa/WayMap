@@ -6,6 +6,7 @@ val gms: Any
 plugins {
     alias(libs.plugins.android.application)
     id ("com.google.gms.google-services")
+    alias(libs.plugins.google.android.libraries.mapsplatform.secrets.gradle.plugin)
 
 }
 
@@ -52,6 +53,8 @@ android {
     }
 }
 
+
+
 dependencies {
 
 
@@ -69,6 +72,8 @@ dependencies {
     implementation ("androidx.recyclerview:recyclerview:1.3.2")
     implementation(libs.firebase.database)
     implementation(platform("com.google.firebase:firebase-bom:33.8.0"))
+    implementation ("com.google.android.gms:play-services-maps:18.1.0")
+
     implementation("com.google.firebase:firebase-analytics")
 
     testImplementation(libs.junit)

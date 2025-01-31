@@ -1,7 +1,9 @@
 package com.example.waymap;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,76 +15,42 @@ public class ScenicstopsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scenicstops);
 
-        // Find the ImageView for Anuradhapura
+        // Find ImageViews
         ImageView imageAnuradhapura = findViewById(R.id.imageanuradhapura);
         ImageView imageSinharaja = findViewById(R.id.imagesinharaja);
         ImageView imageRuwanmeliseya = findViewById(R.id.imageruwanmeliseya);
-        ImageView imagegalleport = findViewById(R.id.imagegalleport);
-        ImageView imageella = findViewById(R.id.imageella);
-        ImageView imagedambulla = findViewById(R.id.imagedambulla);
-        ImageView imagedamirissa = findViewById(R.id.imagedamirissa);
-        ImageView imagesripadasthanaya = findViewById(R.id.imagesripadasthanaya);
+        ImageView imageGalleport = findViewById(R.id.imagegalleport);
+        ImageView imageElla = findViewById(R.id.imageella);
+        ImageView imageDambulla = findViewById(R.id.imagedambulla);
+        ImageView imageMirissa = findViewById(R.id.imagedamirissa);
+        ImageView imageSripada = findViewById(R.id.imagesripadasthanaya);
 
+        // Admin-only ImageView
+        ImageView adminImageView = findViewById(R.id.add);
 
-        // Set a click listener to navigate to AnuradhapuraActivity
-        imageAnuradhapura.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ScenicstopsActivity.this, AnuradhapuraActivity.class);
-                startActivity(intent);
-            }
+        // Get stored login details
+        SharedPreferences sharedPreferences = getSharedPreferences("LoginPrefs", MODE_PRIVATE);
+        boolean isAdmin = sharedPreferences.getBoolean("isAdmin", false); // Retrieve admin status
 
-        });
-        imageSinharaja.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ScenicstopsActivity.this, sinharajaActivity.class);
-                startActivity(intent);
-            }
-            });
-        imagegalleport.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ScenicstopsActivity.this, GalleportActivity.class);
-                startActivity(intent);
-            }
-        });
-        imageella.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ScenicstopsActivity.this, EllaActivity.class);
-                startActivity(intent);
-            }
-        });
-        imageRuwanmeliseya.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ScenicstopsActivity.this, RuwanmeliseyaActivity.class);
-                startActivity(intent);
-            }
-        });
-        imagedamirissa.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ScenicstopsActivity.this, MirissaActivity.class);
-                startActivity(intent);
-            }
-        });
-        imagedambulla.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ScenicstopsActivity.this, DambullaActivity.class);
-                startActivity(intent);
-            }
-        });
-        imagesripadasthanaya.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ScenicstopsActivity.this, SripadasthanayaActivity.class);
-                startActivity(intent);
-            }
-        });
+        // Debug: Check if the admin status is retrieved correctly
+        Log.d("DEBUG", "Admin Status: " + isAdmin);
+
+        if (isAdmin) {
+            Log.d("DEBUG", "Admin ImageView should be VISIBLE.");
+            adminImageView.setVisibility(View.VISIBLE);
+        } else {
+            Log.d("DEBUG", "Admin ImageView should be GONE.");
+            adminImageView.setVisibility(View.GONE);
+        }
+
+        // Set click listeners to navigate to different activities
+        imageAnuradhapura.setOnClickListener(v -> startActivity(new Intent(this, AnuradhapuraActivity.class)));
+        imageSinharaja.setOnClickListener(v -> startActivity(new Intent(this, sinharajaActivity.class)));
+        imageRuwanmeliseya.setOnClickListener(v -> startActivity(new Intent(this, RuwanmeliseyaActivity.class)));
+        imageGalleport.setOnClickListener(v -> startActivity(new Intent(this, GalleportActivity.class)));
+        imageElla.setOnClickListener(v -> startActivity(new Intent(this, EllaActivity.class)));
+        imageDambulla.setOnClickListener(v -> startActivity(new Intent(this, DambullaActivity.class)));
+        imageMirissa.setOnClickListener(v -> startActivity(new Intent(this, MirissaActivity.class)));
+        imageSripada.setOnClickListener(v -> startActivity(new Intent(this, SripadasthanayaActivity.class)));
     }
-
-    }
-
+}

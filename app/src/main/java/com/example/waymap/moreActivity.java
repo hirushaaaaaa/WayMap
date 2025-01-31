@@ -3,7 +3,6 @@ package com.example.waymap;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,6 +22,8 @@ public class moreActivity extends AppCompatActivity {
         TextView foodText = findViewById(R.id.foodtext);
         //ImageView adventureimageButton = findViewById(R.id.adventureimage);
         TextView adventureText = findViewById(R.id.adventuretext);
+        @SuppressLint({"MissingInflatedId", "LocalSuppress"}) TextView offlinemapsText = findViewById(R.id.offlinemap);
+
         // @SuppressLint({"MissingInflatedId", "LocalSuppress"}) ImageView transportImage =findViewById(R.id.transportimage);
         @SuppressLint({"MissingInflatedId", "LocalSuppress"}) TextView transportText=findViewById(R.id.transporttext);
         // Set OnClickListener for the back button
@@ -74,6 +75,11 @@ public class moreActivity extends AppCompatActivity {
             Intent intent = new Intent(moreActivity.this, AdventureActivity.class);
             startActivity(intent);
         });
+        offlinemapsText.setOnClickListener(v -> {
+            Intent intent = new Intent(moreActivity.this, OfflineMapActivity.class);
+            startActivity(intent);
+        });
+
 
     }
 }

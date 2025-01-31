@@ -2,24 +2,38 @@ package com.example.waymap;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
-import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
-import android.widget.*;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentContainerView;
 
-import com.google.android.gms.maps.*;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-import java.util.*;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+import java.util.Locale;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class RouteplannerActivity extends AppCompatActivity {
     private static final String TAG = "RouteplannerActivity";
@@ -38,6 +52,7 @@ public class RouteplannerActivity extends AppCompatActivity {
     private final List<String> tripDetailsList = new ArrayList<>();
     private boolean isFormVisible = false;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,20 +63,15 @@ public class RouteplannerActivity extends AppCompatActivity {
             initializeViews();
 
             // Setup map
-            SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+            SupportMapFragment MapFragment= (SupportMapFragment) getSupportFragmentManager()
                     .findFragmentById(R.id.map);
-            if (mapFragment != null) {
-                mapFragment.getMapAsync(googleMap -> {
+            if (MapFragment != null) {
+                MapFragment.getMapAsync(googleMap -> {
                     mMap = googleMap;
-                    try {
-                        if (checkSelfPermission(android.Manifest.permission.ACCESS_FINE_LOCATION)
-                                == PackageManager.PERMISSION_GRANTED) {
-                            mMap.setMyLocationEnabled(true);
-                        }
-                        mMap.getUiSettings().setZoomControlsEnabled(true);
-                    } catch (SecurityException e) {
-                        Log.e(TAG, "Error setting up map: " + e.getMessage());
-                    }
+
+                    // Example: Add a marker
+                    LatLng exampleLocation = new LatLng(0, 0);
+                    mMap.addMarker(new MarkerOptions().position(exampleLocation).title("Marker at 0, 0"));
                 });
             }
 
@@ -77,7 +87,9 @@ public class RouteplannerActivity extends AppCompatActivity {
             e.printStackTrace();
             Toast.makeText(this, "Error initializing route planner", Toast.LENGTH_LONG).show();
         }
+
     }
+
 
     private void initializeViews() {
         try {
@@ -103,13 +115,6 @@ public class RouteplannerActivity extends AppCompatActivity {
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             vehicleTypeSpinner.setAdapter(adapter);
 
-            // Setup destination input listener
-            destinationInput.setOnFocusChangeListener((v, hasFocus) -> {
-                if (!hasFocus) {
-                    locateDestination(destinationInput.getText().toString());
-                }
-            });
-
             // Date Picker implementation
             dateText.setOnClickListener(v -> {
                 Calendar calendar = Calendar.getInstance();
@@ -126,9 +131,76 @@ public class RouteplannerActivity extends AppCompatActivity {
                 datePickerDialog.show();
             });
 
+            // Set up destination input listener
+            destinationInput.setOnEditorActionListener((v, actionId, event) -> {
+                String destination = destinationInput.getText().toString().trim();
+                if (!destination.isEmpty()) {
+                    locateDestination(destination);
+                }
+                return true;
+            });
+
+            // Set up text change listener with debounce
+            destinationInput.addTextChangedListener(new TextWatcher() {
+                private Timer timer = new Timer();
+
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    timer.cancel();
+                    timer = new Timer();
+                    // 500ms delay to reduce frequent calls
+                    long DELAY = 500;
+                    timer.schedule(new TimerTask() {
+                        @Override
+                        public void run() {
+                            runOnUiThread(() -> {
+                                String destination = s.toString().trim();
+                                if (!destination.isEmpty()) {
+                                    locateDestination(destination);
+                                }
+                            });
+                        }
+                    }, DELAY);
+                }
+
+                @Override
+                public void afterTextChanged(Editable s) {}
+            });
+
         } catch (Exception e) {
             Log.e(TAG, "Error initializing views: " + e.getMessage());
             throw e;
+        }
+    }
+
+    private void locateDestination(String destination) {
+        if (destination.isEmpty()) {
+            return; // Don't proceed if no text is entered
+        }
+
+        if (mMap == null) {
+            Toast.makeText(this, "Map is not ready yet!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        Geocoder geocoder = new Geocoder(this, Locale.getDefault());
+        try {
+            List<Address> addressList = geocoder.getFromLocationName(destination, 1);
+            if (addressList != null && !addressList.isEmpty()) {
+                Address address = addressList.get(0);
+                LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
+                mMap.clear(); // Clear existing markers
+                mMap.addMarker(new MarkerOptions().position(latLng).title(destination));
+                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
+            } else {
+                Toast.makeText(this, "Location not found for: " + destination, Toast.LENGTH_SHORT).show();
+            }
+        } catch (Exception e) {
+            Log.e(TAG, "Error locating destination: " + e.getMessage());
+            Toast.makeText(this, "Error finding location", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -263,30 +335,18 @@ public class RouteplannerActivity extends AppCompatActivity {
             Toast.makeText(this, "Date is required", Toast.LENGTH_SHORT).show();
             return false;
         }
-        if (adultsInput.getText().toString().trim().isEmpty() || Integer.parseInt(adultsInput.getText().toString()) <= 0) {
-            Toast.makeText(this, "Number of adults is required and must be greater than 0", Toast.LENGTH_SHORT).show();
+        try {
+            Integer.parseInt(adultsInput.getText().toString());
+        } catch (NumberFormatException e) {
+            Toast.makeText(this, "Adults must be a number", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        try {
+            Integer.parseInt(childrenInput.getText().toString());
+        } catch (NumberFormatException e) {
+            Toast.makeText(this, "Children must be a number", Toast.LENGTH_SHORT).show();
             return false;
         }
         return true;
-    }
-
-    private void locateDestination(String destination) {
-        if (!destination.isEmpty()) {
-            Geocoder geocoder = new Geocoder(this, Locale.getDefault());
-            try {
-                List<Address> addressList = geocoder.getFromLocationName(destination, 1);
-                if (addressList != null && !addressList.isEmpty()) {
-                    Address address = addressList.get(0);
-                    LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
-                    mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-                    mMap.addMarker(new MarkerOptions().position(latLng).title(destination));
-                } else {
-                    Toast.makeText(this, "No location found for: " + destination, Toast.LENGTH_SHORT).show();
-                }
-            } catch (Exception e) {
-                Log.e(TAG, "Error locating destination: " + e.getMessage());
-                Toast.makeText(this, "Error locating destination", Toast.LENGTH_SHORT).show();
-            }
-        }
     }
 }

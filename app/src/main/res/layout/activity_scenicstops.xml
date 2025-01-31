@@ -53,22 +53,20 @@
             app:layout_constraintVertical_bias="1.0"
             tools:ignore="HardcodedText" />
 
-        <Button
-            android:id="@+id/backButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
+        <ImageView
+            android:id="@+id/add"
+            android:layout_width="39dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="365dp"
             android:layout_marginTop="6dp"
-            android:layout_marginEnd="15dp"
-            android:backgroundTint="#1E3A5F"
-            android:text="Back"
-            android:textColor="@color/white"
-            app:icon="@drawable/icons8_back_64"
+            android:layout_marginEnd="7dp"
+            android:layout_marginBottom="12dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/sinharajatext"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="HardcodedText,VisualLintBounds" />
+            app:srcCompat="@drawable/pngtree_white_edit_icon_image_1338673" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <!-- Vertical Scroll View -->
@@ -153,6 +151,12 @@
                 android:layout_marginBottom="8dp"
                 app:srcCompat="@drawable/_60_f_290803358_ipmxqlk1lzru6nesqohvlhqglfn6vqkt"
                 tools:ignore="ContentDescription" />
+
+            <ImageView
+                android:id="@+id/imageView10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:srcCompat="@android:drawable/ic_menu_add" />
 
 
         </LinearLayout>

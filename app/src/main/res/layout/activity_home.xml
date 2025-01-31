@@ -408,7 +408,8 @@
                 android:id="@+id/imageView13"
                 android:layout_width="match_parent"
                 android:layout_height="227dp"
-                app:srcCompat="@drawable/d3" />
+                app:srcCompat="@drawable/d3"
+                tools:ignore="ContentDescription" />
 
             <ImageView
                 android:id="@+id/imageView9"
