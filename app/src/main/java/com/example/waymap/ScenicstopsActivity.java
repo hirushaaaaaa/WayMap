@@ -2,13 +2,24 @@ package com.example.waymap;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.IOException;
+
 public class ScenicstopsActivity extends AppCompatActivity {
+
+    private static final int PICK_IMAGE_REQUEST = 1;
+    private ImageView selectedImageView; // To keep track of the image being edited
+    private boolean isEditMode = false; // Track whether we're in edit mode
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +39,6 @@ public class ScenicstopsActivity extends AppCompatActivity {
         // Admin-only ImageView
         ImageView adminImageView = findViewById(R.id.add);
 
-        // Get stored login details
         SharedPreferences sharedPreferences = getSharedPreferences("LoginPrefs", MODE_PRIVATE);
         boolean isAdmin = sharedPreferences.getBoolean("isAdmin", false); // Retrieve admin status
 
@@ -52,5 +62,64 @@ public class ScenicstopsActivity extends AppCompatActivity {
         imageDambulla.setOnClickListener(v -> startActivity(new Intent(this, DambullaActivity.class)));
         imageMirissa.setOnClickListener(v -> startActivity(new Intent(this, MirissaActivity.class)));
         imageSripada.setOnClickListener(v -> startActivity(new Intent(this, SripadasthanayaActivity.class)));
+
+        // Set the click listener for the admin ImageView (add)
+        adminImageView.setOnClickListener(v -> {
+            if (isAdmin) {
+                isEditMode = !isEditMode; // Toggle the edit mode
+                if (isEditMode) {
+                    Toast.makeText(this, "Edit mode activated. Tap an image to change.", Toast.LENGTH_SHORT).show();
+                    enableImageEditing(imageAnuradhapura, imageSinharaja, imageRuwanmeliseya, imageGalleport, imageElla, imageDambulla, imageMirissa, imageSripada);
+                } else {
+                    Toast.makeText(this, "Edit mode deactivated.", Toast.LENGTH_SHORT).show();
+                    disableImageEditing(imageAnuradhapura, imageSinharaja, imageRuwanmeliseya, imageGalleport, imageElla, imageDambulla, imageMirissa, imageSripada);
+                }
+            }
+        });
+    }
+
+    // Enable editing by setting click listeners on ImageViews
+    private void enableImageEditing(ImageView... images) {
+        for (ImageView imageView : images) {
+            imageView.setOnClickListener(v -> {
+                if (isEditMode) {
+                    selectedImageView = imageView; // Track the image that is being edited
+                    // Open image picker to select an image
+                    openImagePicker();
+                }
+            });
+        }
+    }
+
+    // Disable editing mode (remove click listeners)
+    private void disableImageEditing(ImageView... images) {
+        for (ImageView imageView : images) {
+            imageView.setOnClickListener(null); // Remove the click listener
+        }
+    }
+
+    // Open image picker to select an image from the gallery
+    private void openImagePicker() {
+        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        intent.setType("image/*"); // Filter to only images
+        startActivityForResult(intent, PICK_IMAGE_REQUEST);
+    }
+
+    // Handle the result from the image picker
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null) {
+            Uri imageUri = data.getData(); // Get the URI of the selected image
+            try {
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), imageUri);
+                if (selectedImageView != null) {
+                    selectedImageView.setImageBitmap(bitmap); // Set the image to the selected ImageView
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+                Toast.makeText(this, "Failed to load image", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 }

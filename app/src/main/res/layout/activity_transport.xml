@@ -106,4 +106,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/addd"
+        android:layout_width="39dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="373dp"
+        android:layout_marginTop="680dp"
+        android:layout_marginBottom="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/pngtree_white_edit_icon_image_1338673" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

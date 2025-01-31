@@ -14,7 +14,6 @@
         android:gravity="center_horizontal">
 
 
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/linearLayout9"
             android:layout_width="400dp"
@@ -55,6 +54,20 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/adddd"
+                android:layout_width="52dp"
+                android:layout_height="52dp"
+                android:layout_marginStart="332dp"
+                android:layout_marginTop="13dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="250dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/pngtree_white_edit_icon_image_1338673" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout

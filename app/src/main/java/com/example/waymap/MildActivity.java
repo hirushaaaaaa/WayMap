@@ -1,8 +1,12 @@
 package com.example.waymap;
 
+import android.annotation.SuppressLint;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,6 +25,21 @@ public class MildActivity extends AppCompatActivity {
         // Initialize views
         backButton = findViewById(R.id.mildback);
         headerText = findViewById(R.id.textView10);
+        @SuppressLint({"MissingInflatedId", "LocalSuppress"}) ImageView adminImageView = findViewById(R.id.add1);
+
+        SharedPreferences sharedPreferences = getSharedPreferences("LoginPrefs", MODE_PRIVATE);
+        boolean isAdmin = sharedPreferences.getBoolean("isAdmin", false); // Retrieve admin status
+
+        // Debug: Check if the admin status is retrieved correctly
+        Log.d("DEBUG", "Admin Status: " + isAdmin);
+
+        if (isAdmin) {
+            Log.d("DEBUG", "Admin ImageView should be VISIBLE.");
+            adminImageView.setVisibility(View.VISIBLE);
+        } else {
+            Log.d("DEBUG", "Admin ImageView should be GONE.");
+            adminImageView.setVisibility(View.GONE);
+        }
 
 
         // Set an onClickListener for the Back button
