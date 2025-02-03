@@ -2,6 +2,7 @@ package com.example.waymap;
 
 import android.Manifest;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -21,23 +22,21 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
-import com.google.firebase.database.annotations.Nullable;
-
 public class homeActivity extends AppCompatActivity {
 
     // Define an ActivityResultLauncher for the camera
-    // Define an ActivityResultLauncher for the camera
     private final ActivityResultLauncher<Intent> cameraLauncher =
             registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
-                if (result.getResultCode() == RESULT_OK) {
+                if (result.getResultCode() == RESULT_OK && result.getData() != null) {
+                    // Handle the result
+                    Bitmap bitmap = (Bitmap) result.getData().getExtras().get("data");
+                    ImageView imageView = findViewById(R.id.imageView);  // Replace with your ImageView reference
+                    imageView.setImageBitmap(bitmap);  // Set the captured image to imageView
                     Toast.makeText(this, "Camera capture successful!", Toast.LENGTH_SHORT).show();
-                    // Optionally close the current activity after capturing the image
-                    finish(); // This will close the current homeActivity
                 } else {
                     Toast.makeText(this, "Camera capture canceled", Toast.LENGTH_SHORT).show();
                 }
             });
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,8 +75,9 @@ public class homeActivity extends AppCompatActivity {
             if (ContextCompat.checkSelfPermission(homeActivity.this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
                 ActivityCompat.requestPermissions(homeActivity.this, new String[]{Manifest.permission.CAMERA}, 101);
             } else {
+                // Start the camera using ActivityResultLauncher
                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                cameraLauncher.launch(intent);  // Use the camera launcher to start the camera intent
+                cameraLauncher.launch(intent);
             }
         });
 
@@ -109,19 +109,6 @@ public class homeActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-
-    private void openCamera(View view) {
-        // Check if there's an app that can handle the camera intent
-        Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        if (cameraIntent.resolveActivity(getPackageManager()) != null) {
-            cameraLauncher.launch(cameraIntent);
-        } else {
-            Toast.makeText(this, "No camera app found on this device", Toast.LENGTH_SHORT).show();
-        }
-    }
-
-
-
     @Override
     protected void onResume() {
         super.onResume();
@@ -136,7 +123,6 @@ public class homeActivity extends AppCompatActivity {
         PopupMenu popupMenu = new PopupMenu(this, view);
         popupMenu.getMenuInflater().inflate(R.menu.menu_main, popupMenu.getMenu());
 
-        // Handle menu item clicks
         popupMenu.setOnMenuItemClickListener(item -> {
             if (item.getItemId() == R.id.nav_home) {
                 navigateToActivity(homeActivity.class);
@@ -145,8 +131,8 @@ public class homeActivity extends AppCompatActivity {
                 navigateToActivity(SettingsActivity.class);
                 return true;
             } else if (item.getItemId() == R.id.nav_logout) {
-                Toast.makeText(view.getContext(), "Logged out", Toast.LENGTH_SHORT).show();
-                // Add logout logic
+                // Log out logic here
+                logoutUser(view);
                 return true;
             } else {
                 return false;
@@ -156,14 +142,22 @@ public class homeActivity extends AppCompatActivity {
         popupMenu.show();
     }
 
-    // Handle the result of the camera intent
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 101 && resultCode == RESULT_OK && data != null) {
-            Bitmap bitmap = (Bitmap) data.getExtras().get("data");
-            ImageView imageView = findViewById(R.id.imageView);  // Replace with your ImageView reference
-            imageView.setImageBitmap(bitmap);  // Set the captured image to imageView
-        }
+    private void logoutUser(View view) {
+        // Clear stored user data, for example in SharedPreferences
+        SharedPreferences sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.clear();
+        editor.apply();
+
+
+
+
+        Intent intent = new Intent(homeActivity.this, LoginActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); // Clear back stack
+        startActivity(intent);
+
+        // Optionally, show a logout confirmation message
+        Toast.makeText(view.getContext(), "Logged out successfully", Toast.LENGTH_SHORT).show();
     }
+
 }

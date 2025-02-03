@@ -50,6 +50,19 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="1.0"
             tools:ignore="HardcodedText" />
+        <ImageView
+            android:id="@+id/add5"
+            android:layout_width="39dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="365dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="7dp"
+            android:layout_marginBottom="12dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/pngtree_white_edit_icon_image_1338673" />
 
         <Button
             android:id="@+id/backButton1"

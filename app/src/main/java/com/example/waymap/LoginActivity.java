@@ -11,15 +11,20 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.BreakIterator;
+
 public class LoginActivity extends AppCompatActivity {
 
     private DatabaseReference databaseReference;
+    private BreakIterator etUsername;
+    private BreakIterator etPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,4 +112,21 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
+    // Inside your login activity
+    FirebaseAuth mAuth = FirebaseAuth.getInstance();
+
+    public void loginUser() {
+        String username = etUsername.getText().toString();
+        String password = etPassword.getText().toString();
+        mAuth.signInWithEmailAndPassword(username, password)
+                .addOnCompleteListener(this, task -> {
+                    if (task.isSuccessful()) {
+                        // Navigate to the route planner activity
+                        startActivity(new Intent(LoginActivity.this, RouteplannerActivity.class));
+                    } else {
+                        Toast.makeText(LoginActivity.this, "Authentication Failed.", Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
+
 }

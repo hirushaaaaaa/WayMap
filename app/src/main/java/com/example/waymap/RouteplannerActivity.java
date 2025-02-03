@@ -3,14 +3,22 @@ package com.example.waymap;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
-import android.location.Address;
-import android.location.Geocoder;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.*;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,16 +26,24 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentContainerView;
 
-import com.google.android.gms.maps.*;
-import com.google.android.gms.maps.model.*;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.Polyline;
+import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.maps.DirectionsApi;
 import com.google.maps.GeoApiContext;
+import com.google.maps.android.PolyUtil;
 import com.google.maps.model.DirectionsResult;
 import com.google.maps.model.TravelMode;
-import com.google.maps.android.PolyUtil;
-import com.google.maps.GeoApiContext;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class RouteplannerActivity extends AppCompatActivity {
@@ -59,8 +75,6 @@ public class RouteplannerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         try {
             setContentView(R.layout.activity_routeplanner);
-
-            // Initialize GeoApiContext
             geoApiContext = new GeoApiContext.Builder()
                     .apiKey(MAPS_API_KEY)
                     .connectTimeout(2, TimeUnit.SECONDS)
@@ -68,13 +82,12 @@ public class RouteplannerActivity extends AppCompatActivity {
                     .writeTimeout(2, TimeUnit.SECONDS)
                     .build();
 
-            // Initialize views
+
             initializeViews();
 
-            // Check location permission
             checkLocationPermission();
 
-            // Setup map
+
             SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                     .findFragmentById(R.id.map);
             if (mapFragment != null) {
@@ -90,12 +103,14 @@ public class RouteplannerActivity extends AppCompatActivity {
                         Log.e(TAG, "Error setting up map: " + e.getMessage());
                     }
                 });
+
             }
+
 
             setupAddTripButton();
             setupConfirmTripButton();
 
-            // Initialize saved trips container
+
             savedTripsContainer.setVisibility(View.VISIBLE);
             savedTripsTitle.setVisibility(View.VISIBLE);
 
@@ -125,7 +140,7 @@ public class RouteplannerActivity extends AppCompatActivity {
             savedTripsContainer = findViewById(R.id.saved_trips_container);
 
 
-            // Setup spinner
+
             ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                     R.array.vehicle_types, android.R.layout.simple_spinner_item);
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -144,7 +159,7 @@ public class RouteplannerActivity extends AppCompatActivity {
                 }
             });
 
-            // Date Picker implementation
+
             dateText.setOnClickListener(v -> {
                 Calendar calendar = Calendar.getInstance();
                 DatePickerDialog datePickerDialog = new DatePickerDialog(
@@ -175,12 +190,12 @@ public class RouteplannerActivity extends AppCompatActivity {
         }
 
         try {
-            // Clear previous markers and route
+
             if (sourceMarker != null) sourceMarker.remove();
             if (destinationMarker != null) destinationMarker.remove();
             if (routePolyline != null) routePolyline.remove();
 
-            // Get directions
+
             DirectionsResult result = DirectionsApi.newRequest(geoApiContext)
                     .mode(TravelMode.DRIVING)
                     .origin(source)
@@ -188,7 +203,7 @@ public class RouteplannerActivity extends AppCompatActivity {
                     .await();
 
             if (result.routes.length > 0) {
-                // Draw route on map
+
                 List<LatLng> decodedPath = PolyUtil.decode(result.routes[0].overviewPolyline.getEncodedPath());
                 PolylineOptions polylineOptions = new PolylineOptions()
                         .addAll(decodedPath)
@@ -196,7 +211,7 @@ public class RouteplannerActivity extends AppCompatActivity {
                         .width(8);
                 routePolyline = mMap.addPolyline(polylineOptions);
 
-                // Add markers
+
                 LatLng sourceLatLng = new LatLng(
                         result.routes[0].legs[0].startLocation.lat,
                         result.routes[0].legs[0].startLocation.lng
@@ -209,20 +224,15 @@ public class RouteplannerActivity extends AppCompatActivity {
                 sourceMarker = mMap.addMarker(new MarkerOptions().position(sourceLatLng).title("Start"));
                 destinationMarker = mMap.addMarker(new MarkerOptions().position(destLatLng).title("Destination"));
 
-                // Move camera to show the entire route
                 LatLngBounds.Builder bounds = new LatLngBounds.Builder();
                 bounds.include(sourceLatLng);
                 bounds.include(destLatLng);
                 mMap.animateCamera(CameraUpdateFactory.newLatLngBounds(bounds.build(), 100));
 
-                // Update distance and time
                 double distanceInKm = result.routes[0].legs[0].distance.inMeters / 1000.0;
                 long durationInMinutes = result.routes[0].legs[0].duration.inSeconds / 60;
-
-                // Calculate estimated cost (example: $0.5 per km)
                 double estimatedCost = distanceInKm * 0.5;
 
-                // Update UI
                 distanceText.setText(String.format("Distance: %.1f km", distanceInKm));
                 estimatedTimeText.setText(String.format("Estimated Time: %d minutes", durationInMinutes));
                 estimatedCostText.setText(String.format("Estimated Cost: $%.2f", estimatedCost));
@@ -230,8 +240,9 @@ public class RouteplannerActivity extends AppCompatActivity {
         } catch (Exception e) {
             Log.e(TAG, "Error calculating route: " + e.getMessage());
             Toast.makeText(this, "Error calculating route", Toast.LENGTH_SHORT).show();
-            }
+        }
     }
+
 
     private void setupAddTripButton() {
         Button addTripButton = findViewById(R.id.add_trip_button);
@@ -242,10 +253,7 @@ public class RouteplannerActivity extends AppCompatActivity {
 
         if (addTripButton != null) {
             addTripButton.setOnClickListener(v -> {
-                // Hide saved trips when adding a new trip
                 savedTripsContainer.setVisibility(View.GONE);
-
-                // Show trip form
                 tripFormLayout.setVisibility(View.VISIBLE);
                 mapView.setVisibility(View.VISIBLE);
                 scrollView.setVisibility(View.VISIBLE);
@@ -258,7 +266,6 @@ public class RouteplannerActivity extends AppCompatActivity {
     private void setupConfirmTripButton() {
         confirmTripButton.setOnClickListener(v -> {
             saveTripDetails();
-            // Reset the form for the next trip
             resetForm();
         });
     }
@@ -279,7 +286,6 @@ public class RouteplannerActivity extends AppCompatActivity {
         estimatedTimeText.setText("Estimated Time: Not calculated");
         estimatedCostText.setText("Estimated Cost: Not calculated");
 
-        // Clear map markers and route
         if (sourceMarker != null) sourceMarker.remove();
         if (destinationMarker != null) destinationMarker.remove();
         if (routePolyline != null) routePolyline.remove();
@@ -287,7 +293,6 @@ public class RouteplannerActivity extends AppCompatActivity {
 
     private void saveTripDetails() {
         try {
-            // Validate input fields
             if (!validateInputs()) {
                 return;
             }
@@ -316,29 +321,19 @@ public class RouteplannerActivity extends AppCompatActivity {
                     "\nNotes: " + notes;
 
             tripDetailsList.add(tripDetails);
-
-            // Create a card-like view for the trip
             LinearLayout tripCard = getLinearLayout(tripDetails);
-
-            // Add the card to the container
             savedTripsContainer.addView(tripCard, 0); // Add at the top
-
-            // Reset the form for the next trip
             resetForm();
-
-            // Show saved trips container after adding a trip
             savedTripsContainer.setVisibility(View.VISIBLE);
-
-            // Hide the form after saving
             findViewById(R.id.trip_form_layout).setVisibility(View.GONE);
             findViewById(R.id.scroll_view).setVisibility(View.GONE);
-
             Toast.makeText(this, "Trip saved!", Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
             Log.e(TAG, "Error saving trip details: " + e.getMessage());
             Toast.makeText(this, "Error saving trip details", Toast.LENGTH_LONG).show();
         }
     }
+
 
     @SuppressLint("SetTextI18n")
     @NonNull
@@ -353,21 +348,15 @@ public class RouteplannerActivity extends AppCompatActivity {
         );
         cardParams.setMargins(0, 0, 0, 16);
         tripCard.setLayoutParams(cardParams);
-
-        // Add trip title (e.g., "Trip 01")
         TextView tripTitle = new TextView(this);
         tripTitle.setText("Trip #" + (tripDetailsList.size()));
         tripTitle.setTextSize(18);
         tripTitle.setPadding(8, 8, 8, 8);
         tripCard.addView(tripTitle);
-
-        // Add trip details
         TextView tripView = new TextView(this);
         tripView.setText(tripDetails);
         tripView.setPadding(8, 8, 8, 8);
         tripCard.addView(tripView);
-
-        // Add delete button
         Button deleteButton = new Button(this);
         deleteButton.setText("Delete Trip");
         deleteButton.setOnClickListener(v -> {
@@ -411,26 +400,71 @@ public class RouteplannerActivity extends AppCompatActivity {
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
         if (requestCode == LOCATION_PERMISSION_REQUEST_CODE) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                if (mMap != null) {
-                    try {
-                        mMap.setMyLocationEnabled(true);
-                    } catch (SecurityException e) {
-                        Log.e(TAG, "Error enabling location: " + e.getMessage());
-                    }
+                if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+                        == PackageManager.PERMISSION_GRANTED) {
+                    mMap.setMyLocationEnabled(true);
                 }
             } else {
-                Toast.makeText(this, "Location permission denied", Toast.LENGTH_SHORT).show();
+
+                Toast.makeText(this, "Location permission is required to show your current location on the map", Toast.LENGTH_SHORT).show();
             }
         }
     }
 
+    @SuppressLint("MissingSuperCall")
+    @Override
+    public void onBackPressed() {
+
+        Intent intent = new Intent(this, homeActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); // Clears the back stack
+        startActivity(intent);
+
+
+        finish();
+    }
+
+
+    private void performBackgroundTask() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    GeoApiContext geoApiContext = new GeoApiContext.Builder()
+                            .apiKey("YOUR_API_KEY")
+                            .build();
+                    geoApiContext.shutdown();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
+    private class ShutdownMapsTask extends AsyncTask<Void, Void, Void> {
+        @Override
+        protected Void doInBackground(Void... voids) {
+            GeoApiContext geoApiContext = new GeoApiContext.Builder()
+                    .apiKey("YOUR_API_KEY")
+                    .build();
+            geoApiContext.shutdown();
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+
+        }
+    }
+
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (geoApiContext != null) {
-            geoApiContext.shutdown();
-        }
+        new ShutdownMapsTask().execute();
     }
+
 }
