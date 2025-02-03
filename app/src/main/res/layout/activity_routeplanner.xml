@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,13 +6,24 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <!-- Button to Add a Trip -->
+    <!-- Add Trip Button at the Top -->
     <Button
         android:id="@+id/add_trip_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Add Trip"
         tools:ignore="HardcodedText" />
+
+    <!-- Container to Display Saved Trips -->
+    <LinearLayout
+        android:id="@+id/saved_trips_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="8dp"
+        android:visibility="visible"
+        android:layout_marginTop="16dp">
+    </LinearLayout>
 
     <!-- ScrollView for the Trip Form -->
     <ScrollView
@@ -193,26 +203,4 @@
                 tools:ignore="HardcodedText" />
         </LinearLayout>
     </ScrollView>
-
-    <!-- Container to display saved trips -->
-    <LinearLayout
-        android:id="@+id/saved_trips_container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="8dp"
-        android:visibility="gone"
-        android:layout_marginTop="16dp">
-    </LinearLayout>
-
-    <!-- Title for saved trips -->
-    <TextView
-        android:id="@+id/saved_trips_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Saved Trips"
-        android:textSize="18sp"
-        android:padding="8dp"
-        android:layout_marginTop="16dp" />
-
 </LinearLayout>

@@ -123,7 +123,7 @@ public class RouteplannerActivity extends AppCompatActivity {
             estimatedCostText = findViewById(R.id.estimated_cost_text);
             confirmTripButton = findViewById(R.id.confirm_trip_button);
             savedTripsContainer = findViewById(R.id.saved_trips_container);
-            savedTripsTitle = findViewById(R.id.saved_trips_title);
+
 
             // Setup spinner
             ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
@@ -237,18 +237,20 @@ public class RouteplannerActivity extends AppCompatActivity {
         Button addTripButton = findViewById(R.id.add_trip_button);
         final View tripFormLayout = findViewById(R.id.trip_form_layout);
         final FragmentContainerView mapView = findViewById(R.id.map);
+        final ScrollView scrollView = findViewById(R.id.scroll_view);
+        final LinearLayout savedTripsContainer = findViewById(R.id.saved_trips_container);
 
         if (addTripButton != null) {
             addTripButton.setOnClickListener(v -> {
-                if (!isFormVisible) {
-                    tripFormLayout.setVisibility(View.VISIBLE);
-                    mapView.setVisibility(View.VISIBLE);
-                    isFormVisible = true;
-                    resetForm();
-                } else {
-                    tripFormLayout.setVisibility(View.GONE);
-                    isFormVisible = false;
-                }
+                // Hide saved trips when adding a new trip
+                savedTripsContainer.setVisibility(View.GONE);
+
+                // Show trip form
+                tripFormLayout.setVisibility(View.VISIBLE);
+                mapView.setVisibility(View.VISIBLE);
+                scrollView.setVisibility(View.VISIBLE);
+                isFormVisible = true;
+                resetForm();
             });
         }
     }
@@ -256,8 +258,8 @@ public class RouteplannerActivity extends AppCompatActivity {
     private void setupConfirmTripButton() {
         confirmTripButton.setOnClickListener(v -> {
             saveTripDetails();
-            // Hide the ScrollView after confirming the trip
-            findViewById(R.id.scroll_view).setVisibility(View.GONE);
+            // Reset the form for the next trip
+            resetForm();
         });
     }
 
@@ -321,11 +323,15 @@ public class RouteplannerActivity extends AppCompatActivity {
             // Add the card to the container
             savedTripsContainer.addView(tripCard, 0); // Add at the top
 
-            // Reset and hide the form
+            // Reset the form for the next trip
             resetForm();
+
+            // Show saved trips container after adding a trip
+            savedTripsContainer.setVisibility(View.VISIBLE);
+
+            // Hide the form after saving
             findViewById(R.id.trip_form_layout).setVisibility(View.GONE);
             findViewById(R.id.scroll_view).setVisibility(View.GONE);
-            isFormVisible = false;
 
             Toast.makeText(this, "Trip saved!", Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
@@ -348,7 +354,14 @@ public class RouteplannerActivity extends AppCompatActivity {
         cardParams.setMargins(0, 0, 0, 16);
         tripCard.setLayoutParams(cardParams);
 
-        // Add trip details to card
+        // Add trip title (e.g., "Trip 01")
+        TextView tripTitle = new TextView(this);
+        tripTitle.setText("Trip #" + (tripDetailsList.size()));
+        tripTitle.setTextSize(18);
+        tripTitle.setPadding(8, 8, 8, 8);
+        tripCard.addView(tripTitle);
+
+        // Add trip details
         TextView tripView = new TextView(this);
         tripView.setText(tripDetails);
         tripView.setPadding(8, 8, 8, 8);
@@ -362,6 +375,7 @@ public class RouteplannerActivity extends AppCompatActivity {
             tripDetailsList.remove(tripDetails);
         });
         tripCard.addView(deleteButton);
+
         return tripCard;
     }
 
