@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -33,17 +34,40 @@
                 android:id="@+id/map"
                 android:name="com.google.android.gms.maps.SupportMapFragment"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                tools:layout="@layout/activity_routeplanner">
+                android:layout_height="200dp" />
 
-            </androidx.fragment.app.FragmentContainerView>
+            <!-- From Input -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="From" />
+
+            <EditText
+                android:id="@+id/from_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter starting location" />
+
+            <!-- Destination Input -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Destination" />
+
+            <EditText
+                android:id="@+id/destination_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter destination" />
 
             <!-- Date Picker -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="@string/date" />
+                android:text="Date" />
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/date_text"
@@ -57,25 +81,12 @@
                 android:inputType="none"
                 tools:ignore="HardcodedText,KeyboardInaccessibleWidget" />
 
-            <!-- Destination Input -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/destination" />
-
-            <EditText
-                android:id="@+id/destination_input"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Enter destination" />
-
             <!-- Vehicle Type -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="@string/vehicle_type" />
+                android:text="Vehicle Type" />
 
             <Spinner
                 android:id="@+id/vehicle_type_spinner"
@@ -95,7 +106,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:hint="@string/number_of_adults"
+                    android:hint="Number of Adults"
                     android:inputType="number"
                     tools:ignore="Autofill" />
 
@@ -114,7 +125,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="@string/meals" />
+                android:text="Meals" />
 
             <CheckBox
                 android:id="@+id/breakfast_check"
@@ -140,7 +151,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="@string/special_notes" />
+                android:text="Special Notes" />
 
             <EditText
                 android:id="@+id/special_notes_input"
@@ -188,19 +199,20 @@
         android:id="@+id/saved_trips_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:orientation="vertical"
         android:padding="8dp"
-        android:visibility="gone"></LinearLayout>
+        android:visibility="gone"
+        android:layout_marginTop="16dp">
+    </LinearLayout>
 
     <!-- Title for saved trips -->
     <TextView
         android:id="@+id/saved_trips_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:padding="8dp"
         android:text="Saved Trips"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:padding="8dp"
+        android:layout_marginTop="16dp" />
 
 </LinearLayout>

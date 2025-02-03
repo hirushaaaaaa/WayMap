@@ -76,6 +76,16 @@ dependencies {
 
     implementation("com.google.firebase:firebase-analytics")
 
+    implementation ("com.google.maps.android:android-maps-utils:2.3.0")
+    implementation ("com.google.maps:google-maps-services:2.1.2")
+    implementation("com.google.android.gms:play-services-maps:18.2.0")
+    implementation("com.google.maps:google-maps-services:2.1.2")
+    implementation("com.google.maps.android:android-maps-utils:2.3.0")
+
+    implementation("com.squareup.okhttp3:okhttp:4.10.0")
+    implementation("org.slf4j:slf4j-api:2.0.3")
+    implementation("com.google.code.gson:gson:2.10")
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)

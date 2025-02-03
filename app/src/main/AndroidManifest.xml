@@ -39,7 +39,7 @@
         -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="YOUR_API_KEY" />
+            android:value="AIzaSyBmDUjdK2diTVVSEuIJF3uwISql9EaibN0" />
         <meta-data
             android:name="com.mapbox.maps.token"
             android:value="YOUR_MAPBOX_ACCESS_TOKEN" />
