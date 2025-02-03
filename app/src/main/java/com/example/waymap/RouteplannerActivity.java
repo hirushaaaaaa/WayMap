@@ -230,7 +230,7 @@ public class RouteplannerActivity extends AppCompatActivity {
         } catch (Exception e) {
             Log.e(TAG, "Error calculating route: " + e.getMessage());
             Toast.makeText(this, "Error calculating route", Toast.LENGTH_SHORT).show();
-        }
+            }
     }
 
     private void setupAddTripButton() {
