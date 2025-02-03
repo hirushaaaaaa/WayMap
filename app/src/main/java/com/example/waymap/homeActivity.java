@@ -103,7 +103,6 @@ public class homeActivity extends AppCompatActivity {
         }
     }
 
-    // Generic method to navigate to an activity
     private void navigateToActivity(Class<?> activityClass) {
         Intent intent = new Intent(homeActivity.this, activityClass);
         startActivity(intent);
@@ -131,7 +130,7 @@ public class homeActivity extends AppCompatActivity {
                 navigateToActivity(SettingsActivity.class);
                 return true;
             } else if (item.getItemId() == R.id.nav_logout) {
-                // Log out logic here
+
                 logoutUser(view);
                 return true;
             } else {
@@ -149,14 +148,10 @@ public class homeActivity extends AppCompatActivity {
         editor.clear();
         editor.apply();
 
-
-
-
         Intent intent = new Intent(homeActivity.this, LoginActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); // Clear back stack
         startActivity(intent);
 
-        // Optionally, show a logout confirmation message
         Toast.makeText(view.getContext(), "Logged out successfully", Toast.LENGTH_SHORT).show();
     }
 
