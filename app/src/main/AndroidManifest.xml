@@ -27,6 +27,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WayMap">
 
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyBmDUjdK2diTVVSEuIJF3uwISql9EaibN0" />
@@ -180,6 +181,8 @@
         <activity
             android:name=".OfflineMapActivity"
             android:exported="true" />
+
+
     </application>
 
 </manifest>

@@ -14,16 +14,23 @@
         android:text="Add Trip"
         tools:ignore="HardcodedText" />
 
-    <!-- Container to Display Saved Trips -->
-    <LinearLayout
-        android:id="@+id/saved_trips_container"
+    <!-- ScrollView for Saved Trips -->
+    <ScrollView
+        android:id="@+id/saved_trips_scroll_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="8dp"
-        android:visibility="visible"
-        android:layout_marginTop="16dp">
-    </LinearLayout>
+        android:layout_marginTop="16dp"
+        android:visibility="visible">
+
+        <!-- Container to Display Saved Trips -->
+        <LinearLayout
+            android:id="@+id/saved_trips_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="8dp">
+        </LinearLayout>
+    </ScrollView>
 
     <!-- ScrollView for the Trip Form -->
     <ScrollView

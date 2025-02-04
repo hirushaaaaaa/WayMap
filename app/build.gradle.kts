@@ -102,6 +102,8 @@ dependencies {
     implementation("org.slf4j:slf4j-api:2.0.3")
     implementation("com.google.code.gson:gson:2.10")
 
+
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)

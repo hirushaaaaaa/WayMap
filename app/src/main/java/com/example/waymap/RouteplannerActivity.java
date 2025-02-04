@@ -46,6 +46,12 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import android.content.Intent;
+import android.net.Uri;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
 public class RouteplannerActivity extends AppCompatActivity {
     private static final String TAG = "RouteplannerActivity";
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
@@ -348,15 +354,35 @@ public class RouteplannerActivity extends AppCompatActivity {
         );
         cardParams.setMargins(0, 0, 0, 16);
         tripCard.setLayoutParams(cardParams);
+
+        // Add trip title (e.g., "Trip 01")
         TextView tripTitle = new TextView(this);
         tripTitle.setText("Trip #" + (tripDetailsList.size()));
         tripTitle.setTextSize(18);
         tripTitle.setPadding(8, 8, 8, 8);
         tripCard.addView(tripTitle);
+
+        // Add trip details
         TextView tripView = new TextView(this);
         tripView.setText(tripDetails);
         tripView.setPadding(8, 8, 8, 8);
         tripCard.addView(tripView);
+
+        // Add Start Button
+        Button startButton = new Button(this);
+        startButton.setText("Start Navigation");
+        startButton.setOnClickListener(v -> {
+            // Extract "from" and "destination" locations from the trip details
+            String[] lines = tripDetails.split("\n");
+            String from = lines[2].replace("From: ", "").trim(); // Extract "From" location
+            String destination = lines[3].replace("Destination: ", "").trim(); // Extract "Destination" location
+
+            // Launch Google Maps with the "from" and "destination" locations
+            launchGoogleMapsNavigation(from, destination);
+        });
+        tripCard.addView(startButton);
+
+        // Add Delete Button
         Button deleteButton = new Button(this);
         deleteButton.setText("Delete Trip");
         deleteButton.setOnClickListener(v -> {
@@ -459,7 +485,29 @@ public class RouteplannerActivity extends AppCompatActivity {
 
         }
     }
+    private void launchGoogleMapsNavigation(String from, String destination) {
+        try {
+            // Create a URI for Google Maps navigation
+            String uri = "https://www.google.com/maps/dir/?api=1" +
+                    "&origin=" + Uri.encode(from) +
+                    "&destination=" + Uri.encode(destination) +
+                    "&travelmode=driving";
 
+            // Create an intent to launch Google Maps
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
+            intent.setPackage("com.google.android.apps.maps"); // Ensure it opens in Google Maps
+
+            // Check if Google Maps is installed
+            if (intent.resolveActivity(getPackageManager()) != null) {
+                startActivity(intent);
+            } else {
+                Toast.makeText(this, "Google Maps is not installed", Toast.LENGTH_SHORT).show();
+            }
+        } catch (Exception e) {
+            Log.e(TAG, "Error launching Google Maps: " + e.getMessage());
+            Toast.makeText(this, "Error launching Google Maps", Toast.LENGTH_SHORT).show();
+        }
+    }
 
     @Override
     protected void onDestroy() {
