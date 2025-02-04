@@ -24,13 +24,9 @@ public class SignupActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.signup_activity);
 
-        try {
-            databaseReference = FirebaseDatabase.getInstance().getReference("Users");
-        } catch (Exception e) {
-            Log.e("FirebaseError", "Failed to initialize Firebase", e);
-            Toast.makeText(this, "Error initializing Firebase: " + e.getMessage(), Toast.LENGTH_LONG).show();
-            return;
-        }
+        // Initialize Firebase
+        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+        databaseReference = FirebaseDatabase.getInstance().getReference("Users");
 
         usernameEditText = findViewById(R.id.editTextText2);
         emailEditText = findViewById(R.id.editTextTextEmailAddress);
@@ -40,7 +36,6 @@ public class SignupActivity extends AppCompatActivity {
         backToWelcomeButton = findViewById(R.id.button2);
 
         backToWelcomeButton.setOnClickListener(v -> navigateToWelcome());
-
         signUpButton.setOnClickListener(v -> registerUser());
     }
 
@@ -100,11 +95,11 @@ public class SignupActivity extends AppCompatActivity {
         }
 
 
-            // Initialize Firebase
+        // Initialize Firebase
 
 
-            // Access Firebase database
-             FirebaseDatabase database = FirebaseDatabase.getInstance();
-        }
+        // Access Firebase database
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
     }
 
+}

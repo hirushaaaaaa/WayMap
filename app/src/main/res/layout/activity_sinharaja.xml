@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000000">
+    android:background="#000000"
+    tools:ignore="ExtraText">
 
     <!-- Navigation Bar with Back Button -->
     <LinearLayout
@@ -50,36 +51,38 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="1.0"
             tools:ignore="HardcodedText" />
-        <ImageView
-            android:id="@+id/add5"
-            android:layout_width="39dp"
-            android:layout_height="36dp"
-            android:layout_marginStart="365dp"
-            android:layout_marginTop="6dp"
-            android:layout_marginEnd="7dp"
-            android:layout_marginBottom="12dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/pngtree_white_edit_icon_image_1338673" />
+
 
         <Button
             android:id="@+id/backButton1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
+            android:layout_marginStart="9dp"
             android:layout_marginTop="6dp"
-            android:layout_marginEnd="15dp"
+            android:layout_marginEnd="296dp"
             android:backgroundTint="#1E3A5F"
             android:text="Back"
             android:textColor="@color/white"
             app:icon="@drawable/icons8_back_64"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/textView8"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="HardcodedText,VisualLintBounds" />
+
+        <Button
+            android:id="@+id/editbutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="317dp"
+            android:layout_marginTop="7dp"
+            android:layout_marginEnd="3dp"
+            android:text="EDIT"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" /> <!-- Initially hidden -->
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <!-- Vertical Scroll View -->
@@ -132,7 +135,7 @@
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.538"
+        app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageContainer"
         app:layout_constraintVertical_bias="1.0"
@@ -154,5 +157,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <Button
+        android:id="@+id/savebutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="158dp"
+        android:layout_marginTop="605dp"
+        android:layout_marginEnd="162dp"
+        android:layout_marginBottom="78dp"
+        android:text="SAVE"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" /><![CDATA[
+
+
+        app:layout_constraintStart_toStartOf=
+        app:layout_constraintTop_toTopOf= /> ]]><!-- Initially disabled -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

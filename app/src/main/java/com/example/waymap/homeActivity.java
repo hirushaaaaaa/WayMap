@@ -24,14 +24,13 @@ import androidx.core.content.ContextCompat;
 
 public class homeActivity extends AppCompatActivity {
 
-    // Define an ActivityResultLauncher for the camera
+
     private final ActivityResultLauncher<Intent> cameraLauncher =
             registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
                 if (result.getResultCode() == RESULT_OK && result.getData() != null) {
-                    // Handle the result
                     Bitmap bitmap = (Bitmap) result.getData().getExtras().get("data");
-                    ImageView imageView = findViewById(R.id.imageView);  // Replace with your ImageView reference
-                    imageView.setImageBitmap(bitmap);  // Set the captured image to imageView
+                    ImageView imageView = findViewById(R.id.imageView);
+                    imageView.setImageBitmap(bitmap);
                     Toast.makeText(this, "Camera capture successful!", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(this, "Camera capture canceled", Toast.LENGTH_SHORT).show();
@@ -43,25 +42,22 @@ public class homeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        // Initialize views
         ImageView distanceCalculatorImage = findViewById(R.id.Imagebutton);
         TextView distanceCalculatorText = findViewById(R.id.textbutton);
         ImageView profileImage = findViewById(R.id.profilebutton);
         ImageView scenicStopsImage = findViewById(R.id.scenicimage);
         TextView scenicStopsText = findViewById(R.id.scenictext);
         ImageView cameraImage = findViewById(R.id.camerabutton);
-
         ImageView gmapButton = findViewById(R.id.gmapbutton);
         ImageView routeImage = findViewById(R.id.routeimage);
         TextView routeText = findViewById(R.id.routetext);
-
         Button mButton = findViewById(R.id.mButton);
         mButton.setOnClickListener(view -> {
             Intent intent = new Intent(homeActivity.this, moreActivity.class);
             startActivity(intent);
         });
 
-        // Set up listeners
+
         distanceCalculatorImage.setOnClickListener(v -> navigateToActivity(DistanceActivity.class));
         distanceCalculatorText.setOnClickListener(v -> navigateToActivity(DistanceActivity.class));
 
@@ -71,11 +67,11 @@ public class homeActivity extends AppCompatActivity {
         profileImage.setOnClickListener(v -> navigateToActivity(profileActivity.class));
 
         cameraImage.setOnClickListener(v -> {
-            // Camera permission check
+
             if (ContextCompat.checkSelfPermission(homeActivity.this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
                 ActivityCompat.requestPermissions(homeActivity.this, new String[]{Manifest.permission.CAMERA}, 101);
             } else {
-                // Start the camera using ActivityResultLauncher
+
                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 cameraLauncher.launch(intent);
             }
@@ -83,7 +79,6 @@ public class homeActivity extends AppCompatActivity {
 
         gmapButton.setOnClickListener(this::openGoogleMaps);
 
-        // Add listeners for Route Planner
         routeImage.setOnClickListener(v -> navigateToActivity(RouteplannerActivity.class));
         routeText.setOnClickListener(v -> navigateToActivity(RouteplannerActivity.class));
 
@@ -133,6 +128,9 @@ public class homeActivity extends AppCompatActivity {
 
                 logoutUser(view);
                 return true;
+            } else if (item.getItemId() == R.id.nav_SOS) {  // Handle SOS menu click
+                navigateToActivity(SOSActivity.class);
+                return true;
             } else {
                 return false;
             }
@@ -142,7 +140,7 @@ public class homeActivity extends AppCompatActivity {
     }
 
     private void logoutUser(View view) {
-        // Clear stored user data, for example in SharedPreferences
+      
         SharedPreferences sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.clear();

@@ -3,7 +3,6 @@ package com.example.waymap;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -11,116 +10,93 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class sinharajaActivity extends AppCompatActivity {
 
-    private TextView isurumunutext; // TextView to be edited by admin
+    private EditText isurumunuEditText;
+    private ImageView editButton, saveButton;
+    private SharedPreferences sharedPreferences;
+    private boolean isAdmin;
 
-    @SuppressLint("MissingInflatedId")
+    @SuppressLint({"MissingInflatedId", "WrongViewCast"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rainforest);
 
-        // Enable the back button in the action bar
+        // Enable back button
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
-        // Back Button Listener
+        // Initialize UI components
         Button backButton = findViewById(R.id.backButton6);
-        backButton.setOnClickListener(v -> {
-            Intent intent = new Intent(sinharajaActivity.this, ScenicstopsActivity.class);
-            startActivity(intent);
-            finish(); // Close the current activity
-        });
+        editButton = findViewById(R.id.editbutton);
+        saveButton = findViewById(R.id.savedbutton);
+        isurumunuEditText = findViewById(R.id.isurumunitext);
 
-        // Find ImageView for Admin Edit
-        @SuppressLint({"MissingInflatedId", "LocalSuppress"}) ImageView adminImageView = findViewById(R.id.add5);
-        isurumunutext = findViewById(R.id.isurumunitext); // TextView that admin will edit
+        // Load admin status from SharedPreferences
+        SharedPreferences loginPrefs = getSharedPreferences("LoginPrefs", MODE_PRIVATE);
+        isAdmin = loginPrefs.getBoolean("isAdmin", false);
+        sharedPreferences = getSharedPreferences("AdminPrefs", MODE_PRIVATE);
 
-        SharedPreferences sharedPreferences = getSharedPreferences("LoginPrefs", MODE_PRIVATE);
-        boolean isAdmin = sharedPreferences.getBoolean("isAdmin", false); // Retrieve admin status
-
-        // Debug: Check if the admin status is retrieved correctly
+        // Debugging log
         Log.d("DEBUG", "Admin Status: " + isAdmin);
 
+        // Load saved text
+        String savedText = sharedPreferences.getString("isurumuniText", "");
+        if (savedText.isEmpty()) {
+            isurumunuEditText.setHint("Enter new text here...");
+        } else {
+            isurumunuEditText.setText(savedText);
+        }
+
+        // Set UI based on admin status
         if (isAdmin) {
-            Log.d("DEBUG", "Admin ImageView should be VISIBLE.");
-            adminImageView.setVisibility(View.VISIBLE);
+            editButton.setVisibility(View.VISIBLE);  // Show edit button if admin
         } else {
-            Log.d("DEBUG", "Admin ImageView should be GONE.");
-            adminImageView.setVisibility(View.GONE);
+            editButton.setVisibility(View.GONE); // Hide edit button for non-admins
+            saveButton.setVisibility(View.GONE); // Hide save button for non-admins
+            isurumunuEditText.setEnabled(false); // Disable the EditText
         }
 
-        // Set click listener for the admin ImageView (add5) to edit or add the text
-        adminImageView.setOnClickListener(v -> {
-            if (isAdmin) {
-                showEditDialog();
-            }
+        // Edit Button: Enable text editing or allow adding new text
+        editButton.setOnClickListener(v -> {
+            isurumunuEditText.setEnabled(true); // Allow text editing
+            isurumunuEditText.requestFocus();  // Focus on the text field
+            saveButton.setVisibility(View.VISIBLE); // Show Save button when editing
         });
 
-        // Open Sinharaja location in Google Maps
-        TextView locsinharajaya = findViewById(R.id.locsinharajaya);
-        locsinharajaya.setOnClickListener(v -> {
-            // Coordinates for Sinharaja Rainforest
-            String geoUri = "geo:6.4069,80.4995?q=Sinharaja Rainforest";
-            Intent mapIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(geoUri));
-            mapIntent.setPackage("com.google.android.apps.maps"); // Ensure Google Maps is used
-            if (mapIntent.resolveActivity(getPackageManager()) != null) {
-                startActivity(mapIntent);
+        // Save Button: Save the edited or new text
+        saveButton.setOnClickListener(v -> {
+            String newText = isurumunuEditText.getText().toString().trim();
+            if (!newText.isEmpty()) {
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString("isurumuniText", newText);  // Save text to SharedPreferences
+                editor.apply();
+                Toast.makeText(this, "Text saved!", Toast.LENGTH_SHORT).show();
+                isurumunuEditText.setEnabled(false); // Disable editing after saving
+                saveButton.setVisibility(View.GONE); // Hide save button after saving
             } else {
-                // Fallback if Google Maps is not installed
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(geoUri)));
+                Toast.makeText(this, "Text cannot be empty!", Toast.LENGTH_SHORT).show();
             }
         });
-    }
 
-    // Method to show a dialog for the admin to edit or add text
-    private void showEditDialog() {
-        // Create an EditText to allow the admin to input new text
-        final EditText editText = new EditText(this);
-        String currentText = isurumunutext.getText().toString();
-
-        // Check if there's already text in the TextView
-        if (!currentText.isEmpty()) {
-            // Set current text to EditText if available
-            editText.setText(currentText);
-        } else {
-            // If the TextView is empty, give a hint to the admin
-            editText.setHint("Enter new text...");
-        }
-
-        // Create an AlertDialog
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Edit or Add Text")
-                .setView(editText)
-                .setPositiveButton("Save", (dialog, which) -> {
-                    // Save the new text and update the TextView
-                    String newText = editText.getText().toString().trim();
-                    if (!newText.isEmpty()) {
-                        isurumunutext.setText(newText); // Update the TextView with new text
-                        Toast.makeText(sinharajaActivity.this, "Text updated", Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(sinharajaActivity.this, "Text cannot be empty", Toast.LENGTH_SHORT).show();
-                    }
-                })
-                .setNegativeButton("Cancel", (dialog, which) -> dialog.dismiss())
-                .show();
+        // Back button action
+        backButton.setOnClickListener(v -> {
+            startActivity(new Intent(sinharajaActivity.this, ScenicstopsActivity.class));
+            finish();
+        });
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
-            // Navigate to ScenicstopsActivity when back button is clicked
-            Intent intent = new Intent(sinharajaActivity.this, ScenicstopsActivity.class);
-            startActivity(intent);
-            finish(); // Close the current activity
+            startActivity(new Intent(sinharajaActivity.this, ScenicstopsActivity.class));
+            finish();
             return true;
         }
         return super.onOptionsItemSelected(item);

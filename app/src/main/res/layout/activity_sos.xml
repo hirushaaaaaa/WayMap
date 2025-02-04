@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout18"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:gravity="center">
+
+    <TextView
+        android:id="@+id/textView21"
+        android:layout_width="308dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="47dp"
+        android:layout_marginBottom="669dp"
+        android:background="@drawable/button_background"
+        android:paddingBottom="16dp"
+        android:text="Emergency SOS Numbers - Sri Lanka"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button_police"
+        android:layout_width="379dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="293dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="390dp"
+        android:background="@color/black"
+        android:onClick="callPolice"
+        android:text="Police Emergency - 119"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <Button
+        android:id="@+id/button_emergency"
+        android:layout_width="379dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="354dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="329dp"
+        android:background="@color/black"
+        android:onClick="callEmergency"
+        android:text="Emergency Response - 118"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button_disaster"
+        android:layout_width="379dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="413dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="270dp"
+        android:background="@color/black"
+        android:onClick="callDisaster"
+        android:text="Disaster Management - 990"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/suwaseriya"
+        android:layout_width="379dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="472dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="211dp"
+        android:background="@color/black"
+        android:onClick="callDisaster"
+        android:text="Suwaseriya  - 1990"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView16"
+        android:layout_width="236dp"
+        android:layout_height="201dp"
+        android:layout_marginStart="87dp"
+        android:layout_marginTop="74dp"
+        android:layout_marginEnd="88dp"
+        android:layout_marginBottom="456dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/neon_sign_sos_the_inscription_on_a_dark_background_vector_26130012" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
