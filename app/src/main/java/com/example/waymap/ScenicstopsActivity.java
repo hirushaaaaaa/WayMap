@@ -19,7 +19,8 @@ public class ScenicstopsActivity extends AppCompatActivity {
 
     private static final int PICK_IMAGE_REQUEST = 1;
     private ImageView selectedImageView; // To keep track of the image being edited
-    private boolean isEditMode = false; // Track whether we're in edit mode
+    private boolean isEditMode = true; // Track whether we're in edit mode
+    private ImageView adminImageView; // Moved to class-level
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,21 +38,18 @@ public class ScenicstopsActivity extends AppCompatActivity {
         ImageView imageSripada = findViewById(R.id.imagesripadasthanaya);
 
         // Admin-only ImageView
-        ImageView adminImageView = findViewById(R.id.add);
+        adminImageView = findViewById(R.id.add);
 
         SharedPreferences sharedPreferences = getSharedPreferences("LoginPrefs", MODE_PRIVATE);
         boolean isAdmin = sharedPreferences.getBoolean("isAdmin", false); // Retrieve admin status
 
         // Debug: Check if the admin status is retrieved correctly
         Log.d("DEBUG", "Admin Status: " + isAdmin);
+        Log.d("DEBUG", "Login Status: " + sharedPreferences.getBoolean("isLoggedIn", false));
+        Log.d("DEBUG", "Admin Status: " + sharedPreferences.getBoolean("isAdmin", false));
 
-        if (isAdmin) {
-            Log.d("DEBUG", "Admin ImageView should be VISIBLE.");
-            adminImageView.setVisibility(View.VISIBLE);
-        } else {
-            Log.d("DEBUG", "Admin ImageView should be GONE.");
-            adminImageView.setVisibility(View.GONE);
-        }
+        // Set visibility based on admin status
+        adminImageView.setVisibility(isAdmin ? View.VISIBLE : View.GONE);
 
         // Set click listeners to navigate to different activities
         imageAnuradhapura.setOnClickListener(v -> startActivity(new Intent(this, AnuradhapuraActivity.class)));
@@ -63,19 +61,26 @@ public class ScenicstopsActivity extends AppCompatActivity {
         imageMirissa.setOnClickListener(v -> startActivity(new Intent(this, MirissaActivity.class)));
         imageSripada.setOnClickListener(v -> startActivity(new Intent(this, SripadasthanayaActivity.class)));
 
-        // Set the click listener for the admin ImageView (add)
+        // Set the click listener for the admin ImageView (add/edit button)
         adminImageView.setOnClickListener(v -> {
             if (isAdmin) {
-                isEditMode = !isEditMode; // Toggle the edit mode
-                if (isEditMode) {
-                    Toast.makeText(this, "Edit mode activated. Tap an image to change.", Toast.LENGTH_SHORT).show();
-                    enableImageEditing(imageAnuradhapura, imageSinharaja, imageRuwanmeliseya, imageGalleport, imageElla, imageDambulla, imageMirissa, imageSripada);
-                } else {
-                    Toast.makeText(this, "Edit mode deactivated.", Toast.LENGTH_SHORT).show();
-                    disableImageEditing(imageAnuradhapura, imageSinharaja, imageRuwanmeliseya, imageGalleport, imageElla, imageDambulla, imageMirissa, imageSripada);
-                }
+                adminImageView.setVisibility(View.VISIBLE); // Show only if admin
+            } else {
+                adminImageView.setVisibility(View.GONE); // Hide for regular users
             }
         });
+    }
+
+    // Toggle the edit mode and allow image selection
+    private void toggleEditMode(ImageView... images) {
+        isEditMode = !isEditMode;
+        if (isEditMode) {
+            Toast.makeText(this, "Edit mode activated. Tap an image to change.", Toast.LENGTH_SHORT).show();
+            enableImageEditing(images);
+        } else {
+            Toast.makeText(this, "Edit mode deactivated.", Toast.LENGTH_SHORT).show();
+            disableImageEditing(images);
+        }
     }
 
     // Enable editing by setting click listeners on ImageViews
@@ -84,7 +89,6 @@ public class ScenicstopsActivity extends AppCompatActivity {
             imageView.setOnClickListener(v -> {
                 if (isEditMode) {
                     selectedImageView = imageView; // Track the image that is being edited
-                    // Open image picker to select an image
                     openImagePicker();
                 }
             });

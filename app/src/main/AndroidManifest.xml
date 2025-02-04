@@ -178,7 +178,7 @@
             android:name=".LiveActivity"
             android:exported="true" />
         <activity
-            android:name=".OfflineMapActivity"
+            android:name=".SrilankanActivity"
             android:exported="true" />
         <activity
             android:name=".SOSActivity"

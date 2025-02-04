@@ -1,104 +1,71 @@
 package com.example.waymap;
 
-import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class sinharajaActivity extends AppCompatActivity {
 
-    private EditText isurumunuEditText;
-    private ImageView editButton, saveButton;
-    private SharedPreferences sharedPreferences;
-    private boolean isAdmin;
+    private Button backButton, editButton, saveButton;
+    private TextView isurumunitext, locisurumunuiya;
 
-    @SuppressLint({"MissingInflatedId", "WrongViewCast"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_rainforest);
-
-        // Enable back button
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        }
-
-        // Initialize UI components
-        Button backButton = findViewById(R.id.backButton6);
+        setContentView(R.layout.activity_sinharaja); // Replace with your actual layout name
+        SharedPreferences sharedPreferences = getSharedPreferences("UserPreferences", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean("isAdmin", true);  // Make sure this is true for testing
+        editor.apply();
+        // Initialize Views
+        backButton = findViewById(R.id.backButton1);
         editButton = findViewById(R.id.editbutton);
-        saveButton = findViewById(R.id.savedbutton);
-        isurumunuEditText = findViewById(R.id.isurumunitext);
 
-        // Load admin status from SharedPreferences
-        SharedPreferences loginPrefs = getSharedPreferences("LoginPrefs", MODE_PRIVATE);
-        isAdmin = loginPrefs.getBoolean("isAdmin", false);
-        sharedPreferences = getSharedPreferences("AdminPrefs", MODE_PRIVATE);
+        isurumunitext = findViewById(R.id.isurumunitext);
+        locisurumunuiya = findViewById(R.id.locisurumunuiya);
 
-        // Debugging log
-        Log.d("DEBUG", "Admin Status: " + isAdmin);
+        // Initially, make sure editButton is invisible for all users
+        editButton.setVisibility(View.INVISIBLE);
 
-        // Load saved text
-        String savedText = sharedPreferences.getString("isurumuniText", "");
-        if (savedText.isEmpty()) {
-            isurumunuEditText.setHint("Enter new text here...");
-        } else {
-            isurumunuEditText.setText(savedText);
-        }
+        // Handle Back Button click
+        backButton.setOnClickListener(v -> finish()); // Finish the current activity to go back
 
-        // Set UI based on admin status
-        if (isAdmin) {
-            editButton.setVisibility(View.VISIBLE);  // Show edit button if admin
-        } else {
-            editButton.setVisibility(View.GONE); // Hide edit button for non-admins
-            saveButton.setVisibility(View.GONE); // Hide save button for non-admins
-            isurumunuEditText.setEnabled(false); // Disable the EditText
-        }
-
-        // Edit Button: Enable text editing or allow adding new text
+        // Handle Edit Button click
         editButton.setOnClickListener(v -> {
-            isurumunuEditText.setEnabled(true); // Allow text editing
-            isurumunuEditText.requestFocus();  // Focus on the text field
-            saveButton.setVisibility(View.VISIBLE); // Show Save button when editing
+            // Show the text for editing and the Save button
+            isurumunitext.setVisibility(View.VISIBLE);
+            saveButton.setVisibility(View.VISIBLE);  // Show the Save button
+            editButton.setVisibility(View.INVISIBLE);  // Hide the Edit button
         });
 
-        // Save Button: Save the edited or new text
-        saveButton.setOnClickListener(v -> {
-            String newText = isurumunuEditText.getText().toString().trim();
-            if (!newText.isEmpty()) {
-                SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putString("isurumuniText", newText);  // Save text to SharedPreferences
-                editor.apply();
-                Toast.makeText(this, "Text saved!", Toast.LENGTH_SHORT).show();
-                isurumunuEditText.setEnabled(false); // Disable editing after saving
-                saveButton.setVisibility(View.GONE); // Hide save button after saving
-            } else {
-                Toast.makeText(this, "Text cannot be empty!", Toast.LENGTH_SHORT).show();
-            }
-        });
+        // Handle Save Button click
+      
+      
+      
+      
+      
+      
+      
 
-        // Back button action
-        backButton.setOnClickListener(v -> {
-            startActivity(new Intent(sinharajaActivity.this, ScenicstopsActivity.class));
-            finish();
-        });
+        // Check if the user is an admin
+        checkAdminStatus();
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            startActivity(new Intent(sinharajaActivity.this, ScenicstopsActivity.class));
-            finish();
-            return true;
+    private void checkAdminStatus() {
+        // Check if the user is logged in as an admin using SharedPreferences
+        SharedPreferences sharedPreferences = getSharedPreferences("UserPreferences", MODE_PRIVATE);
+        boolean isAdmin = sharedPreferences.getBoolean("isAdmin", false); // Default is false if not found
+
+        // Debugging: Log or print to see the value of isAdmin
+        System.out.println("Admin Status: " + isAdmin);
+
+        // If the user is an admin, show the Edit button
+        if (isAdmin) {
+            editButton.setVisibility(View.VISIBLE);  // Make the Edit button visible for admins
         }
-        return super.onOptionsItemSelected(item);
     }
 }

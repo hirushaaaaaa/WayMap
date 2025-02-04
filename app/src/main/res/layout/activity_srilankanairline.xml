@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".SrilankanActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/_a"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Header Section -->
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/_00254d"
+            android:gravity="center"
+            android:text="Sri Lankan Airline"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <!-- Information Section -->
+
+        <TextView
+            android:id="@+id/info_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="SriLankan Airlines – A Guide for Tourists ✈️🌍 SriLankan Airlines is Sri Lanka’s national airline, offering a seamless and comfortable travel experience for tourists visiting Sri Lanka and beyond. Whether you're coming for golden beaches, lush tea plantations, ancient temples, or wildlife safaris, SriLankan Airlines ensures your journey starts with warmth and world-class hospitality."
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            tools:ignore="VisualLintLongText" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <ViewFlipper
+                android:id="@+id/viewFlipper"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginTop="16dp"
+                android:autoStart="true"
+                android:flipInterval="2000"
+                android:inAnimation="@android:anim/slide_in_left"
+                android:outAnimation="@android:anim/slide_out_right">
+
+                <!-- First Image -->
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/maxresdefault"
+                    tools:ignore="ContentDescription" />
+
+                <!-- Second Image -->
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/fleet_a330_300_3"
+                    tools:ignore="ContentDescription" />
+
+                <!-- Third Image -->
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/image_6606fad8b0"
+                    tools:ignore="ContentDescription" />
+
+            </ViewFlipper>
+            <!-- Description Section -->
+            <TextView
+                android:id="@+id/trincotext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@color/white"
+                android:gravity="center"
+                android:text="Trincomalee"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/trincomalee_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="#50FFFFFF"
+                android:text=" Why Choose SriLankan Airlines? 🌟 \n✅ Direct Flights to Sri Lanka – Connects you to Colombo (CMB) from major cities worldwide. ✅ Warm Sri Lankan Hospitality – Friendly crew, delicious cuisine, and great service. ✅ Seamless Transfers – Easy connections to Maldives, India, Middle East, and Asia. ✅ Oneworld Alliance Partner – Earn miles and enjoy privileges with global airline partners. ✅ Luxury &amp; Comfort – Business and Economy class designed for a pleasant journey.  "
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                tools:ignore="VisualLintLongText" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@color/white"
+                android:gravity="center"
+                android:text=" Where Does SriLankan Airlines Fly? 🌏"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="#50FFFFFF"
+                android:text="SriLankan Airlines offers direct flights to Sri Lanka from:  🇬🇧 London (UK) 🇦🇺 Melbourne (Australia) 🇦🇪 Dubai, Abu Dhabi (UAE) 🇮🇳 Delhi, Mumbai, Chennai (India) 🇸🇬 Singapore 🇹🇭 Bangkok (Thailand) 🇯🇵 Tokyo (Japan) 🇨🇳 Beijing, Shanghai (China) ✈️ Ideal for stopovers! Travelers flying between Europe, the Middle East, and Asia can enjoy a short stay in Sri Lanka before continuing their journey."
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText,VisualLintLongText" />
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@color/white"
+                android:gravity="center"
+                android:text=" Experience SriLankan Airlines' Hospitality 🌴"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="#50FFFFFF"
+                android:text="🛫 Business Class – Reclining seats, priority check-in, Serendib Lounge access, and gourmet meals. \n💺 Economy Class – Spacious seating, in-flight entertainment, and complimentary Sri Lankan meals. \n🎬 Entertainment – Movies, music, and games on personal screens. \n🍛 Sri Lankan Cuisine – Enjoy local dishes like rice &amp; curry, hoppers, and tropical fruit juices onboard.  "
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@color/white"
+                android:gravity="center"
+                android:text=" Special Services for Tourists 🏝️"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="#50FFFFFF"
+                android:text="🚖 Sri Lanka Stopover Packages – Transit passengers can book hotels and city tours in Colombo. 🎟️ Holiday Packages – SriLankan Holidays offers flight + hotel packages for beach, adventure, and cultural trips. 🧳 Generous Baggage Allowance – Perfect for travelers bringing back souvenirs!"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                tools:ignore="VisualLintLongText" />
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@color/white"
+                android:gravity="center"
+                android:text=" Plan Your Trip with SriLankan Airlines 🛫"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="#50FFFFFF"
+                android:text="🌎 Book Online: www.srilankan.com 📞 Customer Service: 24/7 support for bookings &amp; travel assistance.  SriLankan Airlines makes your journey smooth, exciting, and full of Sri Lankan charm! 🇱🇰✨ Ready to fly? 🌍✈️"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                tools:ignore="VisualLintLongText" />
+
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

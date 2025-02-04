@@ -76,7 +76,7 @@ public class moreActivity extends AppCompatActivity {
             startActivity(intent);
         });
         offlinemapsText.setOnClickListener(v -> {
-            Intent intent = new Intent(moreActivity.this, OfflineMapActivity.class);
+            Intent intent = new Intent(moreActivity.this, SrilankanActivity.class);
             startActivity(intent);
         });
 

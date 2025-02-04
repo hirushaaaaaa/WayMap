@@ -71,12 +71,13 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void saveLoginState(String username, boolean isAdmin) {
-        SharedPreferences sharedPreferences = getSharedPreferences("LoginPrefs", MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("username", username);
-        editor.putBoolean("isAdmin", isAdmin); // Save admin status
+        SharedPreferences loginPrefs = getSharedPreferences("LoginPrefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = loginPrefs.edit();
+        editor.putBoolean("isLoggedIn", true); // Store login state
+        editor.putBoolean("isAdmin", isAdmin); // Store if the user is an admin
         editor.apply();
     }
+
 
     private void validateUser(String username, String password) {
         databaseReference.orderByChild("username").equalTo(username).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -84,10 +85,9 @@ public class LoginActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                        // Get user data
                         String dbPassword = snapshot.child("password").getValue(String.class);
                         if (dbPassword != null && dbPassword.equals(password)) {
-                            saveLoginState(username, false); // Not an admin
+                            saveLoginState(username, false); // Normal user, so isAdmin = false
                             Toast.makeText(LoginActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
                             navigateToHomePage();
                             return;
@@ -106,6 +106,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+
 
     private void navigateToHomePage() {
         Intent intent = new Intent(LoginActivity.this, homeActivity.class);

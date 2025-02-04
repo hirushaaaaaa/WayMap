@@ -72,16 +72,19 @@
 
         <Button
             android:id="@+id/editbutton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="86dp"
+            android:layout_height="41dp"
             android:layout_marginStart="317dp"
             android:layout_marginTop="7dp"
             android:layout_marginEnd="3dp"
             android:text="EDIT"
+            android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" /> <!-- Initially hidden -->
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TouchTargetSizeCheck"
+            /> <!-- Initially hidden -->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -155,21 +158,9 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/savebutton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="158dp"
-        android:layout_marginTop="605dp"
-        android:layout_marginEnd="162dp"
-        android:layout_marginBottom="78dp"
-        android:text="SAVE"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" /><![CDATA[
+
+
 
 
         app:layout_constraintStart_toStartOf=
