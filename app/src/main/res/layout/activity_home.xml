@@ -267,19 +267,20 @@
             app:layout_constraintVertical_bias="0.773">
 
             <ImageView
+
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:id="@+id/liveImage"
+                android:id="@+id/hotelImage"
                 android:scaleType="centerInside"
-                android:src="@drawable/_2147da28ae48c0a5e140f95_icon"
+                android:src="@drawable/infinity_pool"
                 tools:ignore="ContentDescription,ImageContrastCheck" />
 
             <TextView
-                android:id="@+id/liveText"
+                android:id="@+id/hotelText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="Live Navigation"
+                android:text="Hotel Details"
                 android:textColor="@color/white"
                 android:textSize="12sp"
                 tools:ignore="HardcodedText" />
@@ -290,28 +291,14 @@
             android:layout_height="55dp"
             android:layout_marginTop="537dp"
             android:layout_marginBottom="4dp"
-            android:background="@color/ic_launcher_background"
+            android:background="@drawable/hotel_layout"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="1.0"
             tools:ignore="VisualLintBounds">
-
-            <ImageView
-                android:id="@+id/searchbutton"
-                android:layout_width="45dp"
-                android:layout_height="45dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="354dp"
-                android:layout_marginBottom="2dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/icons8_search_128"
-                tools:ignore="ContentDescription" />
 
 
             <ImageView
@@ -348,24 +335,7 @@
                 tools:ignore="ContentDescription" />
 
             <ImageView
-                android:id="@+id/updatebutton"
-                android:layout_width="43dp"
-                android:layout_height="42dp"
-                android:layout_marginStart="368dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="4dp"
-                android:layout_marginBottom="5dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0"
-                app:srcCompat="@drawable/icons8_notification_50__2_"
-                tools:ignore="ContentDescription" />
-
-            <ImageView
-                android:id="@+id/savedbutton"
+                android:id="@+id/feedback"
                 android:layout_width="43dp"
                 android:layout_height="42dp"
                 android:layout_marginStart="274dp"

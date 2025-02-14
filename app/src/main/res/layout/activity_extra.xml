@@ -27,7 +27,7 @@
                 android:backgroundTint="@color/black"
                 android:text="Back"
                 android:textColor="@color/white"
-                app:icon="@drawable/icons8_back_64__1_" />
+               />
 
             <!-- Header Text -->
             <TextView
@@ -64,14 +64,14 @@
                     <ImageView
                         android:layout_width="70dp"
                         android:layout_height="70dp"
-                        android:src="@drawable/___pol_sambol_sri_lanka_recipes" />
+                        android:src="@drawable/crab_curry_768x511" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
                         android:gravity="center"
-                        android:text="sambol"
+                        android:text="Jaffna Crab Curry"
                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:textStyle="bold" />
@@ -90,14 +90,14 @@
                     <ImageView
                         android:layout_width="70dp"
                         android:layout_height="70dp"
-                        android:src="@drawable/andhra_chicken" />
+                        android:src="@drawable/sri_lankan_lunu_miris_768x511" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
                         android:gravity="center"
-                        android:text="ChickenCurry"
+                        android:text="Lunu Miris"
                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:textStyle="bold" />
@@ -123,7 +123,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
                         android:gravity="center"
-                        android:text="Seafoods"
+                        android:text=" Grilled Seafoods"
                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:textStyle="bold" />
@@ -150,94 +150,6 @@
                 android:orientation="horizontal">
 
 
-            <!-- Product 1 -->
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/foodcorner"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
-                        android:src="@drawable/___pol_sambol_sri_lanka_recipes" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:gravity="center"
-                        android:text="sambol"
-                        android:textColor="@color/white"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
-                </LinearLayout>
-
-                <!-- Product 2 -->
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/foodcorner"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
-                        android:src="@drawable/andhra_chicken" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:gravity="center"
-                        android:text="ChickenCurry"
-                        android:textColor="@color/white"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
-                </LinearLayout>
-
-                <!-- Product 3 -->
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/foodcorner"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
-                        android:src="@drawable/seafood_boil_thumb_new" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:gravity="center"
-                        android:text="Seafoods"
-                        android:textColor="@color/white"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-
                 <!-- Product 1 -->
 
                 <LinearLayout
@@ -252,14 +164,14 @@
                     <ImageView
                         android:layout_width="70dp"
                         android:layout_height="70dp"
-                        android:src="@drawable/___pol_sambol_sri_lanka_recipes" />
+                        android:src="@drawable/nai_miris" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
                         android:gravity="center"
-                        android:text="sambol"
+                        android:text="Nai miris sambol"
                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:textStyle="bold" />
@@ -278,131 +190,219 @@
                     <ImageView
                         android:layout_width="70dp"
                         android:layout_height="70dp"
-                        android:src="@drawable/andhra_chicken" />
+                        android:src="@drawable/katta_sambol" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
                         android:gravity="center"
-                        android:text="ChickenCurry"
+                        android:text="Katta sambol"
                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:textStyle="bold" />
                 </LinearLayout>
 
                 <!-- Product 3 -->
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/foodcorner"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                <!--                <LinearLayout-->
+                <!--                    android:layout_width="0dp"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_margin="8dp"-->
+                <!--                    android:layout_weight="1"-->
+                <!--                    android:background="@drawable/foodcorner"-->
+                <!--                    android:gravity="center"-->
+                <!--                    android:orientation="vertical">-->
 
-                    <ImageView
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
-                        android:src="@drawable/seafood_boil_thumb_new" />
+                <!--                    <ImageView-->
+                <!--                        android:layout_width="70dp"-->
+                <!--                        android:layout_height="70dp"-->
+                <!--                        android:src="@drawable/seafood_boil_thumb_new" />-->
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:gravity="center"
-                        android:text="Seafoods"
-                        android:textColor="@color/white"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
-                </LinearLayout>
-            </LinearLayout>
+                <!--                    <TextView-->
+                <!--                        android:layout_width="wrap_content"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:layout_marginTop="4dp"-->
+                <!--                        android:gravity="center"-->
+                <!--                        android:text="Seafoods"-->
+                <!--                        android:textColor="@color/white"-->
+                <!--                        android:textSize="14sp"-->
+                <!--                        android:textStyle="bold" />-->
+                <!--                </LinearLayout>-->
+                <!--            </LinearLayout>-->
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:gravity="center"
-                android:orientation="horizontal">
+                <!--            <LinearLayout-->
+                <!--                android:layout_width="match_parent"-->
+                <!--                android:layout_height="wrap_content"-->
+                <!--                android:layout_marginTop="16dp"-->
+                <!--                android:gravity="center"-->
+                <!--                android:orientation="horizontal">-->
 
 
-                <!-- Product 1 -->
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/foodcorner"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                <!--                &lt;!&ndash; Product 1 &ndash;&gt;-->
 
-                    <ImageView
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
-                        android:src="@drawable/___pol_sambol_sri_lanka_recipes" />
+                <!--                <LinearLayout-->
+                <!--                    android:layout_width="0dp"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_margin="8dp"-->
+                <!--                    android:layout_weight="1"-->
+                <!--                    android:background="@drawable/foodcorner"-->
+                <!--                    android:gravity="center"-->
+                <!--                    android:orientation="vertical">-->
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:gravity="center"
-                        android:text="sambol"
-                        android:textColor="@color/white"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
-                </LinearLayout>
+                <!--                    <ImageView-->
+                <!--                        android:layout_width="70dp"-->
+                <!--                        android:layout_height="70dp"-->
+                <!--                        android:src="@drawable/_pol_sambol_sri_lanka_recipes" />-->
 
-                <!-- Product 2 -->
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/foodcorner"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                <!--                    <TextView-->
+                <!--                        android:layout_width="wrap_content"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:layout_marginTop="4dp"-->
+                <!--                        android:gravity="center"-->
+                <!--                        android:text="sambol"-->
+                <!--                        android:textColor="@color/white"-->
+                <!--                        android:textSize="14sp"-->
+                <!--                        android:textStyle="bold" />-->
+                <!--                </LinearLayout>-->
 
-                    <ImageView
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
-                        android:src="@drawable/andhra_chicken" />
+                <!--                &lt;!&ndash; Product 2 &ndash;&gt;-->
+                <!--                <LinearLayout-->
+                <!--                    android:layout_width="0dp"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_margin="8dp"-->
+                <!--                    android:layout_weight="1"-->
+                <!--                    android:background="@drawable/foodcorner"-->
+                <!--                    android:gravity="center"-->
+                <!--                    android:orientation="vertical">-->
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:gravity="center"
-                        android:text="ChickenCurry"
-                        android:textColor="@color/white"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
-                </LinearLayout>
+                <!--                    <ImageView-->
+                <!--                        android:layout_width="70dp"-->
+                <!--                        android:layout_height="70dp"-->
+                <!--                        android:src="@drawable/andhra_chicken" />-->
 
-                <!-- Product 3 -->
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/foodcorner"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                <!--                    <TextView-->
+                <!--                        android:layout_width="wrap_content"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:layout_marginTop="4dp"-->
+                <!--                        android:gravity="center"-->
+                <!--                        android:text="ChickenCurry"-->
+                <!--                        android:textColor="@color/white"-->
+                <!--                        android:textSize="14sp"-->
+                <!--                        android:textStyle="bold" />-->
+                <!--                </LinearLayout>-->
 
-                    <ImageView
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
-                        android:src="@drawable/seafood_boil_thumb_new" />
+                <!--                &lt;!&ndash; Product 3 &ndash;&gt;-->
+                <!--                <LinearLayout-->
+                <!--                    android:layout_width="0dp"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_margin="8dp"-->
+                <!--                    android:layout_weight="1"-->
+                <!--                    android:background="@drawable/foodcorner"-->
+                <!--                    android:gravity="center"-->
+                <!--                    android:orientation="vertical">-->
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:gravity="center"
-                        android:text="Seafoods"
-                        android:textColor="@color/white"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
-                </LinearLayout>
+                <!--                    <ImageView-->
+                <!--                        android:layout_width="70dp"-->
+                <!--                        android:layout_height="70dp"-->
+                <!--                        android:src="@drawable/seafood_boil_thumb_new" />-->
+
+                <!--                    <TextView-->
+                <!--                        android:layout_width="wrap_content"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:layout_marginTop="4dp"-->
+                <!--                        android:gravity="center"-->
+                <!--                        android:text="Seafoods"-->
+                <!--                        android:textColor="@color/white"-->
+                <!--                        android:textSize="14sp"-->
+                <!--                        android:textStyle="bold" />-->
+                <!--                </LinearLayout>-->
+                <!--            </LinearLayout>-->
+
+                <!--            <LinearLayout-->
+                <!--                android:layout_width="match_parent"-->
+                <!--                android:layout_height="wrap_content"-->
+                <!--                android:layout_marginTop="16dp"-->
+                <!--                android:gravity="center"-->
+                <!--                android:orientation="horizontal">-->
+
+
+                <!--                &lt;!&ndash; Product 1 &ndash;&gt;-->
+                <!--                <LinearLayout-->
+                <!--                    android:layout_width="0dp"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_margin="8dp"-->
+                <!--                    android:layout_weight="1"-->
+                <!--                    android:background="@drawable/foodcorner"-->
+                <!--                    android:gravity="center"-->
+                <!--                    android:orientation="vertical">-->
+
+                <!--                    <ImageView-->
+                <!--                        android:layout_width="70dp"-->
+                <!--                        android:layout_height="70dp"-->
+                <!--                        android:src="@drawable/_pol_sambol_sri_lanka_recipes" />-->
+
+                <!--                    <TextView-->
+                <!--                        android:layout_width="wrap_content"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:layout_marginTop="4dp"-->
+                <!--                        android:gravity="center"-->
+                <!--                        android:text="sambol"-->
+                <!--                        android:textColor="@color/white"-->
+                <!--                        android:textSize="14sp"-->
+                <!--                        android:textStyle="bold" />-->
+                <!--                </LinearLayout>-->
+
+                <!--                &lt;!&ndash; Product 2 &ndash;&gt;-->
+                <!--                <LinearLayout-->
+                <!--                    android:layout_width="0dp"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_margin="8dp"-->
+                <!--                    android:layout_weight="1"-->
+                <!--                    android:background="@drawable/foodcorner"-->
+                <!--                    android:gravity="center"-->
+                <!--                    android:orientation="vertical">-->
+
+                <!--                    <ImageView-->
+                <!--                        android:layout_width="70dp"-->
+                <!--                        android:layout_height="70dp"-->
+                <!--                        android:src="@drawable/andhra_chicken" />-->
+
+                <!--                    <TextView-->
+                <!--                        android:layout_width="wrap_content"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:layout_marginTop="4dp"-->
+                <!--                        android:gravity="center"-->
+                <!--                        android:text="ChickenCurry"-->
+                <!--                        android:textColor="@color/white"-->
+                <!--                        android:textSize="14sp"-->
+                <!--                        android:textStyle="bold" />-->
+                <!--                </LinearLayout>-->
+
+                <!--                &lt;!&ndash; Product 3 &ndash;&gt;-->
+                <!--                <LinearLayout-->
+                <!--                    android:layout_width="0dp"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_margin="8dp"-->
+                <!--                    android:layout_weight="1"-->
+                <!--                    android:background="@drawable/foodcorner"-->
+                <!--                    android:gravity="center"-->
+                <!--                    android:orientation="vertical">-->
+
+                <!--                    <ImageView-->
+                <!--                        android:layout_width="70dp"-->
+                <!--                        android:layout_height="70dp"-->
+                <!--                        android:src="@drawable/seafood_boil_thumb_new" />-->
+
+                <!--                    <TextView-->
+                <!--                        android:layout_width="wrap_content"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:layout_marginTop="4dp"-->
+                <!--                        android:gravity="center"-->
+                <!--                        android:text="Seafoods"-->
+                <!--                        android:textColor="@color/white"-->
+                <!--                        android:textSize="14sp"-->
+                <!--                        android:textStyle="bold" />-->
+                <!--                </LinearLayout>-->
             </LinearLayout>
 
             <ImageView

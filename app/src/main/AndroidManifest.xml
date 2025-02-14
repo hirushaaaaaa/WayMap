@@ -85,7 +85,7 @@
             android:name=".ScenicstopsActivity"
             android:exported="true" />
         <activity
-            android:name=".AnuradhapuraActivity"
+            android:name=".RainforestActivity"
             android:exported="true" />
         <activity
             android:name=".MirissaActivity"
@@ -175,7 +175,7 @@
             android:name=".DolphinwatchingActivity"
             android:exported="true" />
         <activity
-            android:name=".LiveActivity"
+            android:name=".HotelActivity"
             android:exported="true" />
         <activity
             android:name=".SrilankanActivity"
@@ -183,6 +183,19 @@
         <activity
             android:name=".SOSActivity"
             android:exported="true" />
+        <activity
+            android:name=".HoteldetailsActivity"
+            android:exported="true" />
+        <activity
+            android:name=".SettingsActivity"
+            android:exported="true" />
+        <activity
+            android:name=".FeedbackActivity"
+            android:exported="true" />
+        <activity
+            android:name=".FeedbackAdapter"
+            android:exported="true"
+            tools:ignore="Instantiatable" />
     </application>
 
 </manifest>

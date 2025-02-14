@@ -1,59 +1,78 @@
 package com.example.waymap;
 
-import android.content.Intent;
-import android.net.Uri;
+import android.annotation.SuppressLint;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.MenuItem;
+import android.util.Log;
+import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
-
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class RuwanmeliseyaActivity extends AppCompatActivity {
 
+    private TextView ruwanmelitext, locruwanmeliseya;
+    private ImageView imageruwanmeliseya;
+    private Button backButton5, editButton, saveButton;
+
+    private boolean isAdmin = false; // Declare once globally
+
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ruwanmeliseya); // Ensure this layout file exists
+        setContentView(R.layout.activity_ruwanmeliseya);
 
-        // Enable the back button in the action bar
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        // Initialize Views
+        ruwanmelitext = findViewById(R.id.ruwanmelitext);
+        locruwanmeliseya = findViewById(R.id.locruwanmeliseya);
+        imageruwanmeliseya = findViewById(R.id.imageruwanmeliseya);
+        backButton5 = findViewById(R.id.backButton5);
+
+        SharedPreferences sharedPreferences = getSharedPreferences("LoginPrefs", MODE_PRIVATE);
+        boolean isAdmin = sharedPreferences.getBoolean("isAdmin", false); // Retrieve admin status
+
+// Debug: Check if the admin status is retrieved correctly
+        Log.d("DEBUG", "Admin Status: " + isAdmin);
+
+// Set the visibility of buttons based on admin status
+        if (isAdmin) {
+            // Admin users can see both edit and save buttons
+            editButton.setVisibility(View.VISIBLE);
+            saveButton.setVisibility(View.VISIBLE);
+        } else {
+            // Regular users cannot see these buttons
+            editButton.setVisibility(View.GONE);
+            saveButton.setVisibility(View.GONE);
         }
+        checkAdminPermissions();
 
-        // Back Button Listener
-        Button backButton = findViewById(R.id.backButton5);
-        backButton.setOnClickListener(v -> {
-            Intent intent = new Intent(RuwanmeliseyaActivity.this, ScenicstopsActivity.class);
-            startActivity(intent);
-            finish(); // Close the current activity
-        });
+        // Set up the back button functionality
+        backButton5.setOnClickListener(v -> finish()); // Close the activity (back action)
 
-        // Open Anuradhapura Puja Nagaraya in Google Maps
-        TextView locruwanmeliseya = findViewById(R.id.locruwanmeliseya);
-        locruwanmeliseya.setOnClickListener(v -> {
-            // Replace the query with Anuradhapura Puja Nagaraya's coordinates or name
-            String geoUri = "geo:8.345,80.403?q=Anuradhapura Puja Nagaraya"; // Example coordinates for Anuradhapura
-            Intent mapIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(geoUri));
-            mapIntent.setPackage("com.google.android.apps.maps"); // Ensure Google Maps is used
-            if (mapIntent.resolveActivity(getPackageManager()) != null) {
-                startActivity(mapIntent);
-            } else {
-                // Fallback if Google Maps is not installed
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(geoUri)));
-            }
+        // Set up the edit button functionality
+        editButton.setOnClickListener(v -> ruwanmelitext.setText("Edit your content here..."));
+
+        // Set up the save button functionality
+        saveButton.setOnClickListener(v -> {
+            String content = ruwanmelitext.getText().toString();
+            saveContent(content);
         });
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            // Navigate to ScenicstopsActivity when back button is clicked
-            Intent intent = new Intent(RuwanmeliseyaActivity.this, ScenicstopsActivity.class);
-            startActivity(intent);
-            finish(); // Close the current activity
-            return true;
+    private void checkAdminPermissions() {
+        if (isAdmin) {
+            editButton.setVisibility(View.VISIBLE);
+            saveButton.setVisibility(View.VISIBLE);
+        } else {
+            editButton.setVisibility(View.GONE);
+            saveButton.setVisibility(View.GONE);
         }
-        return super.onOptionsItemSelected(item);
+    }
+
+    private void saveContent(String content) {
+        Toast.makeText(this, "Content Saved!", Toast.LENGTH_SHORT).show();
     }
 }

@@ -91,7 +91,7 @@
             app:srcCompat="@drawable/palm_tree_grove_mirissa"
             tools:ignore="ContentDescription,HardcodedText" />
 
-        <!-- Add other images here -->
+        <!-- Add other 111111.jpeg here -->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -137,34 +137,6 @@
         android:text="📌Mirissa"
         android:textColor="@android:color/holo_green_light"
         android:textColorHighlight="@android:color/holo_green_light"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/edit1button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="159dp"
-        android:layout_marginTop="526dp"
-        android:layout_marginEnd="164dp"
-        android:layout_marginBottom="157dp"
-        android:text="edit"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/savebutton3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="162dp"
-        android:layout_marginTop="578dp"
-        android:layout_marginEnd="161dp"
-        android:layout_marginBottom="105dp"
-        android:text="save"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

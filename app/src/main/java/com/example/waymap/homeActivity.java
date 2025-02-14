@@ -1,6 +1,7 @@
 package com.example.waymap;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -10,9 +11,9 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,6 +25,7 @@ import androidx.core.content.ContextCompat;
 
 public class homeActivity extends AppCompatActivity {
 
+    private SearchView searchView;
 
     private final ActivityResultLauncher<Intent> cameraLauncher =
             registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
@@ -36,35 +38,60 @@ public class homeActivity extends AppCompatActivity {
                     Toast.makeText(this, "Camera capture canceled", Toast.LENGTH_SHORT).show();
                 }
             });
+    private String query;
 
+    @SuppressLint({"WrongViewCast", "MissingInflatedId"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_home2);
 
         ImageView distanceCalculatorImage = findViewById(R.id.Imagebutton);
         TextView distanceCalculatorText = findViewById(R.id.textbutton);
         ImageView profileImage = findViewById(R.id.profilebutton);
         ImageView scenicStopsImage = findViewById(R.id.scenicimage);
         TextView scenicStopsText = findViewById(R.id.scenictext);
-        ImageView cameraImage = findViewById(R.id.camerabutton);
-        ImageView gmapButton = findViewById(R.id.gmapbutton);
+        @SuppressLint({"MissingInflatedId", "LocalSuppress"}) ImageView cameraImage = findViewById(R.id.camerabutton);
+        @SuppressLint({"MissingInflatedId", "LocalSuppress"}) ImageView gmapButton = findViewById(R.id.gmapbutton);
         ImageView routeImage = findViewById(R.id.routeimage);
         TextView routeText = findViewById(R.id.routetext);
-        Button mButton = findViewById(R.id.mButton);
+         ImageView hotelImage = findViewById(R.id.hotelImage);
+         TextView hotelText = findViewById(R.id.hotelText);
+         @SuppressLint({"MissingInflatedId", "LocalSuppress"}) ImageView feedbackImage = findViewById(R.id.feedback);
+        TextView mButton = findViewById(R.id.mButton);
         mButton.setOnClickListener(view -> {
             Intent intent = new Intent(homeActivity.this, moreActivity.class);
             startActivity(intent);
         });
+        feedbackImage.setOnClickListener(view -> {
+            Intent intent = new Intent(homeActivity.this, FeedbackActivity.class);
+            startActivity(intent);
+        });
 
+        hotelImage.setOnClickListener(v -> {
+            try {
+                Intent intent = new Intent(homeActivity.this, HotelActivity.class);
+                startActivity(intent);
+            } catch (Exception e) {
+                e.printStackTrace();
+                Toast.makeText(homeActivity.this, "Error opening hotel details", Toast.LENGTH_SHORT).show();
+            }
+        });
 
+        hotelText.setOnClickListener(v -> {
+            Intent intent = new Intent(homeActivity.this, HotelActivity.class);
+            startActivity(intent);
+        });
         distanceCalculatorImage.setOnClickListener(v -> navigateToActivity(DistanceActivity.class));
         distanceCalculatorText.setOnClickListener(v -> navigateToActivity(DistanceActivity.class));
 
         scenicStopsImage.setOnClickListener(v -> navigateToActivity(ScenicstopsActivity.class));
         scenicStopsText.setOnClickListener(v -> navigateToActivity(ScenicstopsActivity.class));
 
-        profileImage.setOnClickListener(v -> navigateToActivity(profileActivity.class));
+        profileImage.setOnClickListener(v -> {
+            Intent intent = new Intent(homeActivity.this, profileActivity.class);
+            startActivity(intent);
+        });
 
         cameraImage.setOnClickListener(v -> {
 
@@ -84,7 +111,72 @@ public class homeActivity extends AppCompatActivity {
 
         ImageView menuButton = findViewById(R.id.menu);
         menuButton.setOnClickListener(view -> showPopupMenu(view));
+        searchView = findViewById(R.id.searchView); // Add this line
+
+        // Rest of your code...
+
+        // Set the listener for searchView
+        searchView = findViewById(R.id.searchView);
+
+        // Set the listener for searchView
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                // Show a toast indicating the search query
+                Toast.makeText(homeActivity.this, "Searching for: " + query, Toast.LENGTH_SHORT).show();
+
+                // Handle search query and navigate to the correct activity
+                navigateBasedOnSearchQuery(query);
+                return false; // Prevent default action
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false; // Optionally, you can implement live search here if needed
+            }
+        });
     }
+
+    private void navigateBasedOnSearchQuery(String query) {
+        // Check the query and navigate to the appropriate activity
+        if (query != null) {
+            switch (query.toLowerCase()) {
+                case "route planner":
+                    navigateToActivity(RouteplannerActivity.class);
+                    break;
+                case "scenic stops":
+                    navigateToActivity(ScenicstopsActivity.class);
+                    break;
+                case "profile":
+                    navigateToActivity(profileActivity.class);
+                    break;
+                case "hotel":
+                    navigateToActivity(HotelActivity.class);
+                    break;
+                case "transport":
+                    navigateToActivity(TransportActivity.class);
+                    break;
+                case "fuel management":
+                    navigateToActivity(FuelManagementActivity.class);
+                    break;
+                case "sri lankan airline":
+                    navigateToActivity(SrilankanActivity.class);
+                    break;
+                case "local dishes":
+                    navigateToActivity(LocaldishesActivity.class);
+                    break;
+                case "adventure and activities":
+                    navigateToActivity(ExploreActivity.class);
+                    break;
+                // Add more cases as needed
+                default:
+                    Toast.makeText(homeActivity.this, "No results found for: " + query, Toast.LENGTH_SHORT).show();
+                    break;
+            }
+        }
+    }
+
+
 
     private void openGoogleMaps(View view) {
         String geoUri = "geo:0,0?q=Colombo";
@@ -125,11 +217,13 @@ public class homeActivity extends AppCompatActivity {
                 navigateToActivity(SettingsActivity.class);
                 return true;
             } else if (item.getItemId() == R.id.nav_logout) {
-
                 logoutUser(view);
                 return true;
-            } else if (item.getItemId() == R.id.nav_SOS) {  // Handle SOS menu click
+            } else if (item.getItemId() == R.id.nav_SOS) {
                 navigateToActivity(SOSActivity.class);
+                return true;
+            } else if (item.getItemId() == R.id.nav_feedbacks) {  // Handle Feedback menu click
+                navigateToActivity(FeedbackAdapter.class);
                 return true;
             } else {
                 return false;
@@ -139,8 +233,9 @@ public class homeActivity extends AppCompatActivity {
         popupMenu.show();
     }
 
+
     private void logoutUser(View view) {
-      
+
         SharedPreferences sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.clear();
@@ -152,5 +247,6 @@ public class homeActivity extends AppCompatActivity {
 
         Toast.makeText(view.getContext(), "Logged out successfully", Toast.LENGTH_SHORT).show();
     }
+
 
 }

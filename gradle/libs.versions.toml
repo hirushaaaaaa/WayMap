@@ -19,6 +19,7 @@ firebaseDatabase = "21.0.0"
 mediationTestSuite = "3.0.0"
 googleAndroidLibrariesMapsplatformSecretsGradlePlugin = "2.0.1"
 playServicesMaps = "19.0.0"
+firebaseFirestoreVersion = "25.1.2"
 
 [libraries]
 autoimageslider = { module = "com.smarteist:autoimageslider", version.ref = "autoimageslider" }
@@ -39,6 +40,7 @@ firebase-auth = { group = "com.google.firebase", name = "firebase-auth", version
 firebase-database = { group = "com.google.firebase", name = "firebase-database", version.ref = "firebaseDatabase" }
 mediation-test-suite = { group = "com.google.android.ads", name = "mediation-test-suite", version.ref = "mediationTestSuite" }
 play-services-maps = { group = "com.google.android.gms", name = "play-services-maps", version.ref = "playServicesMaps" }
+google-firebase-firestore = { group = "com.google.firebase", name = "firebase-firestore", version.ref = "firebaseFirestoreVersion" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

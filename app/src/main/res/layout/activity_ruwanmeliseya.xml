@@ -1,5 +1,4 @@
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -92,14 +91,24 @@
             app:srcCompat="@drawable/tourist_places_in_anuradhapura"
             tools:ignore="ContentDescription,HardcodedText" />
 
-        <!-- Add other images here -->
+        <!-- Add other 111111.jpeg here -->
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout><![CDATA[
+
+    @color/white"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/imageContainer"
+    app:layout_constraintVertical_bias="0.0"
+    tools:ignore="HardcodedText,TextSizeCheck" />
+
+    ]]>
 
     <TextView
         android:id="@+id/ruwanmelitext"
-        android:layout_width="382dp"
-        android:layout_height="460dp"
+        android:layout_width="377dp"
+        android:layout_height="208dp"
         android:layout_marginStart="14dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="15dp"
@@ -117,15 +126,12 @@
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageContainer"
-        tools:ignore="HardcodedText,TextSizeCheck" />@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.8"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageContainer"
         app:layout_constraintVertical_bias="0.0"
         tools:ignore="HardcodedText,TextSizeCheck" />
+
     <TextView
         android:id="@+id/locruwanmeliseya"
         android:layout_width="wrap_content"

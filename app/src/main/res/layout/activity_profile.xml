@@ -8,157 +8,170 @@
     android:background="@color/black"
     android:backgroundTint="@color/black">
 
-    <Button
-        android:id="@+id/backbutton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="306dp"
-        android:layout_marginBottom="683dp"
-        android:backgroundTint="@color/black"
-        android:text="back"
-        app:icon="@drawable/icons8_back_64__1_"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="HardcodedText,MissingConstraints" />
+    <!-- Added Username TextView -->
 
-    <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="146dp"
-        android:layout_marginTop="155dp"
-        android:layout_marginEnd="147dp"
-        android:layout_marginBottom="1dp"
-        android:backgroundTint="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/autoCompleteTextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/icons8_person_94"
-        tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
-
-    <AutoCompleteTextView
-        android:id="@+id/autoCompleteTextView"
-        android:layout_width="236dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="113dp"
-        android:layout_marginTop="1dp"
-        android:layout_marginEnd="104dp"
-        android:layout_marginBottom="417dp"
-        android:background="@drawable/rounded_cornertext"
-        android:text="AutoCompleteTextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton"
-        tools:ignore="DuplicateSpeakableTextCheck,DuplicateSpeakableTextCheck,HardcodedText,LabelFor,TextContrastCheck,TextSizeCheck" />
-
-    <AutoCompleteTextView
-        android:id="@+id/autoCompleteTextView2"
-        android:layout_width="236dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="92dp"
-        android:layout_marginTop="14dp"
-        android:layout_marginEnd="83dp"
-        android:layout_marginBottom="358dp"
-        android:background="@drawable/rounded_cornertext"
-        android:text="AutoCompleteTextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/autoCompleteTextView"
-        tools:ignore="HardcodedText,LabelFor,TextContrastCheck,TextSizeCheck" />
+    <!-- Added Email TextView -->
 
     <TextView
-        android:id="@+id/morei"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="174dp"
-        android:layout_marginTop="163dp"
-        android:layout_marginEnd="176dp"
-        android:layout_marginBottom="15dp"
-        android:text="More Info"
+        android:id="@+id/username_text_view"
+        android:layout_width="259dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="379dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginBottom="308dp"
+        android:background="@drawable/rounded_corner"
+        android:textAlignment="center"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/googlei"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/autoCompleteTextView2"
-        tools:ignore="HardcodedText,MissingConstraints" />
-
-    <ImageView
-        android:id="@+id/fbi"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="34dp"
-        android:layout_marginTop="524dp"
-        android:layout_marginEnd="23dp"
-        android:layout_marginBottom="110dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/gi"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/backbutton"
-        app:srcCompat="@drawable/icons8_facebook_48"
-        tools:ignore="ContentDescription,MissingConstraints" />
-
-    <ImageView
-        android:id="@+id/gi"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="108dp"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.347"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/icons8_gmail_48"
-        tools:ignore="ContentDescription,MissingConstraints" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/googlei"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="22dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="11dp"
-        android:layout_marginBottom="110dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/instai"
-        app:layout_constraintStart_toEndOf="@+id/gi"
-        app:layout_constraintTop_toBottomOf="@+id/morei"
-        app:srcCompat="@drawable/icons8_google_48"
-        tools:ignore="ContentDescription,MissingConstraints" />
-
-    <ImageView
-        android:id="@+id/instai"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="196dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="111dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/twii"
-        app:layout_constraintStart_toEndOf="@+id/googlei"
-        app:layout_constraintTop_toBottomOf="@+id/autoCompleteTextView2"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/icons8_instagram_48"
-        tools:ignore="ContentDescription,MissingConstraints" />
-
-    <ImageView
-        android:id="@+id/twii"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="2dp"
-        android:layout_marginTop="572dp"
-        android:layout_marginEnd="28dp"
-        android:layout_marginBottom="111dp"
+    <TextView
+        android:id="@+id/email_text_view"
+        android:layout_width="259dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="483dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginBottom="204dp"
+        android:background="@drawable/rounded_corner"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/instai"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView26"
+        android:layout_width="405dp"
+        android:layout_height="327dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="9dp"
+        android:layout_marginBottom="540dp"
+        android:background="@drawable/hotel_layout"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/icons8_twitter_48"
-        tools:ignore="ContentDescription,MissingConstraints" />
+        app:layout_constraintVertical_bias="0.065" />
+
+    <Button
+        android:id="@+id/backb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="22dp"
+        android:layout_marginEnd="303dp"
+        android:layout_marginBottom="661dp"
+        android:background="@drawable/button_background"
+        android:text="back"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView27"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="352dp"
+        android:layout_marginEnd="295dp"
+        android:layout_marginBottom="360dp"
+        android:text="Username"
+        android:textColor="@color/blue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView28"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="456dp"
+        android:layout_marginEnd="324dp"
+        android:layout_marginBottom="256dp"
+        android:text="Email"
+        android:textColor="@color/blue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView18"
+        android:layout_width="95dp"
+        android:layout_height="78dp"
+        android:layout_marginStart="117dp"
+        android:layout_marginTop="563dp"
+        android:layout_marginEnd="117dp"
+        android:layout_marginBottom="37dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/q" />
+
+    <ImageView
+        android:id="@+id/imageView20"
+        android:layout_width="245dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="83dp"
+        android:layout_marginTop="641dp"
+        android:layout_marginEnd="83dp"
+        android:layout_marginBottom="39dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/aa1" />
+
+    <ImageView
+        android:id="@+id/imageView21"
+        android:layout_width="148dp"
+        android:layout_height="138dp"
+        android:layout_marginStart="131dp"
+        android:layout_marginTop="206dp"
+        android:layout_marginEnd="132dp"
+        android:layout_marginBottom="387dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/icons8_person_94" />
+
+    <TextView
+        android:id="@+id/textView20"
+        android:layout_width="235dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="92dp"
+        android:layout_marginTop="115dp"
+        android:layout_marginEnd="92dp"
+        android:layout_marginBottom="581dp"
+        android:background="@drawable/button_background"
+        android:text="User Profile"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

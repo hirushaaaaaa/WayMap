@@ -89,7 +89,7 @@
                 android:layout_marginTop="8dp"
                 android:background="@color/white"
                 android:gravity="center"
-                android:text="Trincomalee"
+                android:text="Why Choose SriLankan Airlines? 🌟"
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -203,12 +203,12 @@
                 android:textStyle="bold" />
 
             <TextView
-
+                android:id="@+id/book"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:background="#50FFFFFF"
-                android:text="🌎 Book Online: www.srilankan.com 📞 Customer Service: 24/7 support for bookings &amp; travel assistance.  SriLankan Airlines makes your journey smooth, exciting, and full of Sri Lankan charm! 🇱🇰✨ Ready to fly? 🌍✈️"
+                android:text="🌎 Book Online: www.srilankan.com \n📞 Customer Service: 24/7 support for bookings &amp; travel assistance.  SriLankan Airlines makes your journey smooth, exciting, and full of Sri Lankan charm! 🇱🇰✨ Ready to fly? 🌍✈️"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold"

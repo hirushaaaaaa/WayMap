@@ -62,7 +62,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/maxresdefault" />
+                    android:src="@drawable/_00x450" />
 
                 <!-- Second Image -->
                 <ImageView

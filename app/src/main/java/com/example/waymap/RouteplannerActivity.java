@@ -4,8 +4,10 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -40,16 +42,24 @@ import com.google.maps.GeoApiContext;
 import com.google.maps.android.PolyUtil;
 import com.google.maps.model.DirectionsResult;
 import com.google.maps.model.TravelMode;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ServerValue;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 public class RouteplannerActivity extends AppCompatActivity {
     private static final String TAG = "RouteplannerActivity";
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
-    private static final String MAPS_API_KEY = "AIzaSyBmDUjdK2diTVVSEuIJF3uwISql9EaibN0"; // Replace with your API key
+    private static final String MAPS_API_KEY = "AIzaSyBmDUjdK2diTVVSEuIJF3uwISql9EaibN0";
 
     private GoogleMap mMap;
     private EditText fromInput;
@@ -63,10 +73,9 @@ public class RouteplannerActivity extends AppCompatActivity {
     private TextView distanceText, estimatedTimeText, estimatedCostText;
     private Button confirmTripButton;
     private LinearLayout savedTripsContainer;
-    private TextView savedTripsTitle;
     private final List<String> tripDetailsList = new ArrayList<>();
     private boolean isFormVisible = false;
-    private com.google.maps.GeoApiContext geoApiContext;
+    private GeoApiContext geoApiContext;
     private Marker sourceMarker, destinationMarker;
     private Polyline routePolyline;
 
@@ -75,50 +84,180 @@ public class RouteplannerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         try {
             setContentView(R.layout.activity_routeplanner);
-            geoApiContext = new GeoApiContext.Builder()
-                    .apiKey(MAPS_API_KEY)
-                    .connectTimeout(2, TimeUnit.SECONDS)
-                    .readTimeout(2, TimeUnit.SECONDS)
-                    .writeTimeout(2, TimeUnit.SECONDS)
-                    .build();
 
-
+            // Initialize components
+            initializeGoogleMapsContext();
             initializeViews();
-
             checkLocationPermission();
-
-
-            SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                    .findFragmentById(R.id.map);
-            if (mapFragment != null) {
-                mapFragment.getMapAsync(googleMap -> {
-                    mMap = googleMap;
-                    try {
-                        if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION)
-                                == PackageManager.PERMISSION_GRANTED) {
-                            mMap.setMyLocationEnabled(true);
-                        }
-                        mMap.getUiSettings().setZoomControlsEnabled(true);
-                    } catch (SecurityException e) {
-                        Log.e(TAG, "Error setting up map: " + e.getMessage());
-                    }
-                });
-
-            }
-
-
+            setupMapFragment();
             setupAddTripButton();
             setupConfirmTripButton();
 
-
-            savedTripsContainer.setVisibility(View.VISIBLE);
-            savedTripsTitle.setVisibility(View.VISIBLE);
+            // Retrieve trips for the logged-in user
+            retrieveTripsFromFirebase();
 
         } catch (Exception e) {
-            Log.e(TAG, "Error in onCreate: " + e.getMessage());
-            e.printStackTrace();
-            Toast.makeText(this, "Error initializing route planner", Toast.LENGTH_LONG).show();
+            handleInitializationError(e);
         }
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        retrieveTripsFromFirebase();
+    }
+
+    private void handleInitializationError(Exception e) {
+    }
+
+    private void initializeGoogleMapsContext() {
+        geoApiContext = new GeoApiContext.Builder()
+                .apiKey(MAPS_API_KEY)
+                .connectTimeout(2, TimeUnit.SECONDS)
+                .readTimeout(2, TimeUnit.SECONDS)
+                .writeTimeout(2, TimeUnit.SECONDS)
+                .build();
+    }
+
+    private void setupMapFragment() {
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.map);
+        if (mapFragment != null) {
+            mapFragment.getMapAsync(googleMap -> {
+                mMap = googleMap;
+                try {
+                    if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION)
+                            == PackageManager.PERMISSION_GRANTED) {
+                        mMap.setMyLocationEnabled(true);
+                    }
+                    mMap.getUiSettings().setZoomControlsEnabled(true);
+                } catch (SecurityException e) {
+                    Log.e(TAG, "Error setting up map: " + e.getMessage());
+                }
+            });
+        }
+    }
+
+    private void retrieveTripsFromFirebase() {
+        SharedPreferences loginPrefs = getSharedPreferences("LoginPrefs", MODE_PRIVATE);
+        String userId = loginPrefs.getString("userId", null);
+
+        if (userId == null) {
+            Toast.makeText(this, "User not logged in", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        DatabaseReference tripsRef = FirebaseDatabase.getInstance().getReference("Trips").child(userId);
+
+        // Use addListenerForSingleValueEvent instead of addValueEventListener
+        tripsRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                savedTripsContainer.removeAllViews();
+                tripDetailsList.clear();
+
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    String tripDetails = snapshot.child("details").getValue(String.class);
+                    if (tripDetails != null) {
+                        tripDetailsList.add(tripDetails);
+                        LinearLayout tripCard = getLinearLayout(tripDetails, snapshot.getKey());
+                        savedTripsContainer.addView(tripCard, 0);
+                    }
+                }
+
+                savedTripsContainer.setVisibility(tripDetailsList.isEmpty() ? View.GONE : View.VISIBLE);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.e(TAG, "Error retrieving trips", databaseError.toException());
+                Toast.makeText(RouteplannerActivity.this, "Failed to retrieve trips", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void saveTripToFirebase(String tripDetails) {
+        SharedPreferences loginPrefs = getSharedPreferences("LoginPrefs", MODE_PRIVATE);
+        String userId = loginPrefs.getString("userId", null);
+
+        if (userId == null) {
+            Toast.makeText(this, "User not logged in", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        DatabaseReference tripsRef = FirebaseDatabase.getInstance().getReference("Trips").child(userId);
+        String tripId = tripsRef.push().getKey();
+
+        if (tripId != null) {
+            Map<String, Object> tripMap = new HashMap<>();
+            tripMap.put("details", tripDetails);
+            tripMap.put("timestamp", ServerValue.TIMESTAMP);
+
+            tripsRef.child(tripId).setValue(tripMap)
+                    .addOnSuccessListener(aVoid -> {
+                        Log.d(TAG, "Trip saved successfully");
+                        Toast.makeText(RouteplannerActivity.this, "Trip saved to database", Toast.LENGTH_SHORT).show();
+                        retrieveTripsFromFirebase(); // Refresh the list after saving
+                    })
+                    .addOnFailureListener(e -> {
+                        Log.e(TAG, "Failed to save trip", e);
+                        Toast.makeText(RouteplannerActivity.this, "Failed to save trip: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    });
+        }
+    }
+
+    private LinearLayout getLinearLayout(String tripDetails, String tripId) {
+        LinearLayout tripCard = new LinearLayout(this);
+        tripCard.setOrientation(LinearLayout.VERTICAL);
+        tripCard.setPadding(16, 16, 16, 16);
+        tripCard.setBackgroundResource(android.R.drawable.dialog_holo_light_frame);
+
+        TextView tripView = new TextView(this);
+        tripView.setText(tripDetails);
+        tripView.setPadding(8, 8, 8, 8);
+        tripCard.addView(tripView);
+
+        Button startButton = new Button(this);
+        startButton.setText("Start Navigation");
+        startButton.setOnClickListener(v -> {
+            String[] lines = tripDetails.split("\n");
+            String from = lines[2].replace("From: ", "").trim();
+            String destination = lines[3].replace("Destination: ", "").trim();
+            launchGoogleMapsNavigation(from, destination);
+        });
+        tripCard.addView(startButton);
+
+        Button deleteButton = new Button(this);
+        deleteButton.setText("Delete Trip");
+        deleteButton.setOnClickListener(v -> {
+            deleteTripFromFirebase(tripId);
+            savedTripsContainer.removeView(tripCard);
+            tripDetailsList.remove(tripDetails);
+        });
+        tripCard.addView(deleteButton);
+
+        return tripCard;
+    }
+
+    private void deleteTripFromFirebase(String tripId) {
+        SharedPreferences loginPrefs = getSharedPreferences("LoginPrefs", MODE_PRIVATE);
+        String userId = loginPrefs.getString("userId", null);
+
+        if (userId == null) {
+            Toast.makeText(this, "User not logged in", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        DatabaseReference tripRef = FirebaseDatabase.getInstance().getReference("Trips").child(userId).child(tripId);
+        tripRef.removeValue()
+                .addOnSuccessListener(aVoid ->
+                        Toast.makeText(RouteplannerActivity.this, "Trip deleted", Toast.LENGTH_SHORT).show()
+                )
+                .addOnFailureListener(e -> {
+                    Toast.makeText(RouteplannerActivity.this, "Failed to delete trip", Toast.LENGTH_SHORT).show();
+                    Log.e(TAG, "Error deleting trip", e);
+                });
     }
 
     private void initializeViews() {
@@ -297,6 +436,7 @@ public class RouteplannerActivity extends AppCompatActivity {
                 return;
             }
 
+            // Prepare trip details
             String from = fromInput.getText().toString();
             String destination = destinationInput.getText().toString();
             String date = dateText.getText().toString();
@@ -308,26 +448,41 @@ public class RouteplannerActivity extends AppCompatActivity {
             boolean dinner = dinnerCheck.isChecked();
             String notes = specialNotesInput.getText().toString();
 
-            @SuppressLint("DefaultLocale") String tripDetails = String.format("Trip #%d\n", tripDetailsList.size() + 1) +
-                    "Date: " + date + "\nFrom: " + from + "\nDestination: " + destination +
-                    "\nVehicle: " + vehicleType + "\nAdults: " + adults +
-                    ", Children: " + children + "\nMeals: " +
-                    (breakfast ? "Breakfast " : "") +
-                    (lunch ? "Lunch " : "") +
-                    (dinner ? "Dinner " : "") +
-                    "\nDistance: " + distanceText.getText() +
-                    "\nEstimated Time: " + estimatedTimeText.getText() +
-                    "\nEstimated Cost: " + estimatedCostText.getText() +
-                    "\nNotes: " + notes;
+            // Format trip details string
+            @SuppressLint("DefaultLocale") String tripDetails = String.format(
+                    "Trip Details\n" +
+                            "Date: %s\n" +
+                            "From: %s\n" +
+                            "Destination: %s\n" +
+                            "Vehicle: %s\n" +
+                            "Passengers: %d Adults, %d Children\n" +
+                            "Meals: %s%s%s\n" +
+                            "Distance: %s\n" +
+                            "Estimated Time: %s\n" +
+                            "Estimated Cost: %s\n" +
+                            "Notes: %s",
+                    date, from, destination, vehicleType,
+                    adults, children,
+                    breakfast ? "Breakfast " : "",
+                    lunch ? "Lunch " : "",
+                    dinner ? "Dinner " : "",
+                    distanceText.getText().toString(),
+                    estimatedTimeText.getText().toString(),
+                    estimatedCostText.getText().toString(),
+                    notes
+            );
 
-            tripDetailsList.add(tripDetails);
-            LinearLayout tripCard = getLinearLayout(tripDetails);
-            savedTripsContainer.addView(tripCard, 0); // Add at the top
+            // Save to Firebase
+            saveTripToFirebase(tripDetails);
+
+            // Reset and update UI
             resetForm();
-            savedTripsContainer.setVisibility(View.VISIBLE);
+            savedTripsContainer.setVisibility(View.VISIBLE); // Ensure this is visible
             findViewById(R.id.trip_form_layout).setVisibility(View.GONE);
             findViewById(R.id.scroll_view).setVisibility(View.GONE);
+
             Toast.makeText(this, "Trip saved!", Toast.LENGTH_SHORT).show();
+
         } catch (Exception e) {
             Log.e(TAG, "Error saving trip details: " + e.getMessage());
             Toast.makeText(this, "Error saving trip details", Toast.LENGTH_LONG).show();
@@ -348,15 +503,35 @@ public class RouteplannerActivity extends AppCompatActivity {
         );
         cardParams.setMargins(0, 0, 0, 16);
         tripCard.setLayoutParams(cardParams);
+
+        // Add trip title (e.g., "Trip 01")
         TextView tripTitle = new TextView(this);
         tripTitle.setText("Trip #" + (tripDetailsList.size()));
         tripTitle.setTextSize(18);
         tripTitle.setPadding(8, 8, 8, 8);
         tripCard.addView(tripTitle);
+
+        // Add trip details
         TextView tripView = new TextView(this);
         tripView.setText(tripDetails);
         tripView.setPadding(8, 8, 8, 8);
         tripCard.addView(tripView);
+
+        // Add Start Button
+        Button startButton = new Button(this);
+        startButton.setText("Start Navigation");
+        startButton.setOnClickListener(v -> {
+            // Extract "from" and "destination" locations from the trip details
+            String[] lines = tripDetails.split("\n");
+            String from = lines[2].replace("From: ", "").trim(); // Extract "From" location
+            String destination = lines[3].replace("Destination: ", "").trim(); // Extract "Destination" location
+
+            // Launch Google Maps with the "from" and "destination" locations
+            launchGoogleMapsNavigation(from, destination);
+        });
+        tripCard.addView(startButton);
+
+        // Add Delete Button
         Button deleteButton = new Button(this);
         deleteButton.setText("Delete Trip");
         deleteButton.setOnClickListener(v -> {
@@ -366,6 +541,8 @@ public class RouteplannerActivity extends AppCompatActivity {
         tripCard.addView(deleteButton);
 
         return tripCard;
+
+
     }
 
     private boolean validateInputs() {
@@ -387,6 +564,8 @@ public class RouteplannerActivity extends AppCompatActivity {
         }
         return true;
     }
+
+
 
     private void checkLocationPermission() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
@@ -459,7 +638,29 @@ public class RouteplannerActivity extends AppCompatActivity {
 
         }
     }
+    private void launchGoogleMapsNavigation(String from, String destination) {
+        try {
+            // Create a URI for Google Maps navigation
+            String uri = "https://www.google.com/maps/dir/?api=1" +
+                    "&origin=" + Uri.encode(from) +
+                    "&destination=" + Uri.encode(destination) +
+                    "&travelmode=driving";
 
+            // Create an intent to launch Google Maps
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
+            intent.setPackage("com.google.android.apps.maps"); // Ensure it opens in Google Maps
+
+            // Check if Google Maps is installed
+            if (intent.resolveActivity(getPackageManager()) != null) {
+                startActivity(intent);
+            } else {
+                Toast.makeText(this, "Google Maps is not installed", Toast.LENGTH_SHORT).show();
+            }
+        } catch (Exception e) {
+            Log.e(TAG, "Error launching Google Maps: " + e.getMessage());
+            Toast.makeText(this, "Error launching Google Maps", Toast.LENGTH_SHORT).show();
+        }
+    }
 
     @Override
     protected void onDestroy() {

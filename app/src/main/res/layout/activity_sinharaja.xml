@@ -70,21 +70,7 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="HardcodedText,VisualLintBounds" />
 
-        <Button
-            android:id="@+id/editbutton"
-            android:layout_width="86dp"
-            android:layout_height="41dp"
-            android:layout_marginStart="317dp"
-            android:layout_marginTop="7dp"
-            android:layout_marginEnd="3dp"
-            android:text="EDIT"
-            android:visibility="invisible"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="TouchTargetSizeCheck"
-            /> <!-- Initially hidden -->
+        <!-- Initially hidden -->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -95,6 +81,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints">
 
         <ImageView
@@ -111,17 +98,20 @@
             app:srcCompat="@drawable/anuradhapura_sri_lanka"
             tools:ignore="ContentDescription,HardcodedText" />
 
-        <!-- Add other images here -->
+        <!-- Add other 111111.jpeg here -->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <TextView
+    <!-- [Rest of the existing layout remains the same] -->
+    <EditText
         android:id="@+id/isurumunitext"
-        android:layout_width="393dp"
-        android:layout_height="459dp"
+        android:layout_width="367dp"
+        android:layout_height="313dp"
         android:layout_marginTop="31dp"
         android:layout_marginEnd="3dp"
         android:layout_marginBottom="11dp"
+        android:background="@android:color/transparent"
+        android:enabled="false"
         android:text="• Isurumuniya\n
 • Location: Anuradhapura, Sri Lanka.\n\n
 • Highlights:\n
@@ -130,18 +120,17 @@
   - Other notable carvings include the Elephant Pond and Royal Family.\n
   - Situated near the Tissa Wewa (a reservoir), providing a serene environment.\n\n
 • Significance:\n
-  - Built during King Devanampiya Tissa’s reign (3rd century BCE) as a meditation site for monks.\n
+  - Built during King Devanampiya Tissa's reign (3rd century BCE) as a meditation site for monks.\n
   - Known as the ancient Meghagiri Vihara or Meygiri Vihara.\n
   - King Kasyapa I (473–491 AD) renovated and renamed it as 'Boupulvan, Kasubgiri Radmaha Vehera.'\n
-  - Connected to a cave with a small stupa above a cliff.\n\n
-"
+  - Connected to a cave with a small stupa above a cliff.\n\n"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintHorizontal_bias="0.39"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageContainer"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintVertical_bias="0.0"
         tools:ignore="HardcodedText,TextSizeCheck" />
 
     <TextView
@@ -158,12 +147,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" /><![CDATA[
+        app:layout_constraintTop_toTopOf="parent" />
 
-
-
-
-        app:layout_constraintStart_toStartOf=
-        app:layout_constraintTop_toTopOf= /> ]]><!-- Initially disabled -->
+    <!-- Initially disabled -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black">
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="200dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/button_background"
+        android:text="Stays"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="35sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/horizontalScrollView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Wrap hotels in a LinearLayout for horizontal scrolling -->
+    <HorizontalScrollView
+        android:id="@+id/horizontalScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fillViewport="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView16">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!-- First Hotel -->
+
+            <!-- Second Hotel -->
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="400dp"
+                android:layout_height="580dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/hotel_layout">
+
+                <TextView
+                    android:id="@+id/textView22"
+                    android:layout_width="209dp"
+                    android:layout_height="32dp"
+                    android:text="KINGSBURY"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="italic"
+                    app:layout_constraintBottom_toTopOf="@+id/imageView17"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/imageView17"
+                    android:layout_width="231dp"
+                    android:layout_height="235dp"
+                    app:layout_constraintBottom_toTopOf="@+id/textView23"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView22"
+                    app:srcCompat="@drawable/ho1_2" />
+
+                <TextView
+                    android:id="@+id/textView23"
+                    android:layout_width="359dp"
+                    android:layout_height="129dp"
+                    android:text="The Kingsbury Hotel is a luxury five-star hotel located in Colombo, Sri Lanka. It offers world-class hospitality with elegant accommodations, fine dining, and stunning views of the Indian Ocean.\n
+Location: 48 Janadhipathi Mawatha, Colombo 1, Sri Lanka
+Rooms &amp; Suites: Stylish and spacious rooms with modern amenities, including ocean-view suites"
+                    android:textColor="@color/white"
+                    android:textStyle="italic"
+                    app:layout_constraintBottom_toTopOf="@+id/kingsburyloc"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView17" />
+
+                <TextView
+                    android:id="@+id/kingsburyloc"
+                    android:layout_width="188dp"
+                    android:layout_height="28dp"
+                    android:background="@drawable/button_background"
+                    android:text="📌Location"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    app:layout_constraintBottom_toTopOf="@+id/kingsburyweb"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView23" />
+
+                <TextView
+                    android:id="@+id/kingsburyweb"
+                    android:layout_width="188dp"
+                    android:layout_height="28dp"
+                    android:layout_marginBottom="128dp"
+                    android:background="@drawable/button_background"
+                    android:text="🌐Website"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/kingsburyloc" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="400dp"
+                android:layout_height="580dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/hotel_layout">
+
+                <TextView
+                    android:id="@+id/textView24"
+                    android:layout_width="209dp"
+                    android:layout_height="32dp"
+                    android:text="Hilton"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="italic"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/imageView19"
+                    android:layout_width="231dp"
+                    android:layout_height="235dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView24"
+                    app:srcCompat="@drawable/ho2" />
+
+                <TextView
+                    android:id="@+id/textView25"
+                    android:layout_width="359dp"
+                    android:layout_height="129dp"
+                    android:text="The Hilton Colombo is a distinguished five-star hotel situated in the heart of Colombo's business district, offering guests a blend of luxury, comfort, and convenience.\nGraze Kitchen: An all-day dining restaurant offering a diverse international buffet.
+Café Kai: A grab-and-go outlet serving pastries, sandwiches, and snacks.
+Emperor's Wok: Specializing in authentic Cantonese and Szechuan cuisine.
+SunsetBlu: Colombo's first all-day club by the poolside, featuring live entertainment.
+L.A.B (Lounge &amp; Bar): Ideal for afternoon tea and evening cocktails with live music.
+Stella Karaoke Bar: A venue for guests to enjoy karaoke sessions in a lively atmosphere.
+HILTONCOLOMBO1.COM"
+                    android:textColor="@color/white"
+                    android:textStyle="italic"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView19" />
+
+                <TextView
+                    android:id="@+id/hiltonloc"
+                    android:layout_width="188dp"
+                    android:layout_height="28dp"
+                    android:background="@drawable/button_background"
+                    android:text="📌Location"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView25" />
+
+                <TextView
+                    android:id="@+id/hiltonweb"
+                    android:layout_width="188dp"
+                    android:layout_height="28dp"
+                    android:background="@drawable/button_background"
+                    android:text="🌐Website"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/hiltonloc" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="400dp"
+                android:layout_height="580dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/hotel_layout">
+
+                <TextView
+
+                    android:id="@+id/j1"
+                    android:layout_width="209dp"
+                    android:layout_height="32dp"
+                    android:text="Jetwings Sigiriya"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="italic"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="DuplicateIds" />
+
+                <ImageView
+
+                    android:layout_width="231dp"
+                    android:layout_height="235dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/j1"
+                    app:srcCompat="@drawable/ho7jetvin"
+                    tools:ignore="DuplicateIds,NotSibling"
+                    android:id="@+id/j2"/>
+
+                <TextView
+
+                    android:layout_width="359dp"
+                    android:layout_height="129dp"
+                    android:text="Jetwing Hotels is a prominent Sri Lankan hotel chain established in the 1970s by Herbert Cooray.
+EN.WIKIPEDIA.ORG
+
+The group operates over 30 properties across Sri Lanka, including:
+
+Jetwing Saman Villas in Bentota
+Jetwing Colombo Seven in Colombo
+Jetwing Lake in Dambulla
+Jetwing Lighthouse in Galle
+Jetwing Jaffna in Jaffna
+Jetwing Kandy Gallery in Kandy
+These hotels offer a blend of luxury and local charm, with many properties emphasizing sustainability and community engagement."
+                    android:textColor="@color/white"
+                    android:textStyle="italic"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/j2"
+                    tools:ignore="DuplicateIds,NotSibling"
+                    android:id="@+id/j3"/>
+
+                <TextView
+                    android:id="@+id/jetwingloc"
+                    android:layout_width="188dp"
+                    android:layout_height="28dp"
+                    android:background="@drawable/button_background"
+                    android:text="📌Location"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/j3"
+                    tools:ignore="NotSibling" />
+
+                <TextView
+                    android:id="@+id/jetwingweb"
+                    android:layout_width="188dp"
+                    android:layout_height="28dp"
+                    android:background="@drawable/button_background"
+                    android:text="🌐Website"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/jetwingloc"
+
+                    tools:ignore="NotSibling,UnknownId,UnknownIdInLayout" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="400dp"
+                android:layout_height="580dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/hotel_layout">
+
+                <TextView
+
+                    android:layout_width="209dp"
+                    android:layout_height="32dp"
+                    android:text="Shangri_la"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="italic"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="DuplicateIds"
+                    android:id="@+id/s1"/>
+
+                <ImageView
+
+                    android:layout_width="231dp"
+                    android:layout_height="235dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/s1"
+                    app:srcCompat="@drawable/h06shangrilaa"
+                    tools:ignore="DuplicateIds,NotSibling"
+                    android:id="@+id/s3"/>
+
+                <TextView
+
+                    android:layout_width="359dp"
+                    android:layout_height="129dp"
+                    android:text="Shangri-La Hotels and Resorts is a luxury hospitality group founded in 1971, with over 100 hotels and resorts worldwide, including destinations in Africa, Asia, Europe, the Middle East, North America, and Oceania.
+EN.WIKIPEDIA.ORG
+
+The brand offers a range of accommodations under different brands:
+
+Shangri-La: Premium luxury hotels and resorts.
+Traders Hotels: Mid-range hotels catering to business travelers.
+Kerry Hotels: Contemporary hotels focusing on urban living.
+Hotel Jen: Hotels designed for the modern traveler.."
+                    android:textColor="@color/white"
+                    android:textStyle="italic"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/s3"
+                    tools:ignore="DuplicateIds,NotSibling"
+                    android:id="@+id/s4"/>
+
+                <TextView
+                    android:id="@+id/shangrilaaloc"
+                    android:layout_width="188dp"
+                    android:layout_height="28dp"
+                    android:background="@drawable/button_background"
+                    android:text="📌Location"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/s4"
+                    tools:ignore="NotSibling" />
+
+                <TextView
+                    android:id="@+id/shangrilaaweb"
+                    android:layout_width="188dp"
+                    android:layout_height="28dp"
+                    android:background="@drawable/button_background"
+                    android:text="🌐Website"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/shangrilaaloc"
+
+                    tools:ignore="NotSibling,UnknownId,UnknownIdInLayout" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

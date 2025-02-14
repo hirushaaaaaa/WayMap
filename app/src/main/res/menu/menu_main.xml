@@ -11,6 +11,9 @@
     android:id="@+id/nav_logout"
     android:title="@string/Logout" />
     <item
+        android:id="@+id/nav_feedbacks"
+        android:title="feedbacks" />
+    <item
         android:id="@+id/nav_SOS"
         android:title="SOS"
         tools:ignore="HardcodedText" />

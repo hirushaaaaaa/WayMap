@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/panoramic_view_of_swimming_pool_in_dubai__dubai_______luxurious_vacation_lifestyle"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Top Bar -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#001A44"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="Relax, unwind, and let us take care of the rest."
+                android:textColor="#FFFFFF"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="WAYMAP "
+            android:textSize="24sp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:paddingVertical="16dp"
+            android:fontFamily="sans-serif-medium" />
+
+        <!-- ViewFlipper for Slideshow -->
+        <ViewFlipper
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:autoStart="true"
+            android:flipInterval="2000"
+            android:inAnimation="@android:anim/slide_in_left"
+            android:outAnimation="@android:anim/slide_out_right">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/boutique_hotels" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/hotel_with_gard_1800x900_1" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/pool_teardrop_1920x1000" />
+        </ViewFlipper>
+
+        <!-- Section Title -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingVertical="16dp"
+            android:text="Discover Your Perfect Stay: Explore Hotels in Sri Lanka"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=" Hotel Industry in Sri Lanka"
+            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:background="@color/_00254d"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:paddingVertical="16dp"/>
+
+        <!-- Description -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#50FFFFFF"
+            android:lineSpacingExtra="4dp"
+            android:paddingBottom="16dp"
+            android:text="The hotel industry in Sri Lanka is a key part of the country's tourism sector, which is one of the major contributors to the economy. Known for its beautiful beaches, rich cultural heritage, and diverse wildlife, Sri Lanka attracts millions of tourists each year, creating a high demand for hospitality services."
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <!-- Things to do in Sri Lanka -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Things to do in Sri Lanka"
+            android:textSize="24sp"
+            android:textColor="@color/white"
+            android:background="@color/_00254d"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:paddingVertical="16dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#50FFFFFF"
+            android:lineSpacingExtra="4dp"
+            android:paddingBottom="24dp"
+            android:text="Luxury Resorts – High-end international and local brands like Shangri-La, Cinnamon, Jetwing, and Anantara cater to premium travelers. Boutique Hotels – Small, unique hotels offering personalized experiences, often located in scenic areas. Budget and Mid-range Hotels – Affordable options for local and international travelers. Eco and Ayurvedic Resorts – Focused on sustainability and wellness tourism."
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:src="@drawable/_10_7071"
+            android:scaleType="centerCrop"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Explore Button -->
+        <TextView
+            android:id="@+id/exploretext2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Explore"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:background="@color/_00254d"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:paddingVertical="16dp"
+            android:clickable="true"
+            android:focusable="true" />
+
+    </LinearLayout>
+
+</ScrollView>

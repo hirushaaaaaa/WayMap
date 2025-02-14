@@ -52,8 +52,8 @@ public class ScenicstopsActivity extends AppCompatActivity {
         adminImageView.setVisibility(isAdmin ? View.VISIBLE : View.GONE);
 
         // Set click listeners to navigate to different activities
-        imageAnuradhapura.setOnClickListener(v -> startActivity(new Intent(this, AnuradhapuraActivity.class)));
-        imageSinharaja.setOnClickListener(v -> startActivity(new Intent(this, sinharajaActivity.class)));
+        imageAnuradhapura.setOnClickListener(v -> startActivity(new Intent(this, sinharajaActivity.class)));
+        imageSinharaja.setOnClickListener(v -> startActivity(new Intent(this, RainforestActivity.class)));
         imageRuwanmeliseya.setOnClickListener(v -> startActivity(new Intent(this, RuwanmeliseyaActivity.class)));
         imageGalleport.setOnClickListener(v -> startActivity(new Intent(this, GalleportActivity.class)));
         imageElla.setOnClickListener(v -> startActivity(new Intent(this, EllaActivity.class)));
@@ -105,7 +105,7 @@ public class ScenicstopsActivity extends AppCompatActivity {
     // Open image picker to select an image from the gallery
     private void openImagePicker() {
         Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        intent.setType("image/*"); // Filter to only images
+        intent.setType("image/*"); // Filter to only 111111.jpeg
         startActivityForResult(intent, PICK_IMAGE_REQUEST);
     }
 

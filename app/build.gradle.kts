@@ -89,6 +89,8 @@ dependencies {
     implementation("com.squareup.okhttp3:okhttp:4.10.0")
     implementation("org.slf4j:slf4j-api:2.0.3")
     implementation("com.google.code.gson:gson:2.10")
+    implementation(libs.google.firebase.firestore)
+    implementation(libs.mediation.test.suite)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)

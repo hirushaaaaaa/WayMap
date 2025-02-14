@@ -94,7 +94,7 @@
             app:srcCompat="@drawable/beach_inns_website_tours_900x500px_galle_3"
             tools:ignore="ContentDescription,HardcodedText" />
 
-        <!-- Add other images here -->
+        <!-- Add other 111111.jpeg here -->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
