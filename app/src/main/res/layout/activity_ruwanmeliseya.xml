@@ -92,7 +92,7 @@
             app:srcCompat="@drawable/tourist_places_in_anuradhapura"
             tools:ignore="ContentDescription,HardcodedText" />
 
-        <!-- Add other images here -->
+        <!-- Add other 111111.jpeg here -->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
