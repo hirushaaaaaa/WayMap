@@ -70,6 +70,32 @@
             tools:ignore="HardcodedText,VisualLintBounds" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <Button
+        android:id="@+id/editButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Edit"
+        android:visibility="gone"
+        app:layout_constraintEnd_toStartOf="@+id/saveButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ruwanmelitext"
+        tools:ignore="HardcodedText" />
+
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="Save"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/editButton"
+        app:layout_constraintTop_toBottomOf="@+id/ruwanmelitext"
+        tools:ignore="HardcodedText" />
+
     <!-- Vertical Scroll View -->
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -93,7 +119,8 @@
 
         <!-- Add other 111111.jpeg here -->
 
-    </androidx.constraintlayout.widget.ConstraintLayout><![CDATA[
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <![CDATA[
 
     @color/white"
     app:layout_constraintBottom_toBottomOf="parent"
@@ -103,34 +130,42 @@
     app:layout_constraintVertical_bias="0.0"
     tools:ignore="HardcodedText,TextSizeCheck" />
 
-    ]]>
 
-    <TextView
+
+    ]]><!-- Remove default background -->
+    android:inputType="textMultiLine" <!-- Allow multi-line input -->
+    android:enabled="false" <!-- Initially disabled -->
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.8"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/imageContainer"
+    app:layout_constraintVertical_bias="0.0"
+    tools:ignore="HardcodedText,TextSizeCheck" />
+
+    <EditText
         android:id="@+id/ruwanmelitext"
         android:layout_width="377dp"
         android:layout_height="208dp"
-        android:layout_marginStart="14dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginBottom="6dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="261dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginBottom="262dp"
+        android:background="@android:color/transparent"
         android:text="3. Anuradhapura
-	•	Location: North Central Province, Sri Lanka.
-	•	Highlights:
-	•	One of the ancient capitals of Sri Lanka and a UNESCO World Heritage Site.
-	•	Known for its well-preserved ruins of ancient Buddhist temples and stupas, including:
-	•	Sri Maha Bodhi: A sacred fig tree grown from a branch of the tree under which Buddha attained enlightenment.
-	•	Ruwanwelisaya: A massive stupa with intricate architectural design.
-	•	Jethavanaramaya: One of the largest stupas in the world.
-	•	Significance: A major center for Theravada Buddhism and a testament to ancient Sri Lankan civilization.
-        android:textColor="
+• Location: North Central Province, Sri Lanka.
+• Highlights:
+• One of the ancient capitals of Sri Lanka and a UNESCO World Heritage Site.
+• Known for its well-preserved ruins of ancient Buddhist temples and stupas, including:
+• Sri Maha Bodhi: A sacred fig tree grown from a branch of the tree under which Buddha attained enlightenment.
+• Ruwanwelisaya: A massive stupa with intricate architectural design.
+• Jethavanaramaya: One of the largest stupas in the world.
+• Significance: A major center for Theravada Buddhism and a testament to ancient Sri Lankan civilization."
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.8"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageContainer"
-        app:layout_constraintVertical_bias="0.0"
-        tools:ignore="HardcodedText,TextSizeCheck" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/locruwanmeliseya"

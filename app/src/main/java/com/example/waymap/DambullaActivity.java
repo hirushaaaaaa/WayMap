@@ -1,112 +1,126 @@
 package com.example.waymap;
 
-import android.content.Intent;
+import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class DambullaActivity extends AppCompatActivity {
 
-    private Button backButton, editButton; // Declare editButton
-    private TextView locDambulla;
+    private EditText dambullatext;
+    private TextView locdambulla;
+    private Button backButto, editButton1, saveButton1;
+    private boolean isAdmin = false; // Admin flag
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dambulla); // Ensure correct layout file is used
-        SharedPreferences sharedPreferences = getSharedPreferences("LoginPrefs", MODE_PRIVATE);
-        boolean isAdmin = sharedPreferences.getBoolean("isAdmin", false); // Retrieve admin status
-
-        // Debug: Check if the admin status is retrieved correctly
-        Log.d("DEBUG", "Admin Status: " + isAdmin);
-        Log.d("DEBUG", "Login Status: " + sharedPreferences.getBoolean("isLoggedIn", false));
-        Log.d("DEBUG", "Admin Status: " + sharedPreferences.getBoolean("isAdmin", false));
+        setContentView(R.layout.activity_dambulla);
 
         // Initialize Views
-        backButton = findViewById(R.id.backButton);
-        editButton = findViewById(R.id.deditbutton); // Initialize the editButton
-        locDambulla = findViewById(R.id.locdambulla); // Ensure correct ID in your layout XML
+        dambullatext = findViewById(R.id.dambullatext);
+        locdambulla = findViewById(R.id.locdambulla);
+        backButto = findViewById(R.id.backButto);
+        editButton1 = findViewById(R.id.editButton);
+        saveButton1 = findViewById(R.id.saveButton);
 
-        // Initially, make the editButton invisible for all users
-        editButton.setVisibility(View.INVISIBLE);
-        editButton.setOnClickListener(v -> {
-            if (isAdmin) {
-                editButton.setVisibility(View.VISIBLE); // Show only if admin
+        // Check for null references (prevent crashes)
+        if (dambullatext == null || locdambulla == null || backButto == null || editButton1 == null || saveButton1 == null) {
+            Log.e("DambullaActivity", "One or more UI components not found in layout!");
+            return;
+        }
+
+        // Check admin permissions
+        checkAdminPermissions();
+
+        // Load content from Firebase
+        loadContent();
+
+        // Back button functionality
+        backButto.setOnClickListener(v -> finish()); // Close the activity
+
+        // Edit button functionality
+        editButton1.setOnClickListener(v -> {
+            dambullatext.setEnabled(true); // Enable editing
+            dambullatext.requestFocus(); // Focus on the EditText
+        });
+
+        // Save button functionality
+        saveButton1.setOnClickListener(v -> {
+            String content = dambullatext.getText().toString().trim();
+            if (!content.isEmpty()) {
+                saveContent(content);
+                dambullatext.setEnabled(false); // Disable editing after saving
             } else {
-                editButton.setVisibility(View.GONE); // Hide for regular users
+                Toast.makeText(this, "Content cannot be empty!", Toast.LENGTH_SHORT).show();
             }
         });
-        // Check if the user is an admin
-        checkAdminStatus();
+    }
 
-        // Enable the back button in the action bar
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    private void checkAdminPermissions() {
+        // Retrieve admin status from SharedPreferences
+        SharedPreferences sharedPreferences = getSharedPreferences("LoginPrefs", MODE_PRIVATE);
+        isAdmin = sharedPreferences.getBoolean("isAdmin", false);
+
+        // Debugging: Check if the admin status is retrieved correctly
+        Log.d("DEBUG", "Admin Status: " + isAdmin);
+
+        // Set the visibility of edit and save buttons based on admin status
+        if (editButton1 != null && saveButton1 != null) {
+            if (isAdmin) {
+                editButton1.setVisibility(View.VISIBLE);
+                saveButton1.setVisibility(View.VISIBLE);
+            } else {
+                editButton1.setVisibility(View.GONE);
+                saveButton1.setVisibility(View.GONE);
+            }
         }
+    }
 
-        // Back Button Listener
-        if (backButton != null) {
-            backButton.setOnClickListener(v -> {
-                Intent intent = new Intent(DambullaActivity.this, ScenicstopsActivity.class);
-                startActivity(intent);
-                finish(); // Close the current activity
-            });
-        }
+    private void saveContent(String content) {
+        // Save the content to Firebase Realtime Database
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("dambulla_content");
+        databaseReference.setValue(content)
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        Toast.makeText(this, "Content Saved!", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(this, "Failed to Save Content", Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
 
-        // Location text view click listener for Dambulla
-        if (locDambulla != null) {
-            locDambulla.setOnClickListener(v -> {
-                // Define the location of Dambulla
-                String location = "https://www.google.com/maps?q=Dambulla,Sri+Lanka";
-                Intent mapIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(location));
-                mapIntent.setPackage("com.google.android.apps.maps"); // Ensure we use Google Maps
-
-                // Check if Google Maps is installed
-                if (mapIntent.resolveActivity(getPackageManager()) != null) {
-                    startActivity(mapIntent);
-                } else {
-                    // If Google Maps is not installed, show a toast or handle accordingly
-                    Toast.makeText(DambullaActivity.this, "Google Maps is not installed.", Toast.LENGTH_SHORT).show();
-
-                    // Optionally, open the location in a browser
-                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(location));
-                    startActivity(browserIntent);
+    private void loadContent() {
+        // Load the content from Firebase Realtime Database
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("dambulla_content");
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String savedContent = snapshot.getValue(String.class);
+                if (savedContent != null) {
+                    dambullatext.setText(savedContent);
                 }
-            });
-        }
-    }
+            }
 
-    private void checkAdminStatus() {
-        // Check if the user is logged in as an admin using SharedPreferences
-        SharedPreferences sharedPreferences = getSharedPreferences("UserPreferences", MODE_PRIVATE);
-        boolean isAdmin = sharedPreferences.getBoolean("isAdmin", false); // Default is false if not found
-
-        // Debugging: Log the value of isAdmin to verify the status
-        System.out.println("Admin Status: " + isAdmin);
-
-        // If the user is an admin, show the Edit button
-        if (isAdmin) {
-            editButton.setVisibility(View.VISIBLE); // Make the Edit button visible for admins
-        }
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            // Navigate to ScenicstopsActivity when back button is clicked
-            Intent intent = new Intent(DambullaActivity.this, ScenicstopsActivity.class);
-            startActivity(intent);
-            finish(); // Close the current activity
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(DambullaActivity.this, "Failed to Load Content", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

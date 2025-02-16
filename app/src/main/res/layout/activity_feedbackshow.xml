@@ -8,58 +8,36 @@
     android:background="@color/black">
 
     <TextView
-        android:id="@+id/feedbackUserName"
-        android:layout_width="379dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="117dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="592dp"
-        android:textSize="16sp"
+        android:id="@+id/textView29"
+        android:layout_width="228dp"
+        android:layout_height="29dp"
+        android:layout_marginStart="91dp"
+        android:layout_marginTop="39dp"
+        android:layout_marginEnd="92dp"
+        android:background="@drawable/get_button"
+        android:text="feedbacks"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
-    <RatingBar
-        android:id="@+id/feedbackRatingBar"
-        style="?android:attr/ratingBarStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="88dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/feedbackUserName" />
-
-    <TextView
-        android:id="@+id/feedbackText"
+    <!-- Replace FrameLayout with RecyclerView -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewFeedbacks"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="124dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/feedbackEmotion"
-        app:layout_constraintTop_toBottomOf="@+id/feedbackRatingBar" />
-
-    <TextView
-        android:id="@+id/feedbackEmotion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/feedbackType"
-        app:layout_constraintEnd_toStartOf="@+id/feedbackRatingBar"
-        app:layout_constraintStart_toStartOf="@+id/feedbackRatingBar"
-        app:layout_constraintTop_toTopOf="@+id/feedbackType" />
-
-    <TextView
-        android:id="@+id/feedbackType"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="69dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="1dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/feedbackText" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView29"
+        tools:listitem="@layout/item_feedback" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

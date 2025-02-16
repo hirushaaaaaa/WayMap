@@ -82,6 +82,7 @@
 
             </ViewFlipper>
             <!-- Description Section -->
+
             <TextView
                 android:id="@+id/trincotext"
                 android:layout_width="match_parent"
@@ -207,12 +208,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:background="#50FFFFFF"
-                android:text="🌎 Book Online: www.srilankan.com \n📞 Customer Service: 24/7 support for bookings &amp; travel assistance.  SriLankan Airlines makes your journey smooth, exciting, and full of Sri Lankan charm! 🇱🇰✨ Ready to fly? 🌍✈️"
-                android:textColor="@color/black"
+                android:background="@color/gmts_dark_gray"
+                android:text="🌎Book Online: www.srilankan.com "
+                android:textColor="@color/teal_200"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 tools:ignore="VisualLintLongText" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:background="#50FFFFFF"
+                android:text="📞 Customer Service: 24/7 support for bookings &amp; travel assistance.  SriLankan Airlines makes your journey smooth, exciting, and full of Sri Lankan charm! 🇱🇰✨ Ready to fly?"
+                android:textColor="@color/black"
+                android:textStyle="bold"/>
 
         </LinearLayout>
     </LinearLayout>

@@ -58,14 +58,12 @@ public class LoginActivity extends AppCompatActivity {
             }
 
             // Check for admin credentials
-            // Inside the LoginActivity (already exists)
             if (username.equals("admin") && password.equals("1111")) {
-                saveLoginState(username, "admin@admin.com", true, "admin_user_id");
+                saveLoginState(username, "admin@admin.com", true, "admin_user_id"); // Save admin status
                 Toast.makeText(LoginActivity.this, "Admin login successful", Toast.LENGTH_SHORT).show();
                 navigateToHomePage();
                 return;
             }
-
 
             // Validate user credentials from Firebase
             validateUser(username, password);
@@ -79,7 +77,7 @@ public class LoginActivity extends AppCompatActivity {
         editor.putBoolean("isLoggedIn", true);
         editor.putString("username", username);
         editor.putString("email", email);
-        editor.putBoolean("isAdmin", isAdmin);
+        editor.putBoolean("isAdmin", isAdmin); // Save admin status
         editor.putString("userId", userID); // Save the user ID for future use
         editor.apply();
     }
@@ -93,11 +91,11 @@ public class LoginActivity extends AppCompatActivity {
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                         String dbPassword = snapshot.child("password").getValue(String.class);
                         String email = snapshot.child("email").getValue(String.class);
-                        String userID = snapshot.getKey(); // Get the user ID from the snapshot
+                        String userID = snapshot.getKey();
 
                         // If passwords match, login successful
                         if (dbPassword != null && dbPassword.equals(password)) {
-                            saveLoginState(username, email, false, userID); // Save user login state with Firebase user ID
+                            saveLoginState(username, email, false, userID); // Save regular user status
                             Toast.makeText(LoginActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
                             navigateToHomePage();
                             return;

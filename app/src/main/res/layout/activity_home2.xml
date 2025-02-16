@@ -345,29 +345,52 @@
                         tools:ignore="HardcodedText" />
                 </LinearLayout>
 
+                <LinearLayout
+                    android:layout_width="120dp"
+                    android:layout_height="97dp"
+                    android:layout_marginStart="9dp"
+                    android:layout_marginEnd="13dp"
+                    android:background="@drawable/get_button"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="10dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.158"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.565"
+                    tools:ignore="DuplicateIds,VisualLintBounds">
+                    <ImageView
+
+                        android:id="@+id/mButtonl"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/m3"
+                        tools:ignore="ContentDescription,ImageContrastCheck" />
+
+                    <TextView
+
+                        android:id="@+id/mButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="More ➡️"
+                        android:textStyle="italic"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        tools:ignore="DuplicateIds,HardcodedText" />
+                </LinearLayout>
+
+
             </LinearLayout>
         </HorizontalScrollView>
 
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/mButton"
-        android:layout_width="92dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="306dp"
-        android:layout_marginTop="58dp"
-        android:layout_marginEnd="13dp"
-        android:layout_marginBottom="641dp"
-        android:background="@drawable/button_background"
-        android:text="More"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="17sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="413dp"

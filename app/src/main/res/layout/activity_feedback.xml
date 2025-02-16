@@ -206,8 +206,8 @@
             android:layout_marginBottom="120dp"
             android:background="@drawable/hotel_layout"
             android:text="Send Feedback"
-            android:textColor="@color/white"
             android:textAlignment="center"
+            android:textColor="@color/white"
             android:textSize="28sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -215,5 +215,20 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewFeedback"
+            android:layout_width="365dp"
+            android:layout_height="43dp"
+            android:layout_marginStart="22dp"
+            android:layout_marginTop="651dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="21dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:visibility="invisible"/>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- Add this to your existing activity_feedback.xml layout -->
 </androidx.constraintlayout.widget.ConstraintLayout>
